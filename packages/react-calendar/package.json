@@ -1,0 +1,8 @@
+{
+  "name": "react-calendar",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "author": "Maycon Santos <mayconsantos.dev@gmail.com>",
+  "license": "MIT",
+  "private": false
+}

@@ -1,0 +1,193 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 16px;
+  border: 1px #dbe2e8 solid;
+  border-radius: 4px;
+  color: #0b4373;
+  font-family: Montserrat, sans-serif;
+  background-image: linear-gradient(to top right, #fdfdfd, #ffffff);
+}
+
+.Container + .Container {
+  margin-left: 24px;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.Header .HeaderText {
+  order: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.Header .HeaderText:hover,
+.Header .PrevButton:hover,
+.Header .NextButton:hover {
+  cursor: pointer;
+  background-color: #E8F4FF;
+}
+
+.Header .PrevButton,
+.Header .NextButton {
+  width: 28px;
+  height: 28px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.Header .PrevButton:hover,
+.Header .NextButton:hover {
+  cursor: pointer;
+}
+
+.Header .PrevButton {
+  order: 1;
+  margin-left: auto;
+}
+
+.Header .NextButton {
+  order: 2;
+  margin-left: 16px;
+}
+
+.Header .PrevButton::before,
+.Header .NextButton::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-color: #0b4373;
+  border-style: solid;
+}
+
+.Header .PrevButton::before {
+  border-width: 2px 0 0 2px;
+  transform: rotate(-45deg) translate(3px, 3px);
+}
+
+.Header .NextButton::before {
+  border-width: 2px 2px 0 0;
+  transform: rotate(45deg) translate(1px, -1px);
+}
+
+.Days {
+  display: flex;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.Days .Day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 7);
+  height: 40px;
+}
+
+.Body {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.Body .Cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  color: #0b4373;
+  font-family: inherit;
+  background-color: transparent;
+}
+
+.Body .Cell.CurrentDate {
+  background-color: #fdfdfd;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.SelectedDate,
+.Body .YearCell.SelectedDate,
+.Body .MonthCell.SelectedDate,
+.Body .DayCell.DayBelongCurrentMonth.BetweenSelectedRange,
+.Body .DayCell.DayBelongCurrentMonth.MouseOverEndRangeDate {
+  color: white;
+  background-color: #52aeff !important;
+}
+
+.Body .Cell.ValidDate.DayBelongCurrentMonth:hover,
+.Body .YearCell:hover,
+.Body .MonthCell:hover {
+  cursor: pointer;
+  background-color: #E8F4FF;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.OverMaxRange:hover,
+.Body .DayCell.DayBelongCurrentMonth.UnderMinRange:hover {
+  background-color: #884c8c !important;
+}
+
+.Body .DayCell {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #9a9a9a;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.BetweenRange {
+  background-color: #81c5ff;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.BetweenSelectedRange,
+.Body .DayCell.DayBelongCurrentMonth.BetweenRange {
+  border-radius: 0;
+}
+
+
+.Body .DayCell.DayBelongCurrentMonth.StartRangeDate {
+  border-radius: 50% 0 0 50%;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.EndRangeDate {
+  border-radius: 0 50% 50% 0;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.InvalidDate {
+  background-color: #f1f1f1;
+}
+
+.Body .DayCell.DayBelongCurrentMonth.OverMaxRange,
+.Body .DayCell.DayBelongCurrentMonth.UnderMinRange,
+.Body .DayCell.DayBelongCurrentMonth.InvalidRangeDate {
+  background-color: #A885AA;
+}
+
+.Body .DayCell.DayBelongCurrentMonth {
+  color: black;
+}
+
+.Body .MonthCell {
+  width: calc(100% / 3);
+  height: 60px;
+  border-radius: 4px;
+}
+
+.Body .YearCell {
+  width: calc(100% / 4);
+  height: 80px;
+}

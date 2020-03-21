@@ -1,0 +1,54 @@
+.Container {
+}
+
+.Header {
+  &.Month {
+    & .HeaderText {}
+  }
+
+  &.Year {
+    & .HeaderText {}
+  }
+  
+  &.YearsRange {
+    & .HeaderText {}
+  }
+
+  & .HeaderText {}
+
+  & .PrevButton {}
+
+  & .NextButton {}
+
+  & .Days {
+    & .Day {}
+  }
+}
+
+.Body {
+  & .Cell {
+    &.CurrentDate {}
+  
+    &.SelectedDate {}
+
+    &.DayCell {
+      &.DayBelongCurrentMonth {}
+  
+      &.CurrentDate {}
+  
+      &.SelectedDate {}
+    }
+  
+    &.MonthCell {
+      &.CurrentDate {}
+
+      &.SelectedDate {}
+    }
+
+    &.YearCell {
+      &.CurrentDate {}
+
+      &.SelectedDate {}
+    }
+  }
+}
