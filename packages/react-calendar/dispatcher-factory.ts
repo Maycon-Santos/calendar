@@ -98,6 +98,37 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
     }
   }
 
+  function setDataToViewHandler (value: TDataToView) {
+    const order = bind?.order || 0
+    if (order > 0) {
+      if (!bind || !order || !bind?.mainCalendarProvider) return
+      const { mainCalendarProvider } = bind
+      const { backwardYears, forwardYears } = mainCalendarProvider
+      const date = new Date(mainCalendarProvider.dateToView)
+  
+      if (value === 'days') {
+        date.setMonth(date.getMonth() + order)
+        calendarProvider.goto(date)
+      }
+  
+      if (value === 'months') {
+        date.setFullYear(date.getFullYear() + order)
+        calendarProvider.goto(date)
+      }
+  
+      if (value === 'years') {
+        const years = mainCalendarProvider.years
+        date.setFullYear(
+          years[backwardYears].date.getFullYear() +
+            (backwardYears + forwardYears) * order
+        )
+        calendarProvider.goto(date)
+      }
+    }
+
+    setDataToView(value)
+  }
+
   const events: TEvents = {
     'calendar.prevMonth': calendarProvider.prevMonth,
     'calendar.nextMonth': calendarProvider.nextMonth,
@@ -109,7 +140,7 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
     'calendar.addSelectedDate': addSelectedDateHandler,
     'calendar.removeSelectedDate': removeSelectedDate,
     'setDateMouseOver': setDateMouseOver,
-    'setDataToView': setDataToView,
+    'setDataToView': setDataToViewHandler,
   }
 
   return (eventType, ...eventValue) => events[eventType](...eventValue)

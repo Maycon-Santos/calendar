@@ -28,6 +28,9 @@ module.exports = {
           loader: require.resolve('css-loader'),
           options: {
             modules: true,
+            modules: {
+              localIdentName: "[name]__[local]___[hash:base64:5]",
+            },	
           },
         },
         {

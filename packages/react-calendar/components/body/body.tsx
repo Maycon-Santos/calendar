@@ -155,6 +155,7 @@ function Years () {
         const clonedSelectedDates = selectedDates.map(_date => {
           const clonedDate = new Date(_date)
           clonedDate.setDate(1)
+          clonedDate.setMonth(0)
           return clonedDate
         })
 

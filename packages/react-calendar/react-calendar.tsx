@@ -20,62 +20,21 @@ export default (props: ICalendarProps) => {
     rangeSize = defaultProps.rangeSize,
   } = props
   const [, forceUpdate] = useState()
-  const [order, setOrder] = useState<number>()
+  const [order, setOrder] = useState<number>(0)
   const [dataToView, setDataToView] = useState<TDataToView>('days')
   const [dateMouseOver, setDateMouseOver] = useState<Date | null>(null)
-  const backwardYears = 8
-  const forwardYears = 8
-  const calendarProvider = useMemo(
-    () =>
-      new CalendarProvider({ date: startDate, backwardYears, forwardYears }),
-    []
-  )
+  const calendarProvider = useMemo(() => new CalendarProvider({ date: startDate }), [])
 
   calendarProvider.onChange = useCallback(() => forceUpdate({}), [])
 
   useEffect(connector, [])
-  useEffect(dataToViewHandler, [dataToView, order])
+  useEffect(setCorrectlyDataToView, [order])
 
-  // Update bind props
-  if (bind && order === 0) Object.assign(bind.props, props)
-
-  function connector() {
-    if (bind) {
-      const order = bind.dispatchers.length
-      bind.dispatchers.push(dispatcher)
-
-      if (order === 0) {
-        Object.assign(bind.props, props)
-        bind.mainCalendarProvider = calendarProvider
-      }
-
-      setOrder(order)
-    }
-  }
-
-  function dataToViewHandler() {
-    if (!bind || !order || !bind?.mainCalendarProvider) return
-
-    const { mainCalendarProvider } = bind
-    const date = new Date(mainCalendarProvider.dateToView)
-
-    if (dataToView === 'days') {
-      date.setMonth(date.getMonth() + order)
-      calendarProvider.goto(date)
-    }
-
-    if (dataToView === 'months') {
-      date.setFullYear(date.getFullYear() + order)
-      calendarProvider.goto(date)
-    }
-
-    if (dataToView === 'years') {
-      const years = mainCalendarProvider.years
-      date.setFullYear(
-        years[backwardYears].date.getFullYear() +
-          (backwardYears + forwardYears) * order
-      )
-      calendarProvider.goto(date)
+  // Update bind
+  if (bind) {
+    if (order === 0) {
+      bind.mainCalendarProvider = calendarProvider
+      Object.assign(bind.props, props)
     }
   }
 
@@ -88,7 +47,29 @@ export default (props: ICalendarProps) => {
 
   const emit: TEventDispatcher = (type, ...params) => {
     const dispatchers = bind?.dispatchers || [dispatcher]
-    dispatchers.forEach(dispatcher => dispatcher(type, ...params))
+    dispatchers.forEach((dispatcher, i) => {
+      if (bind) bind.order = i
+      dispatcher(type, ...params)
+    })
+  }
+
+  function connector() {
+    if (bind) {
+      const order = bind.dispatchers.length
+      bind.dispatchers.push(dispatcher)
+      bind.order = order
+
+      if (order === 0) {
+        Object.assign(bind.props, props)
+        bind.mainCalendarProvider = calendarProvider
+      }
+      
+      setOrder(order)
+    }
+  }
+
+  function setCorrectlyDataToView () {
+    if (order) dispatcher('setDataToView', dataToView)
   }
 
   return (

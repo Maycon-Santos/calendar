@@ -40,6 +40,14 @@ export default class CalendarProvider {
     this._forwardYears = forwardYears
   }
 
+  public get backwardYears () {
+    return this._backwardYears
+  }
+
+  public get forwardYears () {
+    return this._forwardYears
+  }
+
   public prevMonth = (): void => {
     this._dateToView.setMonth(this._dateToView.getMonth() - 1)
     this.onChange()
