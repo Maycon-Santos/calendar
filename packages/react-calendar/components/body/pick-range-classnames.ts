@@ -1,4 +1,4 @@
-import { ICalendarProps } from '../../shared/types'
+import { ICalendarProps } from '../../types'
 import dateBetweenRange from '../../utils/date-between-range'
 import dateDiff from '../../utils/date-diff'
 import dateSort from '../../utils/date-sort'
@@ -9,14 +9,14 @@ interface IGetPickRangeClassNames {
   selectedDates: Date[]
   isInvalidDate: boolean
   classNames: ICalendarProps['classNames']
-  endDateMouseOver: Date | null
+  dateMouseOver: Date | null
   rangeSize: Exclude<ICalendarProps['rangeSize'], undefined>
 }
 
 export default function getPickRangeClassNames (params: IGetPickRangeClassNames) {
   const {
     selectedDates,
-    endDateMouseOver,
+    dateMouseOver,
     date,
     rangeSize,
     isInvalidDate,
@@ -24,10 +24,10 @@ export default function getPickRangeClassNames (params: IGetPickRangeClassNames)
   } = params
 
   const selectedDatesSize = selectedDates.length
-  const range = excludeEqualDates(selectedDates[0], selectedDates[1] || endDateMouseOver)
+  const range = excludeEqualDates(selectedDates[0], selectedDates[1] || dateMouseOver)
   const hasRange = range.length === 2
 
-  const inBetweenRange = selectedDatesSize > 0 && dateBetweenRange(...excludeEqualDates(selectedDates[0], endDateMouseOver), date)
+  const inBetweenRange = selectedDatesSize > 0 && dateBetweenRange(...excludeEqualDates(selectedDates[0], dateMouseOver), date)
   const inBetweenSelectedRange = selectedDatesSize === 2 && dateBetweenRange(selectedDates[0], selectedDates[1], date)
   const isInvalidRangeDate = isInvalidDate && (inBetweenRange || inBetweenSelectedRange)
 
@@ -36,15 +36,15 @@ export default function getPickRangeClassNames (params: IGetPickRangeClassNames)
   const rangeDiffAbs = rangeDiff && Math.abs(rangeDiff)
 
   // Check if is between under minRange
-  const mouseUnderMinRange = selectedDates[0] && endDateMouseOver && Math.abs(dateDiff(selectedDates[0], endDateMouseOver)) < rangeSize.min
+  const mouseUnderMinRange = selectedDates[0] && dateMouseOver && Math.abs(dateDiff(selectedDates[0], dateMouseOver)) < rangeSize.min
   const isUnderMinRange = inBetweenRange && mouseUnderMinRange && rangeDiffAbs < rangeSize.min
 
   // Check if is between over minRange
   const isOverMaxRange = inBetweenRange && rangeDiffAbs > rangeSize.max
-  const mouseOver = endDateMouseOver?.toLocaleDateString() === date.toLocaleDateString()
+  const mouseOver = dateMouseOver?.toLocaleDateString() === date.toLocaleDateString()
   
   // Check if is start or end date of the range
-  const orderRangeDate = dateSort(...excludeEqualDates(selectedDates[0], selectedDates[1] || endDateMouseOver))
+  const orderRangeDate = dateSort(...excludeEqualDates(selectedDates[0], selectedDates[1] || dateMouseOver))
   const isStartRangeDate = hasRange && orderRangeDate?.[0]?.toLocaleDateString() === date.toLocaleDateString()
   const isEndRangeDate = hasRange && orderRangeDate?.[1]?.toLocaleDateString() === date.toLocaleDateString()
 

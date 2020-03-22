@@ -1,5 +1,8 @@
 import { useMemo } from 'react'
 
 export default () => {
-  return { set: useMemo(() => [], []) }
+  return {
+    dispatchers: useMemo(() => [], []),
+    props: {},
+  }
 }

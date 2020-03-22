@@ -1,44 +1,39 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from '../../context'
-import { defaultMonthsDictionary, defaultRangeSize } from '../../shared/defaultProps'
+import defaultProps from '../../defaultProps'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
-import getPickRangeClassNames from './pick-range-classNames'
+import getPickRangeClassNames from './pick-range-classnames'
 
 function Days () {
   const {
     calendarProvider,
-    endDateMouseOver,
+    dateMouseOver,
     emit,
     CalendarProps: {
-      pick,
       bind,
       classNames,
-      dateProps,
-      filterInValidDates,
-      rangeSize = defaultRangeSize,
+      rangeSize = defaultProps.rangeSize,
     },
   } = useContext(CalendarContext)
   const { days } = calendarProvider
-  const { className, onClick, onMouseEnter, onMouseLeave, ...restProps } = dateProps || {}
   const { selectedDates } = calendarProvider
 
-  const _pick = bind?.pick || pick
-  const _filterInvalidDates = bind?.filterInvalidDates || filterInValidDates
+  const filterInvalidDates = bind?.props?.filterInvalidDates
 
   return (
     <>
       {days.map(({ date, day, belongCurrentMonth }) => {
         const isCurrentDate = compareDates(date, new Date())
         const isSelectedDate = dateIncludes(selectedDates, date)
-        const isInvalidDate = _filterInvalidDates ? _filterInvalidDates(date) : false
-        const isPickRange = _pick === 'range'
+        const isInvalidDate = filterInvalidDates ? filterInvalidDates(date) : false
+        const isPickRange = bind?.props?.pick === 'range'
 
         const pickRangeClassNames = isPickRange ? getPickRangeClassNames({
           selectedDates,
-          endDateMouseOver,
+          dateMouseOver,
           date,
-          rangeSize: bind?.rangeSize || rangeSize,
+          rangeSize: bind?.props.rangeSize || rangeSize,
           isInvalidDate,
           classNames
         }) : []
@@ -47,27 +42,23 @@ function Days () {
           if (isSelectedDate) {
             emit('calendar.removeSelectedDate', date)
             if (isPickRange) {
-              emit('setEndDateMouseOver', date)
+              emit('setDateMouseOver', date)
             }
           } else if (belongCurrentMonth && !isInvalidDate) {
             emit('calendar.addSelectedDate', date)
           }
-
-          if (onClick) onClick(e)
         }
 
         const mouseEnterHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
           if (isPickRange && belongCurrentMonth && selectedDates.length === 1) {
-            emit('setEndDateMouseOver', date)
+            emit('setDateMouseOver', date)
           }
-          if (onMouseEnter) onMouseEnter(e)
         }
 
         const mouseLeaveHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
           if (isPickRange) {
-            emit('setEndDateMouseOver', null)
+            emit('setDateMouseOver', null)
           }
-          if (onMouseLeave) onMouseLeave(e)
         }
 
         return (
@@ -75,7 +66,6 @@ function Days () {
             key={day+belongCurrentMonth.toString()}
             type="button"
             className={[
-              className,
               classNames?.Cell,
               classNames?.DayCell,
               isInvalidDate ? classNames?.InvalidDate : classNames?.ValidDate,
@@ -87,7 +77,6 @@ function Days () {
             onClick={clickHandler}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
-            {...restProps}
           >
             {day}
           </button>
@@ -103,8 +92,7 @@ function Months () {
     emit,
     CalendarProps: {
       classNames,
-      dateProps,
-      monthsDictionary = defaultMonthsDictionary,
+      monthsDictionary = defaultProps.monthsDictionary,
     },
   } = useContext(CalendarContext)
   const { months } = calendarProvider
@@ -112,7 +100,6 @@ function Months () {
   return (
     <>
       {months.map(({ date, month }) => {
-        const { className, onClick, ...restProps } = dateProps || {}
         const currentDate = new Date()
         const dateString = `${date.getMonth()}${date.getFullYear()}`
         const currentDateString = `${currentDate.getMonth()}${currentDate.getFullYear()}`
@@ -128,7 +115,6 @@ function Months () {
             key={month}
             type="button"
             className={[
-              className,
               classNames?.Cell,
               classNames?.MonthCell,
               dateString === currentDateString && classNames?.CurrentDate,
@@ -137,9 +123,7 @@ function Months () {
             onClick={() => {
               emit('calendar.goto', date)
               emit('setDataToView', 'days')
-              if (onClick) onClick()
             }}
-            {...restProps}
           >
             {monthsDictionary[month]}
           </button>
@@ -155,7 +139,6 @@ function Years () {
     emit,
     CalendarProps: {
       classNames,
-      dateProps,
     },
   } = useContext(CalendarContext)
   const { years } = calendarProvider
@@ -163,7 +146,6 @@ function Years () {
   return (
     <>
       {years.map(({ date, year }) => {
-        const { className, onClick, ...restProps } = dateProps || {}
         const currentDate = new Date()
 
         const clonedSelectedDates = calendarProvider.selectedDates.map(_date => {
@@ -177,7 +159,6 @@ function Years () {
             key={year}
             type="button"
             className={[
-              className,
               classNames?.Cell,
               classNames?.YearCell,
               date.getFullYear() === currentDate.getFullYear() && classNames?.CurrentDate,
@@ -186,9 +167,7 @@ function Years () {
             onClick={() => {
               emit('calendar.goto', date)
               emit('setDataToView', 'months')
-              if (onClick) onClick()
             }}
-            {...restProps}
           >
             {year}
           </button>
@@ -199,13 +178,37 @@ function Years () {
 }
 
 export default function Body () {
-  const { dataToView, CalendarProps: { classNames } } = useContext(CalendarContext)
+  const {
+    dataToView,
+    CalendarProps: {
+      classNames,
+      daysDictionary = defaultProps.daysDictionary
+    }
+  } = useContext(CalendarContext)
 
   return (
-    <div className={classNames?.Body}>
-      {dataToView === 'days' && <Days />}
-      {dataToView === 'months' && <Months />}
-      {dataToView === 'years' && <Years />}
-    </div>
+    <>
+      {dataToView === 'days' && (
+        <div className={classNames?.Days}>
+          {daysDictionary.map((day, i) => (
+            <div key={day + i}className={classNames?.Day}>
+              {day}
+            </div>
+          ))}
+        </div>
+      )}
+      <div
+        className={[
+          classNames?.Body,
+          dataToView === 'days' && classNames?.BodyDays,
+          dataToView === 'months' && classNames?.BodyMonths,
+          dataToView === 'years' && classNames?.BodyYears,
+        ].filter(Boolean).join(' ')}
+      >
+        {dataToView === 'days' && <Days />}
+        {dataToView === 'months' && <Months />}
+        {dataToView === 'years' && <Years />}
+      </div>
+    </>
   )
 }

@@ -1,19 +1,22 @@
-import CalendarProvider from '../../calendar-provider/calendar-provider'
+import CalendarProvider from '../calendar-provider/calendar-provider'
 
 export type TDataToView = 'days' | 'months' | 'years'
 
 export type TClassNameKeys = (
   | 'Container'
   | 'Header'
-  | 'Month'
-  | 'Year'
-  | 'YearsRange'
+  | 'HeaderMonth'
+  | 'HeaderYear'
+  | 'HeaderYearsRange'
   | 'Days'
   | 'Day'
   | 'PrevButton'
   | 'NextButton'
   | 'HeaderText'
   | 'Body'
+  | 'BodyDays'
+  | 'BodyMonths'
+  | 'BodyYears'
   | 'Cell'
   | 'DayCell'
   | 'MonthCell'
@@ -39,10 +42,7 @@ export type TFragmentProps = {
   [key: string]: any
 }
 
-export type TEventTypeCalendar = (
-  | 'calendar.addSelectedDate'
-  | 'calendar.removeSelectedDate'
-  | 'calendar.goto'
+export type TEventTypeUndefined = (
   | 'calendar.nextMonth'
   | 'calendar.nextYear'
   | 'calendar.nextYears'
@@ -50,44 +50,54 @@ export type TEventTypeCalendar = (
   | 'calendar.prevYear'
   | 'calendar.prevYears'
 )
-export type TEventType = 'setDataToView' | 'setEndDateMouseOver' | TEventTypeCalendar
-export type TEventParams = TDataToView | Date | undefined | null
 
-export type TEventDispatcher = (type: TEventType, params?: TEventParams) => void
+export type TEventTypeDate = (
+  | 'calendar.goto'
+  | 'calendar.addSelectedDate'
+  | 'calendar.removeSelectedDate'
+)
 
-export type TPick = 'single' | 'multiple' | 'range'
+export type TEventTypeDateOrNull = (
+  | 'setDateMouseOver'
+)
 
-export type TRangeSize = {
-  min: number
-  max: number
-}
+export type TEventTypeDataToView = (
+  | 'setDataToView'
+)
 
-export type TFilterInvalidDates = (date: Date) => boolean
+export type TEventType = (
+  | TEventTypeUndefined
+  | TEventTypeDate
+  | TEventTypeDateOrNull
+  | TEventTypeDataToView
+)
 
-export interface IOnChange {
-  
-}
+export type TEventDispatcher = <T extends TEventType>(
+  type: T,
+  ...date: (
+    T extends TEventTypeDate ? [Date]
+  : T extends TEventTypeDateOrNull ? [Date] | [null]
+  : T extends TEventTypeDataToView ? [TDataToView]
+  : [undefined?]
+)) => any
 
 export interface ICalendarProps {
-  pick?: TPick
+  pick?: 'single' | 'multiple' | 'range'
   pickLimit?: number
-  dateProps?: TFragmentProps
-  monthProps?: TFragmentProps
-  yearProps?: TFragmentProps
   monthsDictionary?: string[]
   daysDictionary?: string[]
   classNames?: TClassNames
   startDate?: Date
-  onChange?: () => void
-  rangeSize?: TRangeSize
-  filterInValidDates?: TFilterInvalidDates
+  onChangeSelectedDate?: (date: Date[] | Date | null) => void
+  rangeSize?: {
+    min: number
+    max: number
+  }
+  filterInvalidDates?: (date: Date) => boolean
   bind?: {
-    set: TEventDispatcher[]
-    pick?: TPick
-    pickLimit?: number
-    rangeSize?: TRangeSize
+    dispatchers: TEventDispatcher[]
+    props: ICalendarProps
     mainCalendarProvider?: CalendarProvider
-    filterInvalidDates?: TFilterInvalidDates
   }
 }
 
@@ -96,5 +106,5 @@ export interface ICalendarContext {
   CalendarProps: ICalendarProps
   calendarProvider: CalendarProvider
   emit: TEventDispatcher
-  endDateMouseOver: Date | null
+  dateMouseOver: Date | null
 }

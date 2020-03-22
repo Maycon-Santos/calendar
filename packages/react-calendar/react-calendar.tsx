@@ -3,29 +3,26 @@ import CalendarProvider from '../calendar-provider/calendar-provider'
 import { CalendarContext } from './context'
 import Body from './components/body'
 import Header from './components/header'
-import dateDiff from './utils/date-diff'
 import {
   ICalendarProps,
   TDataToView,
-  TEventParams,
-  TEventType
-} from './shared/types'
-import { defaultRangeSize } from './shared/defaultProps'
+  TEventDispatcher
+} from './types'
+import defaultProps from './defaultProps'
+import dispatcherFactory from './dispatcher-factory'
 
 export default (props: ICalendarProps) => {
   const {
     classNames,
-    pick,
-    pickLimit = Infinity,
     bind,
-    startDate = new Date(),
-    rangeSize = defaultRangeSize,
-    filterInValidDates
+    pickLimit = defaultProps.pickLimit,
+    startDate = defaultProps.startDate,
+    rangeSize = defaultProps.rangeSize,
   } = props
   const [, forceUpdate] = useState()
   const [order, setOrder] = useState<number>()
   const [dataToView, setDataToView] = useState<TDataToView>('days')
-  const [endDateMouseOver, setEndDateMouseOver] = useState<Date | null>(null)
+  const [dateMouseOver, setDateMouseOver] = useState<Date | null>(null)
   const backwardYears = 8
   const forwardYears = 8
   const calendarProvider = useMemo(
@@ -36,27 +33,24 @@ export default (props: ICalendarProps) => {
 
   calendarProvider.onChange = useCallback(() => forceUpdate({}), [])
 
-  useEffect(binder, [bind])
-  useEffect(bindHandler, [dataToView, order])
+  useEffect(connector, [bind])
+  useEffect(dataToViewHandler, [dataToView, order])
 
-  function binder() {
+  function connector() {
     if (bind) {
-      const order = bind.set.length
-      bind.set.push(dispatcher)
+      const order = bind.dispatchers.length
+      bind.dispatchers.push(dispatcher)
 
       if (order === 0) {
+        Object.assign(bind.props, props)
         bind.mainCalendarProvider = calendarProvider
-        bind.pick = pick
-        bind.pickLimit = pickLimit
-        bind.rangeSize = rangeSize
-        bind.filterInvalidDates = filterInValidDates
       }
 
       setOrder(order)
     }
   }
 
-  function bindHandler() {
+  function dataToViewHandler() {
     if (!bind || !order || !bind?.mainCalendarProvider) return
 
     const { mainCalendarProvider } = bind
@@ -82,100 +76,16 @@ export default (props: ICalendarProps) => {
     }
   }
 
-  function dispatcher(type: TEventType, params?: TEventParams) {
-    switch (type) {
-      case 'calendar.prevMonth':
-        calendarProvider.prevMonth()
-        break
-      case 'calendar.nextMonth':
-        calendarProvider.nextMonth()
-        break
-      case 'calendar.prevYear':
-        calendarProvider.prevYear()
-        break
-      case 'calendar.nextYear':
-        calendarProvider.nextYear()
-        break
-      case 'calendar.prevYears':
-        calendarProvider.prevYears()
-        break
-      case 'calendar.nextYears':
-        calendarProvider.nextYears()
-        break
-      case 'calendar.goto':
-        if (params instanceof Date) {
-          calendarProvider.goto(params)
-        }
-        break
-      case 'calendar.addSelectedDate':
-        if (params instanceof Date) {
-          const _pickLimit = bind?.pickLimit || pickLimit
-          const _pick = bind?.pick || pick
+  const dispatcher = useMemo(() => dispatcherFactory({
+    calendarProvider,
+    setDateMouseOver,
+    setDataToView,
+    props,
+  }), [])
 
-          if (_pick === 'single') {
-            calendarProvider.resetSelectedDates()
-            calendarProvider.addSelectedDate(params)
-          }
-
-          if (_pick === 'multiple') {
-            if (calendarProvider.selectedDates.length < _pickLimit) {
-              calendarProvider.addSelectedDate(params)
-            }
-          }
-
-          if (_pick === 'range') {
-            const { selectedDates } = calendarProvider
-            if (calendarProvider.selectedDates.length === 0) {
-              calendarProvider.addSelectedDate(params)
-            } else if (calendarProvider.selectedDates.length === 1) {
-              const rangeDiff = dateDiff(selectedDates[0], params)
-              const rangeDiffAbs = Math.abs(rangeDiff)
-              const _rangeSize = bind?.rangeSize || rangeSize
-
-              if (filterInValidDates) {
-                const date = new Date(selectedDates[0])
-                for (let i = 0; i < rangeDiffAbs; i++) {
-                  date.setDate(date.getDate() + rangeDiff / rangeDiffAbs)
-                  if (filterInValidDates(date)) return
-                }
-              }
-
-              if (
-                rangeDiffAbs >= _rangeSize.min &&
-                rangeDiffAbs <= _rangeSize.max
-              ) {
-                calendarProvider.addSelectedDate(params)
-              }
-            }
-          }
-        }
-        break
-      case 'calendar.removeSelectedDate':
-        if (params instanceof Date) {
-          const formattedDates = calendarProvider.selectedDates.map(d =>
-            d.toLocaleDateString()
-          )
-          calendarProvider.removeSelectedDate(
-            formattedDates.indexOf(params.toLocaleDateString())
-          )
-        }
-        break
-      case 'setEndDateMouseOver':
-        if (params instanceof Date || params === null) {
-          setEndDateMouseOver(params)
-        }
-        break
-      case 'setDataToView':
-        if (typeof params === 'string') {
-          setDataToView(params)
-        }
-        break
-    }
-  }
-
-  function emit(type: TEventType, params?: TEventParams) {
-    const dispatchers = bind?.set || [dispatcher]
-    dispatchers.forEach(dispatcher => dispatcher(type, params))
+  const emit: TEventDispatcher = (type, ...params) => {
+    const dispatchers = bind?.dispatchers || [dispatcher]
+    dispatchers.forEach(dispatcher => dispatcher(type, ...params))
   }
 
   return (
@@ -184,9 +94,10 @@ export default (props: ICalendarProps) => {
         dataToView,
         calendarProvider,
         emit,
-        endDateMouseOver,
+        dateMouseOver,
         CalendarProps: {
-          ...props,
+          ...(props.bind?.props || props),
+          classNames,
           pickLimit,
           startDate,
           rangeSize

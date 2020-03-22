@@ -26,7 +26,7 @@ export default class CalendarProvider {
   private _startDate: Date
   private _backwardYears: number
   private _forwardYears: number
-  public onChange: () => void = () => {}
+  public onChange: (...args: any) => any = () => {}
 
   constructor (options?: OptionsInterface) {
     const {
@@ -41,33 +41,33 @@ export default class CalendarProvider {
     this._forwardYears = forwardYears
   }
 
-  public prevMonth (): void {
+  public prevMonth = (): void => {
     this._dateToView.setMonth(this._dateToView.getMonth() - 1)
     this.onChange()
   }
 
-  public nextMonth (): void {
+  public nextMonth = (): void => {
     this._dateToView.setMonth(this._dateToView.getMonth() + 1)
     this.onChange()
   }
 
-  public prevYear (): void {
+  public prevYear  =(): void  =>{
     this._dateToView.setFullYear(this._dateToView.getFullYear() - 1)
     this.onChange()
   }
 
-  public nextYear (): void {
+  public nextYear  =(): void  =>{
     this._dateToView.setFullYear(this._dateToView.getFullYear() + 1)
     this.onChange()
   }
 
-  public prevYears (): void {
+  public prevYears = (): void => {
     const year = this._dateToView.getFullYear() - (this._backwardYears + this._forwardYears)
     this._dateToView.setFullYear(year)
     this.onChange()
   }
 
-  public nextYears (): void {
+  public nextYears = (): void => {
     const year = this._dateToView.getFullYear() + (this._backwardYears + this._forwardYears)
     this._dateToView.setFullYear(year)
     this.onChange()
@@ -93,7 +93,7 @@ export default class CalendarProvider {
     this.onChange()
   }
 
-  public goto (date: Date) {
+  public goto = (date: Date) => {
     this._dateToView = date
     this.onChange()
   }

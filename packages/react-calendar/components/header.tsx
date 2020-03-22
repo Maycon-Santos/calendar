@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from "../context"
-import { defaultMonthsDictionary, defaultDaysDictionary } from '../shared/defaultProps'
+import defaultProps from '../defaultProps'
 
 interface IButtonProps {
   onClick: () => void
@@ -30,6 +30,7 @@ function NextButton (props: IButtonProps) {
 function HeaderText (props: IHeaderTextProps) {
   const { children, onClick } = props
   const { CalendarProps: { classNames } } = useContext(CalendarContext)
+
   return (
     <button type="button" onClick={onClick} className={classNames?.HeaderText}>
       {children}
@@ -42,7 +43,7 @@ function Month () {
     emit,
     calendarProvider,
     CalendarProps: {
-      monthsDictionary = defaultMonthsDictionary
+      monthsDictionary = defaultProps.monthsDictionary
     }
   } = useContext(CalendarContext)
   return (
@@ -89,37 +90,22 @@ export default function Header () {
   const {
     dataToView,
     CalendarProps: {
-      classNames,
-      daysDictionary = defaultDaysDictionary
+      classNames
     }
   } = useContext(CalendarContext)
 
   return (
-    <>
-      <header
-        className={[
-          classNames?.Header,
-          dataToView === 'days' && classNames?.Month,
-          dataToView === 'months' && classNames?.Year,
-          dataToView === 'years' && classNames?.YearsRange,
-        ].filter(Boolean).join(' ')}
-      >
-        {dataToView === 'days' && <Month />}
-        {dataToView === 'months' && <Year />}
-        {dataToView === 'years' && <YearsRange />}
-      </header>
-      {dataToView === 'days' && (
-        <div className={classNames?.Days}>
-          {daysDictionary.map((day, i) => (
-            <div
-              key={day + i}
-              className={classNames?.Day}
-            >
-              {day}
-            </div>
-          ))}
-        </div>
-      )}
-    </>
+    <header
+      className={[
+        classNames?.Header,
+        dataToView === 'days' && classNames?.HeaderMonth,
+        dataToView === 'months' && classNames?.HeaderYear,
+        dataToView === 'years' && classNames?.HeaderYearsRange,
+      ].filter(Boolean).join(' ')}
+    >
+      {dataToView === 'days' && <Month />}
+      {dataToView === 'months' && <Year />}
+      {dataToView === 'years' && <YearsRange />}
+    </header>
   )
 }

@@ -11,21 +11,12 @@ export default {
 }
 
 export const initial = () => {
-  const calendarBind = useCalendarBind()
+  const bind = useCalendarBind()
 
   return (
     <div className={styles.Container}>
-      <Calendar
-        classNames={classNames}
-        bind={calendarBind}
-        pick="range"
-        rangeSize={{ min: 4, max: 9 }}
-        startDate={new Date(2021, 7)}
-      />
-      <Calendar
-        classNames={classNames}
-        bind={calendarBind}
-      />
+      <Calendar classNames={classNames} pick="single" onChangeSelectedDate={console.log} bind={bind} />
+      <Calendar classNames={classNames} bind={bind} />
     </div>
   )
 }
