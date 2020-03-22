@@ -33,8 +33,11 @@ export default (props: ICalendarProps) => {
 
   calendarProvider.onChange = useCallback(() => forceUpdate({}), [])
 
-  useEffect(connector, [bind])
+  useEffect(connector, [])
   useEffect(dataToViewHandler, [dataToView, order])
+
+  // Update bind props
+  if (bind && order === 0) Object.assign(bind.props, props)
 
   function connector() {
     if (bind) {

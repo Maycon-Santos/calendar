@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Calendar from '../react-calendar'
 import useCalendarBind from '../hooks/use-calendar-bind'
 import styles from './styles/wrapper.css'
@@ -11,11 +11,18 @@ export default {
 }
 
 export const initial = () => {
+  const [selectedDate, setSelectedDate] = useState<Date[]>([])
   const bind = useCalendarBind()
 
   return (
     <div className={styles.Container}>
-      <Calendar classNames={classNames} pick="single" onChangeSelectedDate={console.log} bind={bind} />
+      <Calendar
+        pick="range"
+        classNames={classNames}
+        selectedDate={selectedDate}
+        onChangeSelectedDate={setSelectedDate}
+        bind={bind}
+      />
       <Calendar classNames={classNames} bind={bind} />
     </div>
   )

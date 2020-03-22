@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 import CalendarProvider from '../calendar-provider/calendar-provider'
 
 export type TDataToView = 'days' | 'months' | 'years'
@@ -81,14 +82,18 @@ export type TEventDispatcher = <T extends TEventType>(
   : [undefined?]
 )) => any
 
+type TPickSingle = 'single'
+type TPickMultiple = 'multiple'
+type TPickRange = 'range'
+type TPick = TPickSingle | TPickMultiple | TPickRange
+
 export interface ICalendarProps {
-  pick?: 'single' | 'multiple' | 'range'
+  pick?: TPick
   pickLimit?: number
   monthsDictionary?: string[]
   daysDictionary?: string[]
   classNames?: TClassNames
   startDate?: Date
-  onChangeSelectedDate?: (date: Date[] | Date | null) => void
   rangeSize?: {
     min: number
     max: number
@@ -99,6 +104,11 @@ export interface ICalendarProps {
     props: ICalendarProps
     mainCalendarProvider?: CalendarProvider
   }
+  selectedDate?: Date | Date[] | null
+  onChangeSelectedDate?: (
+    | ((date: Date | null | Date[]) => any)
+    | Dispatch<SetStateAction<Date | Date[] | null | undefined>>
+  )
 }
 
 export interface ICalendarContext {

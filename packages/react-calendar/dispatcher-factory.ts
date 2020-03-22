@@ -5,6 +5,7 @@ import defaultProps from "./defaultProps";
 import dateDiff from "./utils/date-diff";
 import dateSort from "./utils/date-sort";
 import getDatesRange from './utils/get-dates-range';
+import getSelectedDates from './utils/selected-dates';
 
 interface IArgs {
   calendarProvider: CalendarProvider
@@ -34,26 +35,24 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   }
   
   function setSingleDate (value: Date) {
-    calendarProvider.resetSelectedDates()
-    calendarProvider.addSelectedDate(value)
     emitSelectedDateEvent(value)
   }
   
   function setMultipleDate (value: Date) {
     const pickLimit = bind?.props?.pickLimit || defaultProps.pickLimit
-    if (calendarProvider.selectedDates.length < pickLimit) {
-      calendarProvider.addSelectedDate(value)
-      emitSelectedDateEvent(dateSort(...calendarProvider.selectedDates))
+    const selectedDates = getSelectedDates(bind?.props?.selectedDate)
+    if (selectedDates.length < pickLimit) {
+      emitSelectedDateEvent(dateSort(...selectedDates, value))
     }
   }
 
   function setRangeDate (value: Date) {
-    const { selectedDates } = calendarProvider
+    const selectedDates = getSelectedDates(bind?.props?.selectedDate)
     const rangeSize = bind?.props?.rangeSize || defaultProps.rangeSize
 
-    switch (calendarProvider.selectedDates.length) {
+    switch (selectedDates.length) {
       case 0: {
-        calendarProvider.addSelectedDate(value)
+        emitSelectedDateEvent([value])
         break
       }
       case 1: {
@@ -65,14 +64,11 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
         )
 
         if (isValid && (rangeDiffAbs >= rangeSize.min && rangeDiffAbs <= rangeSize.max)) {
-          calendarProvider.addSelectedDate(value)
+          emitSelectedDateEvent(dateSort(...selectedDates, value))
           break
         }
       }
-      case 2: return
     }
-
-    emitSelectedDateEvent(dateSort(...calendarProvider.selectedDates))
   }
 
   function addSelectedDateHandler (date: Date) {
@@ -89,17 +85,16 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   function removeSelectedDate (value: Date) {
     const pick = bind?.props?.pick || defaultProps.pick
 
-    const formattedDates = calendarProvider.selectedDates.map(d =>
-      d.toLocaleDateString()
-    )
-    calendarProvider.removeSelectedDate(
-      formattedDates.indexOf(value.toLocaleDateString())
-    )
-
     if (pick === 'single') {
       emitSelectedDateEvent(null)
     } else {
-      emitSelectedDateEvent(dateSort(...calendarProvider.selectedDates))
+      const selectedDates = getSelectedDates(bind?.props?.selectedDate)
+      const clonedSelectedDates = [...selectedDates]
+      const formattedDates = selectedDates.map(d => d.toLocaleDateString())
+
+      clonedSelectedDates.splice(formattedDates.indexOf(value.toLocaleDateString()), 1)
+
+      emitSelectedDateEvent(dateSort(...clonedSelectedDates))
     }
   }
 
@@ -114,7 +109,7 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
     'calendar.addSelectedDate': addSelectedDateHandler,
     'calendar.removeSelectedDate': removeSelectedDate,
     'setDateMouseOver': setDateMouseOver,
-    'setDataToView': setDataToView
+    'setDataToView': setDataToView,
   }
 
   return (eventType, ...eventValue) => events[eventType](...eventValue)

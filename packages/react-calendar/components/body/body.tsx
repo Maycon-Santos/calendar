@@ -3,6 +3,7 @@ import { CalendarContext } from '../../context'
 import defaultProps from '../../defaultProps'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
+import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
 
 function Days () {
@@ -17,8 +18,7 @@ function Days () {
     },
   } = useContext(CalendarContext)
   const { days } = calendarProvider
-  const { selectedDates } = calendarProvider
-
+  const selectedDates = getSelectedDates(bind?.props?.selectedDate)
   const filterInvalidDates = bind?.props?.filterInvalidDates
 
   return (
@@ -92,10 +92,12 @@ function Months () {
     emit,
     CalendarProps: {
       classNames,
+      bind,
       monthsDictionary = defaultProps.monthsDictionary,
     },
   } = useContext(CalendarContext)
   const { months } = calendarProvider
+  const selectedDates = getSelectedDates(bind?.props?.selectedDate)
 
   return (
     <>
@@ -104,7 +106,7 @@ function Months () {
         const dateString = `${date.getMonth()}${date.getFullYear()}`
         const currentDateString = `${currentDate.getMonth()}${currentDate.getFullYear()}`
 
-        const clonedSelectedDates = calendarProvider.selectedDates.map(_date => {
+        const clonedSelectedDates = selectedDates.map(_date => {
           const clonedDate = new Date(_date)
           clonedDate.setDate(1)
           return clonedDate
@@ -139,16 +141,18 @@ function Years () {
     emit,
     CalendarProps: {
       classNames,
+      bind,
     },
   } = useContext(CalendarContext)
   const { years } = calendarProvider
+  const selectedDates = getSelectedDates(bind?.props?.selectedDate)
 
   return (
     <>
       {years.map(({ date, year }) => {
         const currentDate = new Date()
 
-        const clonedSelectedDates = calendarProvider.selectedDates.map(_date => {
+        const clonedSelectedDates = selectedDates.map(_date => {
           const clonedDate = new Date(_date)
           clonedDate.setDate(1)
           return clonedDate

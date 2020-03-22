@@ -21,7 +21,6 @@ interface OptionsInterface {
 }
 
 export default class CalendarProvider {
-  private _selectedDates: Date[] = []
   private _dateToView: Date
   private _startDate: Date
   private _backwardYears: number
@@ -74,22 +73,7 @@ export default class CalendarProvider {
   }
 
   public resetDateToView (): void {
-    this._dateToView = this._selectedDates[0] || this._startDate
-    this.onChange()
-  }
-
-  public addSelectedDate (date: Date) {
-    this._selectedDates.push(date)
-    this.onChange()
-  }
-
-  public removeSelectedDate (index: number) {
-    this._selectedDates.splice(isNaN(index) ? this._selectedDates.length - 1 : index, 1)
-    this.onChange()
-  }
-
-  public resetSelectedDates () {
-    this._selectedDates.splice(0, this._selectedDates.length)
+    this._dateToView = this._startDate
     this.onChange()
   }
 
@@ -100,10 +84,6 @@ export default class CalendarProvider {
 
   public get dateToView () {
     return this._dateToView
-  }
-
-  public get selectedDates (): Date[] {
-    return this._selectedDates
   }
 
   public get month (): number { return this._dateToView.getMonth() }
