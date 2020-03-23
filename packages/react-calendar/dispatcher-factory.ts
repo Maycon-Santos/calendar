@@ -8,6 +8,7 @@ import getDatesRange from './utils/get-dates-range';
 import getSelectedDates from './utils/selected-dates';
 
 interface IArgs {
+  order: number
   calendarProvider: CalendarProvider
   setDateMouseOver: Dispatch<SetStateAction<Date | null>>
   setDataToView: Dispatch<SetStateAction<TDataToView>>
@@ -20,9 +21,11 @@ type TEvents = {
 
 export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   const {
+    order,
     calendarProvider,
     setDateMouseOver,
     setDataToView,
+    props,
     props: {
       bind,
       onChangeSelectedDate,
@@ -39,16 +42,17 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   }
   
   function setMultipleDate (value: Date) {
-    const pickLimit = bind?.props?.pickLimit || defaultProps.pickLimit
-    const selectedDates = getSelectedDates(bind?.props?.selectedDate)
+    const pickLimit = props?.pickLimit || defaultProps.pickLimit
+    const selectedDates = getSelectedDates(props?.selectedDate)
+
     if (selectedDates.length < pickLimit) {
       emitSelectedDateEvent(dateSort(...selectedDates, value))
     }
   }
 
   function setRangeDate (value: Date) {
-    const selectedDates = getSelectedDates(bind?.props?.selectedDate)
-    const rangeSize = bind?.props?.rangeSize || defaultProps.rangeSize
+    const selectedDates = getSelectedDates(props?.selectedDate)
+    const rangeSize = props?.rangeSize || defaultProps.rangeSize
 
     switch (selectedDates.length) {
       case 0: {
@@ -72,7 +76,7 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   }
 
   function addSelectedDateHandler (date: Date) {
-    const pick = bind?.props?.pick || defaultProps.pick
+    const pick = props?.pick || defaultProps.pick
     const methods = {
       single: setSingleDate,
       multiple: setMultipleDate,
@@ -83,12 +87,12 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   }
 
   function removeSelectedDate (value: Date) {
-    const pick = bind?.props?.pick || defaultProps.pick
+    const pick = props?.pick || defaultProps.pick
 
     if (pick === 'single') {
       emitSelectedDateEvent(null)
     } else {
-      const selectedDates = getSelectedDates(bind?.props?.selectedDate)
+      const selectedDates = getSelectedDates(props?.selectedDate)
       const clonedSelectedDates = [...selectedDates]
       const formattedDates = selectedDates.map(d => d.toLocaleDateString())
 
@@ -99,7 +103,6 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
   }
 
   function setDataToViewHandler (value: TDataToView) {
-    const order = bind?.order || 0
     if (order > 0) {
       if (!bind || !order || !bind?.mainCalendarProvider) return
       const { mainCalendarProvider } = bind

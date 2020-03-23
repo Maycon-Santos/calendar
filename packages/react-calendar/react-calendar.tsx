@@ -24,43 +24,43 @@ export default (props: ICalendarProps) => {
   const [dataToView, setDataToView] = useState<TDataToView>('days')
   const [dateMouseOver, setDateMouseOver] = useState<Date | null>(null)
   const calendarProvider = useMemo(() => new CalendarProvider({ date: startDate }), [])
+  const bindProps = useMemo(() => ({}), [])
+
+  // Update shared props object
+  if (order === 0) Object.assign(bindProps, props)
 
   calendarProvider.onChange = useCallback(() => forceUpdate({}), [])
 
-  useEffect(connector, [])
-  useEffect(setCorrectlyDataToView, [order])
-
-  // Update bind
-  if (bind) {
-    if (order === 0) {
-      bind.mainCalendarProvider = calendarProvider
-      Object.assign(bind.props, props)
-    }
-  }
-
-  const dispatcher = useMemo(() => dispatcherFactory({
+  const dispatcher: TEventDispatcher = useMemo(() => dispatcherFactory({
+    order,
     calendarProvider,
     setDateMouseOver,
     setDataToView,
-    props,
-  }), [])
+    props: bindProps,
+  }), [order])
+
+  useEffect(connector, [])
+  useEffect(setCorrectDataToView, [order])
+
+  // Update dispatcher function in bind object
+  useEffect(() => {
+    if (bind && order) {
+      bind.dispatchers[order] = dispatcher
+    }
+  }, [dispatcher])
 
   const emit: TEventDispatcher = (type, ...params) => {
     const dispatchers = bind?.dispatchers || [dispatcher]
-    dispatchers.forEach((dispatcher, i) => {
-      if (bind) bind.order = i
-      dispatcher(type, ...params)
-    })
+    dispatchers.forEach(dispatcher => dispatcher(type, ...params))
   }
 
   function connector() {
     if (bind) {
       const order = bind.dispatchers.length
       bind.dispatchers.push(dispatcher)
-      bind.order = order
 
       if (order === 0) {
-        Object.assign(bind.props, props)
+        bind.props = bindProps
         bind.mainCalendarProvider = calendarProvider
       }
       
@@ -68,19 +68,20 @@ export default (props: ICalendarProps) => {
     }
   }
 
-  function setCorrectlyDataToView () {
+  function setCorrectDataToView () {
     if (order) dispatcher('setDataToView', dataToView)
   }
 
   return (
     <CalendarContext.Provider
       value={{
+        order,
         dataToView,
         calendarProvider,
         emit,
         dateMouseOver,
         CalendarProps: {
-          ...(props.bind?.props || props),
+          ...bindProps,
           classNames,
           pickLimit,
           startDate,

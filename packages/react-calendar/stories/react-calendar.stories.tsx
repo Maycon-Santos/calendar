@@ -17,7 +17,8 @@ export const initial = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="range"
+        pick="multiple"
+        pickLimit={3}
         classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={setSelectedDate}

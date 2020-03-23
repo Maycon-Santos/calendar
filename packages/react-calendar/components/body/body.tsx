@@ -11,6 +11,7 @@ function Days () {
     calendarProvider,
     dateMouseOver,
     emit,
+    CalendarProps,
     CalendarProps: {
       bind,
       classNames,
@@ -18,8 +19,9 @@ function Days () {
     },
   } = useContext(CalendarContext)
   const { days } = calendarProvider
-  const selectedDates = getSelectedDates(bind?.props?.selectedDate)
-  const filterInvalidDates = bind?.props?.filterInvalidDates
+  const props = bind?.props || CalendarProps
+  const selectedDates = getSelectedDates(props.selectedDate)
+  const filterInvalidDates = props.filterInvalidDates
 
   return (
     <>
@@ -27,13 +29,13 @@ function Days () {
         const isCurrentDate = compareDates(date, new Date())
         const isSelectedDate = dateIncludes(selectedDates, date)
         const isInvalidDate = filterInvalidDates ? filterInvalidDates(date) : false
-        const isPickRange = bind?.props?.pick === 'range'
+        const isPickRange = props.pick === 'range'
 
         const pickRangeClassNames = isPickRange ? getPickRangeClassNames({
           selectedDates,
           dateMouseOver,
           date,
-          rangeSize: bind?.props.rangeSize || rangeSize,
+          rangeSize: props.rangeSize || rangeSize,
           isInvalidDate,
           classNames
         }) : []
@@ -90,6 +92,7 @@ function Months () {
   const {
     calendarProvider,
     emit,
+    CalendarProps,
     CalendarProps: {
       classNames,
       bind,
@@ -97,7 +100,8 @@ function Months () {
     },
   } = useContext(CalendarContext)
   const { months } = calendarProvider
-  const selectedDates = getSelectedDates(bind?.props?.selectedDate)
+  const props = bind?.props || CalendarProps
+  const selectedDates = getSelectedDates(props.selectedDate)
 
   return (
     <>
@@ -139,13 +143,15 @@ function Years () {
   const {
     calendarProvider,
     emit,
+    CalendarProps,
     CalendarProps: {
       classNames,
       bind,
     },
   } = useContext(CalendarContext)
   const { years } = calendarProvider
-  const selectedDates = getSelectedDates(bind?.props?.selectedDate)
+  const props = bind?.props || CalendarProps
+  const selectedDates = getSelectedDates(props.selectedDate)
 
   return (
     <>

@@ -100,7 +100,6 @@ export interface ICalendarProps {
   }
   filterInvalidDates?: (date: Date) => boolean
   bind?: {
-    order: number,
     dispatchers: TEventDispatcher[]
     props: ICalendarProps
     mainCalendarProvider?: CalendarProvider
@@ -113,6 +112,7 @@ export interface ICalendarProps {
 }
 
 export interface ICalendarContext {
+  order: number
   dataToView: TDataToView
   CalendarProps: ICalendarProps
   calendarProvider: CalendarProvider
