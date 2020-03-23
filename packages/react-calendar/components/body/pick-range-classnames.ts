@@ -56,6 +56,6 @@ export default function getPickRangeClassNames (params: IGetPickRangeClassNames)
     isInvalidRangeDate     && classNames?.InvalidRangeDate,
     isStartRangeDate       && classNames?.StartRangeDate,
     isEndRangeDate         && classNames?.EndRangeDate,
-    mouseOver              && classNames?.MouseOverEndRangeDate,
+    mouseOver              && classNames?.MouseOverEndRange,
   ]
 }

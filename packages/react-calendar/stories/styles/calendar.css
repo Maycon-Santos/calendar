@@ -1,3 +1,13 @@
+:root {
+  --text-color: #0b4373;
+  --background-hover: #E8F4FF;
+  --between-range: #81c5ff;
+  --invalid-range: #A885AA;
+  --invalid-range-hover: #884c8c;
+  --selected-date: #52aeff;
+  --current-date: #e5ebf3;
+}
+
 .Container {
   display: flex;
   flex-direction: column;
@@ -5,84 +15,81 @@
   padding: 16px;
   border: 1px #dbe2e8 solid;
   border-radius: 4px;
-  color: #0b4373;
+  color: var(--text-color);
   font-family: Montserrat, sans-serif;
   background-image: linear-gradient(to top right, #fdfdfd, #ffffff);
-}
-
-.Container + .Container {
-  margin-left: 24px;
+  
+  & + .Container {
+    margin-left: 24px;
+  }
 }
 
 .Header {
   display: flex;
   align-items: center;
   height: 40px;
-}
 
-.Header .HeaderText {
-  order: 0;
-  border: none;
-  outline: none;
-  background: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: capitalize;
-}
+  &:not(.HeaderYearsRange) {
+    & .HeaderText {
+      &:hover {
+        cursor: pointer;
+        background-color: var(--background-hover);
+      }
+    }
+  }
 
-.Header .HeaderText:hover,
-.Header .PrevButton:hover,
-.Header .NextButton:hover {
-  cursor: pointer;
-  background-color: #E8F4FF;
-}
+  & .HeaderText {
+    order: 0;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
 
-.Header .PrevButton,
-.Header .NextButton {
-  width: 28px;
-  height: 28px;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  background-color: transparent;
-}
+  & .PrevButton,
+  & .NextButton {
+    width: 28px;
+    height: 28px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: transparent;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--background-hover);
+    }
+    &::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-color: var(--text-color);
+      border-style: solid;
+    }
+  }
 
-.Header .PrevButton:hover,
-.Header .NextButton:hover {
-  cursor: pointer;
-}
+  & .PrevButton {
+    order: 1;
+    margin-left: auto;
+    &::before {
+      border-width: 2px 0 0 2px;
+      transform: rotate(-45deg) translate(3px, 3px);
+    }
+  }
 
-.Header .PrevButton {
-  order: 1;
-  margin-left: auto;
-}
-
-.Header .NextButton {
-  order: 2;
-  margin-left: 16px;
-}
-
-.Header .PrevButton::before,
-.Header .NextButton::before {
-  content: '';
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-color: #0b4373;
-  border-style: solid;
-}
-
-.Header .PrevButton::before {
-  border-width: 2px 0 0 2px;
-  transform: rotate(-45deg) translate(3px, 3px);
-}
-
-.Header .NextButton::before {
-  border-width: 2px 2px 0 0;
-  transform: rotate(45deg) translate(1px, -1px);
+  & .NextButton {
+    order: 2;
+    margin-left: 16px;
+    &::before {
+      border-width: 2px 2px 0 0;
+      transform: rotate(45deg) translate(1px, -1px);
+    }
+  }
 }
 
 .Days {
@@ -90,104 +97,145 @@
   margin-top: 8px;
   font-size: 12px;
   font-weight: 900;
-}
 
-.Days .Day {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% / 7);
-  height: 40px;
+  & .Day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 7);
+    height: 40px;
+  }
 }
 
 .Body {
   display: flex;
   flex-wrap: wrap;
   margin-top: 8px;
-}
 
-.Body .Cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  outline: none;
-  color: #0b4373;
-  font-family: inherit;
-  background-color: transparent;
-}
+  & .Cell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-family: inherit;
+    background-color: transparent;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    &.CurrentDate {
+      &::before {
+        background-color: var(--current-date);
+      }
+    }
+    &.DayBelongCurrentMonth {
+      &.SelectedDate {
+        &, &.DayBelongCurrentMonth, &:hover {
+          color: white;
+        }
+        &::before {
+          background-color: var(--selected-date);
+        }
+      }
+    }
+  }
 
-.Body .Cell.CurrentDate {
-  background-color: #fdfdfd;
-}
+  & .DayCell {
+    width: 50px;
+    height: 50px;
+    color: #9a9a9a;
+    &::before {
+      border-radius: 50%;
+    }
+    &.DayBelongCurrentMonth {
+      color: inherit;
+      &.InvalidDate {
+        background-color: #f1f1f1;
+      }
+      &.BetweenRange,
+      &.BetweenSelectedRange {
+        color: white;
+        &::before {
+          border-radius: 0;
+          background-color: var(--between-range);
+        }
+      }
+      &.BetweenSelectedRange,
+      &.MouseOverEndRange {
+        &::before {
+          background-color: var(--selected-date);
+        }
+      }
+      &.ValidDate {
+        &:hover {
+          cursor: pointer;
+        }
+        &:not(.SelectedDate):not(.BetweenSelectedRange):not(.BetweenRange):hover {
+          &::before {
+            background-color: var(--background-hover);
+          }
+        }
+        &.StartRangeDate {
+          &::before {
+            border-radius: 50% 0 0 50%;
+            background-color: var(--selected-date);
+          }
+        }
+        &.EndRangeDate {
+          &::before {
+            border-radius: 0 50% 50% 0;
+            background-color: var(--selected-date);
+          }
+        }
+        &.OverMaxRange,
+        &.UnderMinRange:not(.SelectedDate),
+        &.InvalidRangeDate {
+          &::before {
+            background-color: var(--invalid-range);
+          }
+          &:hover {
+            &::before {
+              background-color: var(--invalid-range-hover);
+            }
+          }
+        }
+      }
+    }
+  }
 
-.Body .DayCell.DayBelongCurrentMonth.SelectedDate,
-.Body .YearCell.SelectedDate,
-.Body .MonthCell.SelectedDate,
-.Body .DayCell.DayBelongCurrentMonth.BetweenSelectedRange,
-.Body .DayCell.DayBelongCurrentMonth.MouseOverEndRangeDate {
-  color: white;
-  background-color: #52aeff !important;
-}
+  & .MonthCell {
+    width: calc(100% / 3);
+    height: 60px;
+    &::before {
+      border-radius: 4px;
+    }
+    &:hover {
+      cursor: pointer;
+      &::before {
+        background-color: var(--background-hover);
+      }
+    }
+  }
 
-.Body .Cell.ValidDate.DayBelongCurrentMonth:hover,
-.Body .YearCell:hover,
-.Body .MonthCell:hover {
-  cursor: pointer;
-  background-color: #E8F4FF;
-}
-
-.Body .DayCell.DayBelongCurrentMonth.OverMaxRange:hover,
-.Body .DayCell.DayBelongCurrentMonth.UnderMinRange:hover {
-  background-color: #884c8c !important;
-}
-
-.Body .DayCell {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #9a9a9a;
-}
-
-.Body .DayCell.DayBelongCurrentMonth.BetweenRange {
-  background-color: #81c5ff;
-}
-
-.Body .DayCell.DayBelongCurrentMonth.BetweenSelectedRange,
-.Body .DayCell.DayBelongCurrentMonth.BetweenRange {
-  border-radius: 0;
-}
-
-
-.Body .DayCell.DayBelongCurrentMonth.StartRangeDate {
-  border-radius: 50% 0 0 50%;
-}
-
-.Body .DayCell.DayBelongCurrentMonth.EndRangeDate {
-  border-radius: 0 50% 50% 0;
-}
-
-.Body .DayCell.DayBelongCurrentMonth.InvalidDate {
-  background-color: #f1f1f1;
-}
-
-.Body .DayCell.DayBelongCurrentMonth.OverMaxRange,
-.Body .DayCell.DayBelongCurrentMonth.UnderMinRange,
-.Body .DayCell.DayBelongCurrentMonth.InvalidRangeDate {
-  background-color: #A885AA;
-}
-
-.Body .DayCell.DayBelongCurrentMonth {
-  color: black;
-}
-
-.Body .MonthCell {
-  width: calc(100% / 3);
-  height: 60px;
-  border-radius: 4px;
-}
-
-.Body .YearCell {
-  width: calc(100% / 4);
-  height: 80px;
+  & .YearCell {
+    width: calc(100% / 4);
+    height: 80px;
+    &::before {
+      border-radius: 4px;
+    }
+    &:hover {
+      cursor: pointer;
+      &::before {
+        background-color: var(--background-hover);
+      }
+    }
+  }
 }

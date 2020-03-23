@@ -34,7 +34,7 @@ export type TClassNameKeys = (
   | 'InvalidRangeDate'
   | 'StartRangeDate'
   | 'EndRangeDate'
-  | 'MouseOverEndRangeDate'
+  | 'MouseOverEndRange'
 )
 
 export type TClassNames = { [k in TClassNameKeys]?: string } | { [k: string]: string }
