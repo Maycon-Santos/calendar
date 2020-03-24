@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, DetailedHTMLProps, HTMLAttributes } from 'react'
 import CalendarProvider from '../calendar-provider/calendar-provider'
 
 export type TDataToView = 'days' | 'months' | 'years'
@@ -87,6 +87,12 @@ type TPickMultiple = 'multiple'
 type TPickRange = 'range'
 type TPick = TPickSingle | TPickMultiple | TPickRange
 
+type TDivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type TButtonProps = DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+type TButtonPropsCustomOnClick = {
+  [P in keyof TButtonProps]: P extends 'onClick' ? ((event: { event: React.MouseEvent<HTMLButtonElement>, originalHandler: (...args: any) => any }) => any) : TButtonProps[P]
+}
+
 export interface ICalendarProps {
   pick?: TPick
   pickLimit?: number
@@ -109,6 +115,16 @@ export interface ICalendarProps {
     | ((date: Date | null | Date[]) => any)
     | Dispatch<SetStateAction<Date | Date[] | null | undefined>>
   )
+  HeaderProps?: TDivProps
+  PrevButtonProps?: TButtonProps
+  NextButtonProps?: TButtonProps
+  HeaderTextProps?: TButtonPropsCustomOnClick
+  DaysProps?: TDivProps
+  DayProps?: TDivProps
+  BodyProps?: TDivProps
+  DateProps?: TButtonProps
+  MonthProps?: TButtonProps
+  YearProps?: TButtonProps
 }
 
 export interface ICalendarContext {

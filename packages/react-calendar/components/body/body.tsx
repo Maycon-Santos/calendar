@@ -5,6 +5,7 @@ import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
 import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
+import onClickHandler from '../../utils/onclick-handler'
 
 function Days () {
   const {
@@ -16,6 +17,7 @@ function Days () {
       bind,
       classNames,
       rangeSize = defaultProps.rangeSize,
+      DateProps,
     },
   } = useContext(CalendarContext)
   const { days } = calendarProvider
@@ -37,10 +39,10 @@ function Days () {
           date,
           rangeSize: props.rangeSize || rangeSize,
           isInvalidDate,
-          classNames
+          classNames,
         }) : []
 
-        const clickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const clickHandler = () => {
           if (isSelectedDate) {
             emit('calendar.removeSelectedDate', date)
             if (isPickRange) {
@@ -51,13 +53,13 @@ function Days () {
           }
         }
 
-        const mouseEnterHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const mouseEnterHandler = () => {
           if (isPickRange && belongCurrentMonth && selectedDates.length === 1) {
             emit('setDateMouseOver', date)
           }
         }
 
-        const mouseLeaveHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const mouseLeaveHandler = () => {
           if (isPickRange) {
             emit('setDateMouseOver', null)
           }
@@ -65,9 +67,11 @@ function Days () {
 
         return (
           <button
-            key={day+belongCurrentMonth.toString()}
+            {...DateProps}
+            key={day + belongCurrentMonth.toString()}
             type="button"
             className={[
+              DateProps?.className,
               classNames?.Cell,
               classNames?.DayCell,
               isInvalidDate ? classNames?.InvalidDate : classNames?.ValidDate,
@@ -76,9 +80,9 @@ function Days () {
               isSelectedDate     && classNames?.SelectedDate,
               ...pickRangeClassNames
             ].filter(Boolean).join(' ')}
-            onClick={clickHandler}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
+            onClick={onClickHandler(clickHandler, DateProps?.onClick)}
+            onMouseEnter={onClickHandler(mouseEnterHandler, DateProps?.onClick)}
+            onMouseLeave={onClickHandler(mouseLeaveHandler, DateProps?.onClick)}
           >
             {day}
           </button>
@@ -97,6 +101,7 @@ function Months () {
       classNames,
       bind,
       monthsDictionary = defaultProps.monthsDictionary,
+      MonthProps,
     },
   } = useContext(CalendarContext)
   const { months } = calendarProvider
@@ -116,20 +121,24 @@ function Months () {
           return clonedDate
         })
 
+        const clickHandler = () => {
+          emit('calendar.goto', date)
+          emit('setDataToView', 'days')
+        }
+
         return (
           <button
+            {...MonthProps}
             key={month}
             type="button"
             className={[
+              MonthProps?.className,
               classNames?.Cell,
               classNames?.MonthCell,
               dateString === currentDateString && classNames?.CurrentDate,
               dateIncludes(clonedSelectedDates, date) && classNames?.SelectedDate,
             ].filter(Boolean).join(' ')}
-            onClick={() => {
-              emit('calendar.goto', date)
-              emit('setDataToView', 'days')
-            }}
+            onClick={onClickHandler(clickHandler, MonthProps?.onClick)}
           >
             {monthsDictionary[month]}
           </button>
@@ -146,6 +155,7 @@ function Years () {
     CalendarProps,
     CalendarProps: {
       classNames,
+      YearProps,
       bind,
     },
   } = useContext(CalendarContext)
@@ -165,20 +175,23 @@ function Years () {
           return clonedDate
         })
 
+        const clickHandler = () => {
+          emit('calendar.goto', date)
+          emit('setDataToView', 'months')
+        }
+
         return (
           <button
             key={year}
             type="button"
             className={[
+              YearProps?.className,
               classNames?.Cell,
               classNames?.YearCell,
               date.getFullYear() === currentDate.getFullYear() && classNames?.CurrentDate,
               dateIncludes(clonedSelectedDates, date) && classNames?.SelectedDate,
             ].join(' ')}
-            onClick={() => {
-              emit('calendar.goto', date)
-              emit('setDataToView', 'months')
-            }}
+            onClick={onClickHandler(clickHandler, YearProps?.onClick)}
           >
             {year}
           </button>
@@ -193,23 +206,43 @@ export default function Body () {
     dataToView,
     CalendarProps: {
       classNames,
-      daysDictionary = defaultProps.daysDictionary
-    }
+      daysDictionary = defaultProps.daysDictionary,
+      BodyProps,
+      DaysProps,
+      DayProps,
+    },
   } = useContext(CalendarContext)
+
+  onClickHandler
 
   return (
     <>
       {dataToView === 'days' && (
-        <div className={classNames?.Days}>
+        <div
+          {...DaysProps}
+          className={[
+            DaysProps?.className,
+            classNames?.Days
+          ].filter(Boolean).join(' ')}
+        >
           {daysDictionary.map((day, i) => (
-            <div key={day + i}className={classNames?.Day}>
+            <div
+              {...DayProps}
+              key={day + i}
+              className={[
+                DayProps?.className,
+                classNames?.Day
+              ].filter(Boolean).join(' ')}
+            >
               {day}
             </div>
           ))}
         </div>
       )}
       <div
+        {...BodyProps}
         className={[
+          BodyProps?.className,
           classNames?.Body,
           dataToView === 'days' && classNames?.BodyDays,
           dataToView === 'months' && classNames?.BodyMonths,

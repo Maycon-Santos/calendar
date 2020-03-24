@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from "../context"
 import defaultProps from '../defaultProps'
+import onClickHandler from '../utils/onclick-handler'
 
 interface IButtonProps {
   onClick: () => void
@@ -13,26 +14,66 @@ interface IHeaderTextProps {
 
 function PrevButton (props: IButtonProps) {
   const { onClick } = props
-  const { CalendarProps: { classNames } } = useContext(CalendarContext)
+  const {
+    CalendarProps: {
+      classNames,
+      PrevButtonProps,
+    },
+  } = useContext(CalendarContext)
+  
   return (
-    <button type="button" onClick={onClick} className={classNames?.PrevButton} />
+    <button
+      {...PrevButtonProps}
+      type="button"
+      onClick={onClickHandler(onClick, PrevButtonProps?.onClick)}
+      className={[
+        PrevButtonProps?.className,
+        classNames?.PrevButton
+      ].filter(Boolean).join(' ')}
+    />
   )
 }
 
 function NextButton (props: IButtonProps) {
   const { onClick } = props
-  const { CalendarProps: { classNames } } = useContext(CalendarContext)
+  const {
+    CalendarProps: {
+      classNames,
+      NextButtonProps,
+    },
+  } = useContext(CalendarContext)
   return (
-    <button type="button" onClick={onClick} className={classNames?.NextButton} />
+    <button
+      {...NextButtonProps}
+      type="button"
+      onClick={onClickHandler(onClick, NextButtonProps?.onClick)}
+      className={[
+        NextButtonProps?.className,
+        classNames?.NextButton
+      ].filter(Boolean).join(' ')}
+    />
   )
 }
 
 function HeaderText (props: IHeaderTextProps) {
   const { children, onClick } = props
-  const { CalendarProps: { classNames } } = useContext(CalendarContext)
+  const {
+    CalendarProps: {
+      classNames,
+      HeaderTextProps,
+    },
+  } = useContext(CalendarContext)
 
   return (
-    <button type="button" onClick={onClick} className={classNames?.HeaderText}>
+    <button
+      {...HeaderTextProps}
+      type="button"
+      onClick={onClickHandler(onClick, HeaderTextProps?.onClick)}
+      className={[
+        HeaderTextProps?.className,
+        classNames?.HeaderText
+      ].filter(Boolean).join(' ')}
+    >
       {children}
     </button>
   )
@@ -43,8 +84,8 @@ function Month () {
     emit,
     calendarProvider,
     CalendarProps: {
-      monthsDictionary = defaultProps.monthsDictionary
-    }
+      monthsDictionary = defaultProps.monthsDictionary,
+    },
   } = useContext(CalendarContext)
   return (
     <>
@@ -90,18 +131,21 @@ export default function Header () {
   const {
     dataToView,
     CalendarProps: {
-      classNames
+      classNames,
+      HeaderProps,
     }
   } = useContext(CalendarContext)
 
   return (
     <header
       className={[
+        HeaderProps?.className,
         classNames?.Header,
         dataToView === 'days' && classNames?.HeaderMonth,
         dataToView === 'months' && classNames?.HeaderYear,
         dataToView === 'years' && classNames?.HeaderYearsRange,
       ].filter(Boolean).join(' ')}
+      {...HeaderProps}
     >
       {dataToView === 'days' && <Month />}
       {dataToView === 'months' && <Year />}
