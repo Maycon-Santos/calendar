@@ -1,29 +1,31 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from '../../context'
-import defaultProps from '../../defaultProps'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
 import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
-import onClickHandler from '../../utils/onclick-handler'
+import customOnClick from '../../utils/onclick-handler'
+import classNameResolve from '../../utils/classname-resolve'
+import useProps from '../../hooks/use-props'
 
 function Days () {
   const {
     calendarProvider,
     dateMouseOver,
     emit,
-    CalendarProps,
-    CalendarProps: {
-      bind,
-      classNames,
-      rangeSize = defaultProps.rangeSize,
-      DateProps,
-    },
   } = useContext(CalendarContext)
+
+  const {
+    pick,
+    selectedDate,
+    filterInvalidDates,
+    DateProps,
+    classNames,
+    rangeSize,
+  } = useProps()
+
   const { days } = calendarProvider
-  const props = bind?.props || CalendarProps
-  const selectedDates = getSelectedDates(props.selectedDate)
-  const filterInvalidDates = props.filterInvalidDates
+  const selectedDates = getSelectedDates(selectedDate)
 
   return (
     <>
@@ -31,13 +33,13 @@ function Days () {
         const isCurrentDate = compareDates(date, new Date())
         const isSelectedDate = dateIncludes(selectedDates, date)
         const isInvalidDate = filterInvalidDates ? filterInvalidDates(date) : false
-        const isPickRange = props.pick === 'range'
+        const isPickRange = pick === 'range'
 
         const pickRangeClassNames = isPickRange ? getPickRangeClassNames({
           selectedDates,
           dateMouseOver,
           date,
-          rangeSize: props.rangeSize || rangeSize,
+          rangeSize: rangeSize,
           isInvalidDate,
           classNames,
         }) : []
@@ -70,7 +72,7 @@ function Days () {
             {...DateProps}
             key={day + belongCurrentMonth.toString()}
             type="button"
-            className={[
+            className={classNameResolve(
               DateProps?.className,
               classNames?.Cell,
               classNames?.DayCell,
@@ -79,10 +81,10 @@ function Days () {
               isCurrentDate      && classNames?.CurrentDate,
               isSelectedDate     && classNames?.SelectedDate,
               ...pickRangeClassNames
-            ].filter(Boolean).join(' ')}
-            onClick={onClickHandler(clickHandler, DateProps?.onClick)}
-            onMouseEnter={onClickHandler(mouseEnterHandler, DateProps?.onClick)}
-            onMouseLeave={onClickHandler(mouseLeaveHandler, DateProps?.onClick)}
+            )}
+            onClick={customOnClick(clickHandler, DateProps?.onClick)}
+            onMouseEnter={customOnClick(mouseEnterHandler, DateProps?.onClick)}
+            onMouseLeave={customOnClick(mouseLeaveHandler, DateProps?.onClick)}
           >
             {day}
           </button>
@@ -96,17 +98,17 @@ function Months () {
   const {
     calendarProvider,
     emit,
-    CalendarProps,
-    CalendarProps: {
-      classNames,
-      bind,
-      monthsDictionary = defaultProps.monthsDictionary,
-      MonthProps,
-    },
   } = useContext(CalendarContext)
+
+  const {
+    classNames,
+    monthsDictionary,
+    selectedDate,
+    MonthProps,
+  } = useProps()
+
   const { months } = calendarProvider
-  const props = bind?.props || CalendarProps
-  const selectedDates = getSelectedDates(props.selectedDate)
+  const selectedDates = getSelectedDates(selectedDate)
 
   return (
     <>
@@ -131,14 +133,14 @@ function Months () {
             {...MonthProps}
             key={month}
             type="button"
-            className={[
+            className={classNameResolve(
               MonthProps?.className,
               classNames?.Cell,
               classNames?.MonthCell,
               dateString === currentDateString && classNames?.CurrentDate,
               dateIncludes(clonedSelectedDates, date) && classNames?.SelectedDate,
-            ].filter(Boolean).join(' ')}
-            onClick={onClickHandler(clickHandler, MonthProps?.onClick)}
+            )}
+            onClick={customOnClick(clickHandler, MonthProps?.onClick)}
           >
             {monthsDictionary[month]}
           </button>
@@ -152,16 +154,16 @@ function Years () {
   const {
     calendarProvider,
     emit,
-    CalendarProps,
-    CalendarProps: {
-      classNames,
-      YearProps,
-      bind,
-    },
   } = useContext(CalendarContext)
+
+  const {
+    classNames,
+    selectedDate,
+    YearProps
+  } = useProps()
+
   const { years } = calendarProvider
-  const props = bind?.props || CalendarProps
-  const selectedDates = getSelectedDates(props.selectedDate)
+  const selectedDates = getSelectedDates(selectedDate)
 
   return (
     <>
@@ -184,14 +186,14 @@ function Years () {
           <button
             key={year}
             type="button"
-            className={[
+            className={classNameResolve(
               YearProps?.className,
               classNames?.Cell,
               classNames?.YearCell,
               date.getFullYear() === currentDate.getFullYear() && classNames?.CurrentDate,
               dateIncludes(clonedSelectedDates, date) && classNames?.SelectedDate,
-            ].join(' ')}
-            onClick={onClickHandler(clickHandler, YearProps?.onClick)}
+            )}
+            onClick={customOnClick(clickHandler, YearProps?.onClick)}
           >
             {year}
           </button>
@@ -204,35 +206,44 @@ function Years () {
 export default function Body () {
   const {
     dataToView,
-    CalendarProps: {
-      classNames,
-      daysDictionary = defaultProps.daysDictionary,
-      BodyProps,
-      DaysProps,
-      DayProps,
-    },
   } = useContext(CalendarContext)
 
-  onClickHandler
+  const {
+    classNames,
+    BodyProps,
+    DaysProps,
+    DayProps,
+    CellsProps,
+    daysDictionary,
+  } = useProps()
 
   return (
-    <>
+    <div
+      {...BodyProps}
+      className={classNameResolve(
+        BodyProps?.className,
+        classNames?.Body,
+        dataToView === 'days' && classNames?.BodyDays,
+        dataToView === 'months' && classNames?.BodyMonths,
+        dataToView === 'years' && classNames?.BodyYears,
+      )}
+    >
       {dataToView === 'days' && (
         <div
           {...DaysProps}
-          className={[
+          className={classNameResolve(
             DaysProps?.className,
             classNames?.Days
-          ].filter(Boolean).join(' ')}
+          )}
         >
           {daysDictionary.map((day, i) => (
             <div
               {...DayProps}
               key={day + i}
-              className={[
+              className={classNameResolve(
                 DayProps?.className,
                 classNames?.Day
-              ].filter(Boolean).join(' ')}
+              )}
             >
               {day}
             </div>
@@ -240,19 +251,16 @@ export default function Body () {
         </div>
       )}
       <div
-        {...BodyProps}
-        className={[
-          BodyProps?.className,
-          classNames?.Body,
-          dataToView === 'days' && classNames?.BodyDays,
-          dataToView === 'months' && classNames?.BodyMonths,
-          dataToView === 'years' && classNames?.BodyYears,
-        ].filter(Boolean).join(' ')}
+        {...CellsProps}
+        className={classNameResolve(
+          CellsProps?.className,
+          classNames?.Cells,
+        )}
       >
         {dataToView === 'days' && <Days />}
         {dataToView === 'months' && <Months />}
         {dataToView === 'years' && <Years />}
       </div>
-    </>
+    </div>
   )
 }

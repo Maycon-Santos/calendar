@@ -1,19 +1,19 @@
-import { ICalendarProps } from '../../types'
+import { CalendarProps } from '../../shared-types'
 import dateBetweenRange from '../../utils/date-between-range'
 import dateDiff from '../../utils/date-diff'
 import dateSort from '../../utils/date-sort'
 import excludeEqualDates from '../../utils/exclude-equal-dates'
 
-interface IGetPickRangeClassNames {
+interface GetPickRangeClassNames {
   date: Date
   selectedDates: Date[]
   isInvalidDate: boolean
-  classNames: ICalendarProps['classNames']
+  classNames: CalendarProps['classNames']
   dateMouseOver: Date | null
-  rangeSize: Exclude<ICalendarProps['rangeSize'], undefined>
+  rangeSize: Exclude<CalendarProps['rangeSize'], undefined>
 }
 
-export default function getPickRangeClassNames (params: IGetPickRangeClassNames) {
+export default function getPickRangeClassNames (params: GetPickRangeClassNames) {
   const {
     selectedDates,
     dateMouseOver,

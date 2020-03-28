@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import Calendar from '../react-calendar'
+import Calendar from '../export/calendar'
 import useCalendarBind from '../hooks/use-calendar-bind'
 import styles from './styles/wrapper.css'
-import classNames from './styles/calendar.css'
 import './styles/font-face.css'
 
 export default {
@@ -22,7 +21,6 @@ export const single = () => {
     <div className={styles.Container}>
       <Calendar
         pick="single"
-        classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={(date: Date | null) => {
           setSelectedDate(date)
@@ -45,7 +43,6 @@ export const multiple = () => {
       <Calendar
         pick="multiple"
         pickLimit={5}
-        classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
           setSelectedDate(dates)
@@ -67,7 +64,6 @@ export const range = () => {
           min: 4,
           max: 10,
         }}
-        classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
           setSelectedDate(dates)
@@ -86,7 +82,6 @@ export const single_with_bind = () => {
     <div className={styles.Container}>
       <Calendar
         pick="single"
-        classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={(date: Date | null) => {
           setSelectedDate(date)
@@ -98,7 +93,7 @@ export const single_with_bind = () => {
         }}
         bind={bind}
       />
-      <Calendar classNames={classNames} bind={bind} />
+      <Calendar bind={bind} />
     </div>
   )
 }
@@ -112,7 +107,6 @@ export const multiple_with_bind = () => {
       <Calendar
         pick="multiple"
         pickLimit={5}
-        classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
           setSelectedDate(dates)
@@ -120,7 +114,7 @@ export const multiple_with_bind = () => {
         }}
         bind={bind}
       />
-      <Calendar classNames={classNames} bind={bind} />
+      <Calendar bind={bind} />
     </div>
   )
 }
@@ -137,7 +131,6 @@ export const range_with_bind = () => {
           min: 4,
           max: 10,
         }}
-        classNames={classNames}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
           setSelectedDate(dates)
@@ -145,7 +138,7 @@ export const range_with_bind = () => {
         }}
         bind={bind}
       />
-      <Calendar classNames={classNames} bind={bind} />
+      <Calendar bind={bind} />
     </div>
   )
 }

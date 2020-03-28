@@ -1,4 +1,4 @@
 import { createContext } from 'react'
-import { ICalendarContext } from './types'
+import { CalendarContext as CalendarContextType } from './shared-types'
 
-export const CalendarContext = createContext<ICalendarContext>({} as ICalendarContext)
+export const CalendarContext = createContext<CalendarContextType>({} as CalendarContextType)

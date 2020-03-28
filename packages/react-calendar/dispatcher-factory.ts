@@ -1,25 +1,25 @@
 import { Dispatch, SetStateAction } from 'react'
-import { TEventType, ICalendarProps, TDataToView, TEventDispatcher } from "./types";
-import CalendarProvider from "../calendar-provider/calendar-provider";
-import defaultProps from "./defaultProps";
-import dateDiff from "./utils/date-diff";
-import dateSort from "./utils/date-sort";
+import { EventType, CalendarProps, DataToView, EventDispatcher } from './shared-types';
+import CalendarProvider from '../calendar-provider/calendar-provider';
+import { defaultProps } from './hooks/use-props';
+import dateDiff from './utils/date-diff';
+import dateSort from './utils/date-sort';
 import getDatesRange from './utils/get-dates-range';
 import getSelectedDates from './utils/selected-dates';
 
-interface IArgs {
+interface Args {
   order: number
   calendarProvider: CalendarProvider
   setDateMouseOver: Dispatch<SetStateAction<Date | null>>
-  setDataToView: Dispatch<SetStateAction<TDataToView>>
-  props: ICalendarProps
+  setDataToView: Dispatch<SetStateAction<DataToView>>
+  props: CalendarProps
 }
 
-type TEvents = {
-  [P in TEventType]: (...args: any) => any
+type Events = {
+  [P in EventType]: (...args: any) => any
 }
 
-export default function dispatcherFactory (args: IArgs): TEventDispatcher {
+export default function dispatcherFactory (args: Args): EventDispatcher {
   const {
     order,
     calendarProvider,
@@ -102,7 +102,7 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
     }
   }
 
-  function setDataToViewHandler (value: TDataToView) {
+  function setDataToViewHandler (value: DataToView) {
     if (order > 0) {
       if (!bind || !order || !bind?.mainCalendarProvider) return
       const { mainCalendarProvider } = bind
@@ -132,7 +132,7 @@ export default function dispatcherFactory (args: IArgs): TEventDispatcher {
     setDataToView(value)
   }
 
-  const events: TEvents = {
+  const events: Events = {
     'calendar.prevMonth': calendarProvider.prevMonth,
     'calendar.nextMonth': calendarProvider.nextMonth,
     'calendar.prevYear': calendarProvider.prevYear,

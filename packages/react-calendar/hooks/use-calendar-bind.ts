@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { ICalendarProps } from '../types'
+import { CalendarProps } from '../shared-types'
 
-export default (): ICalendarProps['bind'] => {
+export default (): CalendarProps['bind'] => {
   return useMemo(() => ({
     order: 0,
     dispatchers: [],

@@ -4,24 +4,21 @@ import { CalendarContext } from './context'
 import Body from './components/body'
 import Header from './components/header'
 import {
-  ICalendarProps,
-  TDataToView,
-  TEventDispatcher
-} from './types'
-import defaultProps from './defaultProps'
+  CalendarProps,
+  DataToView,
+  EventDispatcher
+} from './shared-types'
 import dispatcherFactory from './dispatcher-factory'
 
-export default (props: ICalendarProps) => {
+export default (props: CalendarProps) => {
   const {
     classNames,
     bind,
-    pickLimit = defaultProps.pickLimit,
-    startDate = defaultProps.startDate,
-    rangeSize = defaultProps.rangeSize,
+    startDate,
   } = props
   const [, forceUpdate] = useState()
   const [order, setOrder] = useState<number>(0)
-  const [dataToView, setDataToView] = useState<TDataToView>('days')
+  const [dataToView, setDataToView] = useState<DataToView>('days')
   const [dateMouseOver, setDateMouseOver] = useState<Date | null>(null)
   const calendarProvider = useMemo(() => new CalendarProvider({ date: startDate }), [])
   const bindProps = useMemo(() => ({}), [])
@@ -31,7 +28,7 @@ export default (props: ICalendarProps) => {
 
   calendarProvider.onChange = useCallback(() => forceUpdate({}), [])
 
-  const dispatcher: TEventDispatcher = useMemo(() => dispatcherFactory({
+  const dispatcher: EventDispatcher = useMemo(() => dispatcherFactory({
     order,
     calendarProvider,
     setDateMouseOver,
@@ -49,7 +46,7 @@ export default (props: ICalendarProps) => {
     }
   }, [dispatcher])
 
-  const emit: TEventDispatcher = (type, ...params) => {
+  const emit: EventDispatcher = (type, ...params) => {
     const dispatchers = bind?.dispatchers || [dispatcher]
     dispatchers.forEach(dispatcher => dispatcher(type, ...params))
   }
@@ -83,9 +80,6 @@ export default (props: ICalendarProps) => {
         CalendarProps: {
           ...bindProps,
           classNames,
-          pickLimit,
-          startDate,
-          rangeSize
         }
       }}>
       <div className={classNames?.Container}>

@@ -1,78 +1,77 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from "../context"
-import defaultProps from '../defaultProps'
-import onClickHandler from '../utils/onclick-handler'
+import customOnClick from '../utils/onclick-handler'
+import classNameResolve from '../utils/classname-resolve'
+import useProps from '../hooks/use-props'
 
-interface IButtonProps {
+interface ButtonProps {
   onClick: () => void
 }
 
-interface IHeaderTextProps {
+interface HeaderTextProps {
   children: React.ReactNode
   onClick?: () => void
 }
 
-function PrevButton (props: IButtonProps) {
+function PrevButton (props: ButtonProps) {
   const { onClick } = props
+
   const {
-    CalendarProps: {
-      classNames,
-      PrevButtonProps,
-    },
-  } = useContext(CalendarContext)
+    classNames,
+    PrevButtonProps,
+  } = useProps()
   
   return (
     <button
       {...PrevButtonProps}
       type="button"
-      onClick={onClickHandler(onClick, PrevButtonProps?.onClick)}
-      className={[
+      onClick={customOnClick(onClick, PrevButtonProps?.onClick)}
+      className={classNameResolve(
         PrevButtonProps?.className,
         classNames?.PrevButton
-      ].filter(Boolean).join(' ')}
+      )}
     />
   )
 }
 
-function NextButton (props: IButtonProps) {
+function NextButton (props: ButtonProps) {
   const { onClick } = props
+
   const {
-    CalendarProps: {
-      classNames,
-      NextButtonProps,
-    },
-  } = useContext(CalendarContext)
+    classNames,
+    NextButtonProps,
+  } = useProps()
+
   return (
     <button
       {...NextButtonProps}
       type="button"
-      onClick={onClickHandler(onClick, NextButtonProps?.onClick)}
-      className={[
+      onClick={customOnClick(onClick, NextButtonProps?.onClick)}
+      className={classNameResolve(
         NextButtonProps?.className,
         classNames?.NextButton
-      ].filter(Boolean).join(' ')}
+      )}
     />
   )
 }
 
-function HeaderText (props: IHeaderTextProps) {
+function HeaderText (props: HeaderTextProps) {
   const { children, onClick } = props
+
   const {
-    CalendarProps: {
-      classNames,
-      HeaderTextProps,
-    },
-  } = useContext(CalendarContext)
+    classNames,
+    HeaderTextProps,
+  } = useProps()
 
   return (
     <button
       {...HeaderTextProps}
       type="button"
-      onClick={onClickHandler(onClick, HeaderTextProps?.onClick)}
-      className={[
+      onClick={customOnClick(onClick, HeaderTextProps?.onClick)}
+      className={classNameResolve(
         HeaderTextProps?.className,
         classNames?.HeaderText
-      ].filter(Boolean).join(' ')}
+      )}
     >
       {children}
     </button>
@@ -82,11 +81,13 @@ function HeaderText (props: IHeaderTextProps) {
 function Month () {
   const {
     emit,
-    calendarProvider,
-    CalendarProps: {
-      monthsDictionary = defaultProps.monthsDictionary,
-    },
+    calendarProvider
   } = useContext(CalendarContext)
+
+  const {
+    monthsDictionary,
+  } = useProps()
+
   return (
     <>
       <PrevButton onClick={() => emit('calendar.prevMonth')} />
@@ -130,21 +131,22 @@ function YearsRange () {
 export default function Header () {
   const {
     dataToView,
-    CalendarProps: {
-      classNames,
-      HeaderProps,
-    }
   } = useContext(CalendarContext)
+
+  const {
+    classNames,
+    HeaderProps,
+  } = useProps()
 
   return (
     <header
-      className={[
+      className={classNameResolve(
         HeaderProps?.className,
         classNames?.Header,
         dataToView === 'days' && classNames?.HeaderMonth,
         dataToView === 'months' && classNames?.HeaderYear,
         dataToView === 'years' && classNames?.HeaderYearsRange,
-      ].filter(Boolean).join(' ')}
+      )}
       {...HeaderProps}
     >
       {dataToView === 'days' && <Month />}

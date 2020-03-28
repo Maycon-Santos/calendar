@@ -1,0 +1,250 @@
+:root {
+  --text-color: #0b4373;
+  --background-hover: #E8F4FF;
+  --between-range: #81c5ff;
+  --invalid-range: #A885AA;
+  --invalid-range-hover: #884c8c;
+  --selected-date: #52aeff;
+  --current-date: #f7f9fb;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 16px;
+  border: 1px #dbe2e8 solid;
+  border-radius: 4px;
+  color: var(--text-color);
+  background-image: linear-gradient(to top right, #fdfdfd, #ffffff);
+  
+  & + .Container {
+    margin-left: 24px;
+  }
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  &:not(.HeaderYearsRange) {
+    & .HeaderText {
+      &:hover {
+        cursor: pointer;
+        background-color: var(--background-hover);
+      }
+    }
+  }
+
+  & .HeaderText {
+    order: 0;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  & .PrevButton,
+  & .NextButton {
+    width: 28px;
+    height: 28px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: transparent;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--background-hover);
+    }
+    &::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-color: var(--text-color);
+      border-style: solid;
+    }
+  }
+
+  & .PrevButton {
+    order: 1;
+    margin-left: auto;
+    &::before {
+      border-width: 2px 0 0 2px;
+      transform: rotate(-45deg) translate(3px, 3px);
+    }
+  }
+
+  & .NextButton {
+    order: 2;
+    margin-left: 16px;
+    &::before {
+      border-width: 2px 2px 0 0;
+      transform: rotate(45deg) translate(1px, -1px);
+    }
+  }
+}
+
+.Body {
+  & .Days {
+    display: flex;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 900;
+  
+    & .Day {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% / 7);
+      height: 40px;
+    }
+  }
+
+  & .Cells {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  
+    & .Cell {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      outline: none;
+      color: var(--text-color);
+      font-family: inherit;
+      background-color: transparent;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      &.CurrentDate {
+        &::before {
+          background-color: var(--current-date);
+        }
+      }
+      &.DayBelongCurrentMonth {
+        &.SelectedDate {
+          &, &.DayBelongCurrentMonth, &:hover {
+            color: white;
+          }
+          &::before {
+            background-color: var(--selected-date);
+          }
+        }
+      }
+    }
+  
+    & .DayCell {
+      width: 50px;
+      height: 50px;
+      color: #9a9a9a;
+      &::before {
+        border-radius: 50%;
+      }
+      &.DayBelongCurrentMonth {
+        color: inherit;
+        &.InvalidDate {
+          background-color: #f1f1f1;
+        }
+        &.BetweenRange,
+        &.BetweenSelectedRange {
+          color: white;
+          &::before {
+            border-radius: 0;
+            background-color: var(--between-range);
+          }
+        }
+        &.BetweenSelectedRange,
+        &.MouseOverEndRange {
+          &::before {
+            background-color: var(--selected-date);
+          }
+        }
+        &.ValidDate {
+          &:hover {
+            cursor: pointer;
+          }
+          &:not(.SelectedDate):not(.BetweenSelectedRange):not(.BetweenRange):hover {
+            &::before {
+              background-color: var(--background-hover);
+            }
+          }
+          &.StartRangeDate {
+            &::before {
+              border-radius: 50% 0 0 50%;
+              background-color: var(--selected-date);
+            }
+          }
+          &.EndRangeDate {
+            &::before {
+              border-radius: 0 50% 50% 0;
+              background-color: var(--selected-date);
+            }
+          }
+          &.OverMaxRange,
+          &.UnderMinRange:not(.SelectedDate),
+          &.InvalidRangeDate {
+            &::before {
+              background-color: var(--invalid-range);
+            }
+            &:hover {
+              &::before {
+                background-color: var(--invalid-range-hover);
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    & .MonthCell {
+      width: calc(100% / 3);
+      height: 70px;
+      &:hover {
+        cursor: pointer;
+        &::before {
+          background-color: var(--background-hover);
+        }
+      }
+      &.SelectedDate {
+        color: white;
+        &::before {
+          background-color: var(--selected-date);
+        }
+      }
+    }
+  
+    & .YearCell {
+      width: calc(100% / 4);
+      height: 70px;
+      &:hover {
+        cursor: pointer;
+        &::before {
+          background-color: var(--background-hover);
+        }
+      }
+      &.SelectedDate {
+        color: white;
+        &::before {
+          background-color: var(--selected-date);
+        }
+      }
+    }
+  }
+}
