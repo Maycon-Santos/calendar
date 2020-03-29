@@ -158,16 +158,24 @@
         border-radius: 50%;
       }
       &.DayBelongCurrentMonth {
-        color: inherit;
-        &.InvalidDate {
-          background-color: #f1f1f1;
-        }
         &.BetweenRange,
         &.BetweenSelectedRange {
-          color: white;
-          &::before {
-            border-radius: 0;
-            background-color: var(--between-range);
+          &.ValidDate,
+          &.InvalidDate {
+            color: white;
+            &::before {
+              border-radius: 0;
+            }
+          }
+          &.ValidDate {
+            &::before {
+              background-color: var(--between-range);
+            }
+          }
+          &.InvalidDate {
+            &::before {
+              background-color: var(--invalid-range);
+            }
           }
         }
         &.BetweenSelectedRange,
@@ -177,6 +185,7 @@
           }
         }
         &.ValidDate {
+          color: inherit;
           &:hover {
             cursor: pointer;
           }

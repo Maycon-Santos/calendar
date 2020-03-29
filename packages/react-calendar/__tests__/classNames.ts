@@ -30,5 +30,5 @@ export default {
   InvalidRangeDate: 'InvalidRangeDate',
   StartRangeDate: 'StartRangeDate',
   EndRangeDate: 'EndRangeDate',
-  MouseOverEndRange: 'MouseOverEndRange',
+  MouseOverEndRange: 'MouseOverEndRange'
 }

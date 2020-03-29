@@ -12,7 +12,8 @@ export default {
 
 const actionSelectedDate = action('selected date')
 const actionSelectedDates = action('selected dates')
-const datesToLocaleString = (dates: Date[]) => dates.map(d => d.toLocaleDateString())
+const datesToLocaleString = (dates: Date[]) =>
+  dates.map(d => d.toLocaleDateString())
 
 export const single = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>()
@@ -20,7 +21,7 @@ export const single = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="single"
+        pick='single'
         selectedDate={selectedDate}
         onChangeSelectedDate={(date: Date | null) => {
           setSelectedDate(date)
@@ -41,7 +42,7 @@ export const multiple = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="multiple"
+        pick='multiple'
         pickLimit={5}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
@@ -59,10 +60,10 @@ export const range = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="range"
+        pick='range'
         rangeSize={{
           min: 4,
-          max: 10,
+          max: 10
         }}
         filterInvalidDates={date => date.getDate() === 15}
         selectedDate={selectedDate}
@@ -82,7 +83,7 @@ export const single_with_bind = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="single"
+        pick='single'
         selectedDate={selectedDate}
         onChangeSelectedDate={(date: Date | null) => {
           setSelectedDate(date)
@@ -106,7 +107,7 @@ export const multiple_with_bind = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="multiple"
+        pick='multiple'
         pickLimit={5}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
@@ -127,10 +128,10 @@ export const range_with_bind = () => {
   return (
     <div className={styles.Container}>
       <Calendar
-        pick="range"
+        pick='range'
         rangeSize={{
           min: 4,
-          max: 10,
+          max: 10
         }}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {

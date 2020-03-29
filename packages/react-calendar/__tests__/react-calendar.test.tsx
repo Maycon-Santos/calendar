@@ -32,7 +32,7 @@ describe('<Calendar />', () => {
   })
 
   it('should pick multiple dates', () => {
-    const { getByText } = render(<Component pick="multiple" />)
+    const { getByText } = render(<Component pick='multiple' />)
 
     const day15 = getByText('15')
     const day17 = getByText('17')
@@ -48,7 +48,7 @@ describe('<Calendar />', () => {
   })
 
   it('should pick multiple dates with limit', () => {
-    const { getByText } = render(<Component pick="multiple" pickLimit={2} />)
+    const { getByText } = render(<Component pick='multiple' pickLimit={2} />)
 
     const day15 = getByText('15')
     const day17 = getByText('17')
@@ -64,7 +64,7 @@ describe('<Calendar />', () => {
   })
 
   it('should pick a range of dates', () => {
-    const { getByText } = render(<Component pick="range" />)
+    const { getByText } = render(<Component pick='range' />)
 
     const day15 = getByText('15')
     const day16 = getByText('16')
@@ -85,7 +85,7 @@ describe('<Calendar />', () => {
   })
 
   it('should change class of the dates between range', () => {
-    const { getByText } = render(<Component pick="range" />)
+    const { getByText } = render(<Component pick='range' />)
 
     const day15 = getByText('15')
     const day16 = getByText('16')
@@ -106,7 +106,9 @@ describe('<Calendar />', () => {
   })
 
   it('should pick a range of dates with limit', () => {
-    const { getByText } = render(<Component pick="range" rangeSize={{ min: 3, max: 5 }} />)
+    const { getByText } = render(
+      <Component pick='range' rangeSize={{ min: 3, max: 5 }} />
+    )
 
     const day15 = getByText('15')
     const day16 = getByText('16')
@@ -138,12 +140,9 @@ describe('<Calendar />', () => {
   it('shoud go to months', () => {
     const startDate = new Date(1998, 5, 8)
     const { getByTitle, container } = render(
-      <Component
-        startDate={startDate}
-        HeaderTextProps={{ title: 'Header' }}
-      />
+      <Component startDate={startDate} HeaderTextProps={{ title: 'Header' }} />
     )
-    
+
     fireEvent.click(getByTitle('Header'))
 
     expect(container).toMatchSnapshot()
@@ -152,10 +151,7 @@ describe('<Calendar />', () => {
   it('shoud go to years range', () => {
     const startDate = new Date(1998, 5, 8)
     const { getByTitle, container } = render(
-      <Component
-        startDate={startDate}
-        HeaderTextProps={{ title: 'Header' }}
-      />
+      <Component startDate={startDate} HeaderTextProps={{ title: 'Header' }} />
     )
 
     fireEvent.click(getByTitle('Header'))
@@ -167,10 +163,7 @@ describe('<Calendar />', () => {
   it('should go to next month', () => {
     const startDate = new Date(1998, 5, 8)
     const { getByTitle, container } = render(
-      <Component
-        startDate={startDate}
-        NextButtonProps={{ title: 'Next' }}
-      />
+      <Component startDate={startDate} NextButtonProps={{ title: 'Next' }} />
     )
 
     const nextButton = getByTitle('Next')
@@ -183,10 +176,7 @@ describe('<Calendar />', () => {
   it('should go to prev month', () => {
     const startDate = new Date(1998, 5, 8)
     const { getByTitle, container } = render(
-      <Component
-        startDate={startDate}
-        PrevButtonProps={{ title: 'Prev' }}
-      />
+      <Component startDate={startDate} PrevButtonProps={{ title: 'Prev' }} />
     )
 
     const prevButton = getByTitle('Prev')
@@ -207,7 +197,7 @@ describe('<Calendar />', () => {
     )
 
     const nextButton = getByTitle('Next')
-    
+
     fireEvent.click(getByTitle('Header'))
     fireEvent.click(nextButton)
 
@@ -243,7 +233,7 @@ describe('<Calendar />', () => {
     )
 
     const nextButton = getByTitle('Next')
-    
+
     fireEvent.click(getByTitle('Header'))
     fireEvent.click(getByTitle('Header'))
     fireEvent.click(nextButton)
@@ -309,13 +299,10 @@ describe('<Calendar />', () => {
       'fourth',
       'fifth',
       'Friday',
-      'Saturday',
+      'Saturday'
     ]
     const { getByText } = render(
-      <Component
-        startDate={startDate}
-        daysDictionary={daysDictionary}
-      />
+      <Component startDate={startDate} daysDictionary={daysDictionary} />
     )
 
     for (let i = 0; i < 7; i++) {
@@ -331,7 +318,7 @@ describe('<Calendar />', () => {
         filterInvalidDates={date => date.getDate() === 15}
       />
     )
-    
+
     const day15 = getByText('15')
 
     fireEvent.click(day15)
@@ -343,12 +330,12 @@ describe('<Calendar />', () => {
     const startDate = new Date(1998, 5, 8)
     const { getByText } = render(
       <Component
-        pick="multiple"
+        pick='multiple'
         startDate={startDate}
         filterInvalidDates={date => date.getDate() === 15}
       />
     )
-    
+
     const day15 = getByText('15')
 
     fireEvent.click(day15)
@@ -360,12 +347,12 @@ describe('<Calendar />', () => {
     const startDate = new Date(1998, 5, 8)
     const { getByText } = render(
       <Component
-        pick="range"
+        pick='range'
         startDate={startDate}
         filterInvalidDates={date => date.getDate() === 15}
       />
     )
-    
+
     const day14 = getByText('14')
     const day15 = getByText('15')
     const day16 = getByText('16')
