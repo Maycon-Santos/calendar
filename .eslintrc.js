@@ -4,8 +4,7 @@ module.exports = {
         "es6": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "standard"
+        "plugin:react/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
