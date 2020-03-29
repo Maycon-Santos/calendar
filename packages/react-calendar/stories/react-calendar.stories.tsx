@@ -64,6 +64,7 @@ export const range = () => {
           min: 4,
           max: 10,
         }}
+        filterInvalidDates={date => date.getDate() === 15}
         selectedDate={selectedDate}
         onChangeSelectedDate={(dates: Date[]) => {
           setSelectedDate(dates)

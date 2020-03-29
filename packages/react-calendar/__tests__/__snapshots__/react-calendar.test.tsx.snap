@@ -1,0 +1,1389 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Calendar /> shoud go to months 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderYear"
+    >
+      <button
+        class="PrevButton"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        title="Header"
+        type="button"
+      >
+        1998
+      </button>
+      <button
+        class="NextButton"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyMonths"
+    >
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          janeiro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          fevereiro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          março
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          abril
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          maio
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          junho
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          julho
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          agosto
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          setembro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          outubro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          novembro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          dezembro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> shoud go to years range 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderYearsRange"
+    >
+      <button
+        class="PrevButton"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        title="Header"
+        type="button"
+      >
+        1990
+         - 
+        2005
+      </button>
+      <button
+        class="NextButton"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyYears"
+    >
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1990
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1991
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1992
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1993
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1994
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1995
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1996
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1997
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1998
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1999
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2000
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2001
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2002
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2003
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2004
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2005
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> should go to next month 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderMonth"
+    >
+      <button
+        class="PrevButton"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        type="button"
+      >
+        julho
+         - 
+        1998
+      </button>
+      <button
+        class="NextButton"
+        title="Next"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyDays"
+    >
+      <div
+        class="Days"
+      >
+        <div
+          class="Day"
+        >
+          D
+        </div>
+        <div
+          class="Day"
+        >
+          S
+        </div>
+        <div
+          class="Day"
+        >
+          T
+        </div>
+        <div
+          class="Day"
+        >
+          Q
+        </div>
+        <div
+          class="Day"
+        >
+          Q
+        </div>
+        <div
+          class="Day"
+        >
+          S
+        </div>
+        <div
+          class="Day"
+        >
+          S
+        </div>
+      </div>
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          28
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          29
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          30
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          1
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          2
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          3
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          4
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          5
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          6
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          7
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          8
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          9
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          10
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          11
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          12
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          13
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          14
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          15
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          16
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          17
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          18
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          19
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          20
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          21
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          22
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          23
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          24
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          25
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          26
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          27
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          28
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          29
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          30
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          31
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          1
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          2
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          3
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          4
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          5
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          6
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          7
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          8
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> should go to next year 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderYear"
+    >
+      <button
+        class="PrevButton"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        title="Header"
+        type="button"
+      >
+        1998
+      </button>
+      <button
+        class="NextButton"
+        title="Next"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyMonths"
+    >
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          janeiro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          fevereiro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          março
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          abril
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          maio
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          junho
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          julho
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          agosto
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          setembro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          outubro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          novembro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          dezembro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> should go to next year range 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderYearsRange"
+    >
+      <button
+        class="PrevButton"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        title="Header"
+        type="button"
+      >
+        1990
+         - 
+        2005
+      </button>
+      <button
+        class="NextButton"
+        title="Next"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyYears"
+    >
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1990
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1991
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1992
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1993
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1994
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1995
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1996
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1997
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1998
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1999
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2000
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2001
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2002
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2003
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2004
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          2005
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> should go to prev month 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderMonth"
+    >
+      <button
+        class="PrevButton"
+        title="Prev"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        type="button"
+      >
+        maio
+         - 
+        1998
+      </button>
+      <button
+        class="NextButton"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyDays"
+    >
+      <div
+        class="Days"
+      >
+        <div
+          class="Day"
+        >
+          D
+        </div>
+        <div
+          class="Day"
+        >
+          S
+        </div>
+        <div
+          class="Day"
+        >
+          T
+        </div>
+        <div
+          class="Day"
+        >
+          Q
+        </div>
+        <div
+          class="Day"
+        >
+          Q
+        </div>
+        <div
+          class="Day"
+        >
+          S
+        </div>
+        <div
+          class="Day"
+        >
+          S
+        </div>
+      </div>
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          26
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          27
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          28
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          29
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          30
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          1
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          2
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          3
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          4
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          5
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          6
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          7
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          8
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          9
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          10
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          11
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          12
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          13
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          14
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          15
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          16
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          17
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          18
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          19
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          20
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          21
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          22
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          23
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          24
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          25
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          26
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          27
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          28
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          29
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          30
+        </button>
+        <button
+          class="Cell DayCell ValidDate DayBelongCurrentMonth"
+          type="button"
+        >
+          31
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          1
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          2
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          3
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          4
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          5
+        </button>
+        <button
+          class="Cell DayCell ValidDate"
+          type="button"
+        >
+          6
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> should go to prev year 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderYear"
+    >
+      <button
+        class="PrevButton"
+        title="Prev"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        title="Header"
+        type="button"
+      >
+        1997
+      </button>
+      <button
+        class="NextButton"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyMonths"
+    >
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          janeiro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          fevereiro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          março
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          abril
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          maio
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          junho
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          julho
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          agosto
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          setembro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          outubro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          novembro
+        </button>
+        <button
+          class="Cell MonthCell"
+          type="button"
+        >
+          dezembro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Calendar /> should go to prev year range 1`] = `
+<div>
+  <div
+    class="Container"
+  >
+    <header
+      class="Header HeaderYearsRange"
+    >
+      <button
+        class="PrevButton"
+        title="Prev"
+        type="button"
+      />
+      <button
+        class="HeaderText"
+        title="Header"
+        type="button"
+      >
+        1974
+         - 
+        1989
+      </button>
+      <button
+        class="NextButton"
+        type="button"
+      />
+    </header>
+    <div
+      class="Body BodyYears"
+    >
+      <div
+        class="Cells"
+      >
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1974
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1975
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1976
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1977
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1978
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1979
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1980
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1981
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1982
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1983
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1984
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1985
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1986
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1987
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1988
+        </button>
+        <button
+          class="Cell YearCell"
+          type="button"
+        >
+          1989
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
