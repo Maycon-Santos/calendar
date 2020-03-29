@@ -1,26 +1,42 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add babel -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add prettier-standard -D
 
 PATH: 
-  /root/.vscode-server/bin/fe22a9645b44368865c0ba92e2fb881ff1afce94/bin:/root/.zplugin/polaris/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/windir/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/windir/c/Python27/:/windir/c/Python27/Scripts:/windir/c/Windows/system32:/windir/c/Windows:/windir/c/Windows/System32/Wbem:/windir/c/Windows/System32/WindowsPowerShell/v1.0/:/windir/c/Windows/System32/OpenSSH/:/windir/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/windir/c/Program Files/Git/cmd:/windir/c/ProgramData/chocolatey/bin:/windir/c/Program Files/PuTTY/:/windir/c/Program Files (x86)/Yarn/bin/:/windir/c/Users/Maycon/AppData/Roaming/nvm:/windir/c/Program Files/nodejs:/windir/c/WINDOWS/system32:/windir/c/WINDOWS:/windir/c/WINDOWS/System32/Wbem:/windir/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/windir/c/WINDOWS/System32/OpenSSH/:/windir/c/Program Files/dotnet/:/windir/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/windir/c/WINDOWS/system32:/windir/c/WINDOWS:/windir/c/WINDOWS/System32/Wbem:/windir/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/windir/c/WINDOWS/System32/OpenSSH/:/windir/c/Go/bin:/windir/c/Users/Maycon/scoop/shims:/windir/c/Users/Maycon/AppData/Local/Microsoft/WindowsApps:/windir/c/Users/Maycon/AppData/Local/GitHubDesktop/bin:/windir/c/Users/Maycon/AppData/Local/Programs/Microsoft VS Code/bin:/windir/c/Users/Maycon/AppData/Local/Yarn/bin:/windir/c/Users/Maycon/AppData/Local/Android/Sdk/platform-tools:/windir/c/Users/Maycon/AppData/Roaming/nvm:/windir/c/Users/Maycon/AppData/Roaming/nvm:/windir/c/Program Files/nodejs:/windir/c/Users/Maycon/AppData/Local/Microsoft/WindowsApps:/windir/e/JetBrains/WebStorm 2019.3.1/bin:/windir/c/Users/Maycon/go/bin:/usr/local/go/bin:/usr/local/go/bin
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Maycon\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Go\bin;C:\Users\Maycon\scoop\shims;C:\Users\Maycon\AppData\Local\Microsoft\WindowsApps;C:\Users\Maycon\AppData\Local\GitHubDesktop\bin;C:\Users\Maycon\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Maycon\AppData\Local\Yarn\bin;C:\Users\Maycon\AppData\Local\Android\Sdk\platform-tools;C:\Users\Maycon\AppData\Roaming\nvm;C:\Users\Maycon\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Maycon\AppData\Local\Microsoft\WindowsApps;;E:\JetBrains\WebStorm 2019.3.1\bin;;C:\Users\Maycon\go\bin
 
 Yarn version: 
-  1.19.2
+  1.19.1
 
 Node version: 
-  13.3.0
+  10.16.3
 
 Platform: 
-  linux x64
+  win32 x64
 
 Trace: 
-  Error: getaddrinfo EAI_AGAIN registry.npmjs.org
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:64:26)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
 
 npm manifest: 
   {
     "name": "root",
     "private": true,
+    "scripts": {
+      "start": "start-storybook -p 6006",
+      "build-storybook": "build-storybook"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.ts": [
+        "eslint --fix",
+        "prettier-standard",
+        "jest --bail --findRelatedTests"
+      ]
+    },
     "devDependencies": {
       "@babel/core": "^7.9.0",
       "@storybook/addon-actions": "^5.3.17",
@@ -31,6 +47,7 @@ npm manifest:
       "@testing-library/react": "^10.0.1",
       "@types/jest": "^25.1.4",
       "babel-loader": "^8.1.0",
+      "husky": "^4.2.3",
       "jest": "^25.1.0",
       "lerna": "^3.20.2",
       "react-docgen-typescript-loader": "^3.7.1",
@@ -44,10 +61,6 @@ npm manifest:
       "postcss-loader": "^3.0.0",
       "style-loader": "^1.1.3",
       "transition-engine": "^0.2.2"
-    },
-    "scripts": {
-      "start": "start-storybook -p 6006",
-      "build-storybook": "build-storybook"
     }
   }
 
@@ -4626,6 +4639,11 @@ Lockfile:
       array-ify "^1.0.0"
       dot-prop "^3.0.0"
   
+  compare-versions@^3.5.1:
+    version "3.6.0"
+    resolved "https://registry.yarnpkg.com/compare-versions/-/compare-versions-3.6.0.tgz#1a5689913685e5a87637b8d3ffca75514ec41d62"
+    integrity sha512-W6Af2Iw1z4CB7q4uU4hv646dW9GQuBM+YpC0UvUCWSD8w90SJjp+ujJuXaEMtAXBtSqGfMPuFOVn4/+FlaqfBA==
+  
   component-emitter@^1.2.1:
     version "1.3.0"
     resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
@@ -6147,6 +6165,13 @@ Lockfile:
       locate-path "^5.0.0"
       path-exists "^4.0.0"
   
+  find-versions@^3.2.0:
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/find-versions/-/find-versions-3.2.0.tgz#10297f98030a786829681690545ef659ed1d254e"
+    integrity sha512-P8WRou2S+oe222TOCHitLy8zj+SIsVJh52VP4lvXkaFVnOFFdoWv1H1Jjvel1aI6NCFOAaeAVm8qrI0odiLcww==
+    dependencies:
+      semver-regex "^2.0.0"
+  
   flatten@^1.0.2:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
@@ -6869,6 +6894,22 @@ Lockfile:
     integrity sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=
     dependencies:
       ms "^2.0.0"
+  
+  husky@^4.2.3:
+    version "4.2.3"
+    resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.3.tgz#3b18d2ee5febe99e27f2983500202daffbc3151e"
+    integrity sha512-VxTsSTRwYveKXN4SaH1/FefRJYCtx+wx04sSVcOpD7N2zjoHxa+cEJ07Qg5NmV3HAK+IRKOyNVpi2YBIVccIfQ==
+    dependencies:
+      chalk "^3.0.0"
+      ci-info "^2.0.0"
+      compare-versions "^3.5.1"
+      cosmiconfig "^6.0.0"
+      find-versions "^3.2.0"
+      opencollective-postinstall "^2.0.2"
+      pkg-dir "^4.2.0"
+      please-upgrade-node "^3.2.0"
+      slash "^3.0.0"
+      which-pm-runs "^1.0.0"
   
   iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@~0.4.13:
     version "0.4.24"
@@ -9367,6 +9408,11 @@ Lockfile:
       is-docker "^2.0.0"
       is-wsl "^2.1.1"
   
+  opencollective-postinstall@^2.0.2:
+    version "2.0.2"
+    resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
+    integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
+  
   optimist@^0.6.1:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
@@ -9816,6 +9862,13 @@ Lockfile:
     integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
     dependencies:
       find-up "^3.0.0"
+  
+  please-upgrade-node@^3.2.0:
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.2.0.tgz#aeddd3f994c933e4ad98b99d9a556efa0e2fe942"
+    integrity sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==
+    dependencies:
+      semver-compare "^1.0.0"
   
   pleeease-filters@^4.0.0:
     version "4.0.0"
@@ -11322,6 +11375,16 @@ Lockfile:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
     integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
+  
+  semver-compare@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
+    integrity sha1-De4hahyUGrN+nvsXiPavxf9VN/w=
+  
+  semver-regex@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/semver-regex/-/semver-regex-2.0.0.tgz#a93c2c5844539a770233379107b38c7b4ac9d338"
+    integrity sha512-mUdIBBvdn0PLOeP3TEkMH7HHeUP3GjsXCwKarjv/kGmUFOYg1VqEemKhoQpWMu6X2I8kHeuVdGibLGkVK+/5Qw==
   
   "semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.4.1, semver@^5.5, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0, semver@^5.7.0, semver@^5.7.1:
     version "5.7.1"
@@ -12977,6 +13040,11 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/which-module/-/which-module-2.0.0.tgz#d9ef07dce77b9902b8a3a8fa4b31c3e3f7e6e87a"
     integrity sha1-2e8H3Od7mQK4o6j6SzHD4/fm6Ho=
+  
+  which-pm-runs@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/which-pm-runs/-/which-pm-runs-1.0.0.tgz#670b3afbc552e0b55df6b7780ca74615f23ad1cb"
+    integrity sha1-Zws6+8VS4LVd9rd4DKdGFfI60cs=
   
   which@^1.2.9, which@^1.3.1:
     version "1.3.1"

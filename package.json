@@ -1,6 +1,22 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier-standard",
+      "jest --bail --findRelatedTests"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.17",
@@ -11,8 +27,10 @@
     "@testing-library/react": "^10.0.1",
     "@types/jest": "^25.1.4",
     "babel-loader": "^8.1.0",
+    "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lerna": "^3.20.2",
+    "prettier-standard": "^16.2.1",
     "react-docgen-typescript-loader": "^3.7.1",
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",
@@ -24,9 +42,5 @@
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.1.3",
     "transition-engine": "^0.2.2"
-  },
-  "scripts": {
-    "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
   }
 }
