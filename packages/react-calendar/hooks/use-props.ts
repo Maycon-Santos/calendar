@@ -23,13 +23,10 @@ export const defaultProps: Props = {
 
 export default function useProps (): Props {
   const {
-    CalendarProps,
-    CalendarProps: {
-      bind
-    }
+    bind: {
+      props
+    },
   } = useContext(CalendarContext)
-
-  const props = { ...CalendarProps, ...bind?.props }
 
   Object.keys(defaultProps).forEach(key => {
     if (defaultProps[key] && !props[key]) {

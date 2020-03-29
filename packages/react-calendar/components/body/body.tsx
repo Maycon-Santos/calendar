@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from '../../context'
+import useProps from '../../hooks/use-props'
+import classNameResolve from '../../utils/classname-resolve'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
+import customOnClick from '../../utils/onclick-handler'
 import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
-import customOnClick from '../../utils/onclick-handler'
-import classNameResolve from '../../utils/classname-resolve'
-import useProps from '../../hooks/use-props'
 
 function Days () {
   const {
     calendarProvider,
     dateMouseOver,
-    emit,
+    emitEvent,
   } = useContext(CalendarContext)
 
   const {
@@ -46,24 +46,24 @@ function Days () {
 
         const clickHandler = () => {
           if (isSelectedDate) {
-            emit('calendar.removeSelectedDate', date)
+            emitEvent('calendar.removeSelectedDate', date)
             if (isPickRange) {
-              emit('setDateMouseOver', date)
+              emitEvent('setDateMouseOver', date)
             }
           } else if (belongCurrentMonth && !isInvalidDate) {
-            emit('calendar.addSelectedDate', date)
+            emitEvent('calendar.addSelectedDate', date)
           }
         }
 
         const mouseEnterHandler = () => {
           if (isPickRange && belongCurrentMonth && selectedDates.length === 1) {
-            emit('setDateMouseOver', date)
+            emitEvent('setDateMouseOver', date)
           }
         }
 
         const mouseLeaveHandler = () => {
           if (isPickRange) {
-            emit('setDateMouseOver', null)
+            emitEvent('setDateMouseOver', null)
           }
         }
 
@@ -97,7 +97,10 @@ function Days () {
 function Months () {
   const {
     calendarProvider,
-    emit,
+    emitEvent,
+    bind: {
+      order,
+    },
   } = useContext(CalendarContext)
 
   const {
@@ -124,8 +127,10 @@ function Months () {
         })
 
         const clickHandler = () => {
-          emit('calendar.goto', date)
-          emit('setDataToView', 'days')
+          const clonedDate = new Date(date)
+          clonedDate.setMonth(clonedDate.getMonth() - order)
+          emitEvent('calendar.goto', clonedDate)
+          emitEvent('setDataToView', 'days')
         }
 
         return (
@@ -153,7 +158,10 @@ function Months () {
 function Years () {
   const {
     calendarProvider,
-    emit,
+    emitEvent,
+    bind: {
+      order,
+    },
   } = useContext(CalendarContext)
 
   const {
@@ -178,8 +186,10 @@ function Years () {
         })
 
         const clickHandler = () => {
-          emit('calendar.goto', date)
-          emit('setDataToView', 'months')
+          const clonedDate = new Date(date)
+          clonedDate.setFullYear(clonedDate.getFullYear() - order)
+          emitEvent('calendar.goto', clonedDate)
+          emitEvent('setDataToView', 'months')
         }
 
         return (

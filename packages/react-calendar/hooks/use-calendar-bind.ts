@@ -3,8 +3,7 @@ import { CalendarProps } from '../shared-types'
 
 export default (): CalendarProps['bind'] => {
   return useMemo(() => ({
-    order: 0,
-    dispatchers: [],
+    owners: [],
     props: {},
   }), [])
 }

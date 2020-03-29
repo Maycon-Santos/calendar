@@ -21,6 +21,7 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true
   },
   "include": ["packages/**/*"],
   "exclude": ["node_modules", "build", "scripts"]

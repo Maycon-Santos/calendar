@@ -1,86 +1,55 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import CalendarProvider from '../calendar-provider/calendar-provider'
-import { CalendarContext } from './context'
 import Body from './components/body'
 import Header from './components/header'
-import {
-  CalendarProps,
-  DataToView,
-  EventDispatcher
-} from './shared-types'
-import dispatcherFactory from './dispatcher-factory'
+import { CalendarContext } from './context'
+import useBindConsumer from './hooks/use-bind-consumer'
+import useDispatcher from './hooks/use-dispatcher'
+import useForceUpdate from './hooks/use-force-update'
+import useWillMount from './hooks/use-will-mount'
+import { CalendarProps, DataToView, EventDispatcher } from './shared-types'
 
 export default (props: CalendarProps) => {
   const {
     classNames,
-    bind,
     startDate,
   } = props
-  const [, forceUpdate] = useState()
-  const [order, setOrder] = useState<number>(0)
+  
   const [dataToView, setDataToView] = useState<DataToView>('days')
   const [dateMouseOver, setDateMouseOver] = useState<Date | null>(null)
   const calendarProvider = useMemo(() => new CalendarProvider({ date: startDate }), [])
-  const bindProps = useMemo(() => ({}), [])
+  const bind = useBindConsumer({
+    props,
+    shared: {
+      mainCalendarProvider: calendarProvider,
+      dispatchers: []
+    }
+  })
 
-  // Update shared props object
-  if (order === 0) Object.assign(bindProps, props)
-
-  calendarProvider.onChange = useCallback(() => forceUpdate({}), [])
-
-  const dispatcher: EventDispatcher = useMemo(() => dispatcherFactory({
-    order,
+  const dispatcher = useDispatcher({
+    bind,
     calendarProvider,
     setDateMouseOver,
     setDataToView,
-    props: bindProps,
-  }), [order])
+  })
 
-  useEffect(connector, [])
-  useEffect(setCorrectDataToView, [order])
-
-  // Update dispatcher function in bind object
-  useEffect(() => {
-    if (bind && order) {
-      bind.dispatchers[order] = dispatcher
-    }
-  }, [dispatcher])
-
-  const emit: EventDispatcher = (type, ...params) => {
-    const dispatchers = bind?.dispatchers || [dispatcher]
+  const emitEvent: EventDispatcher = (type, ...params) => {
+    const dispatchers = bind.shared?.dispatchers || [dispatcher]
     dispatchers.forEach(dispatcher => dispatcher(type, ...params))
   }
 
-  function connector() {
-    if (bind) {
-      const order = bind.dispatchers.length
-      bind.dispatchers.push(dispatcher)
+  useWillMount(() => bind.order && dispatcher('setDataToView', dataToView))
 
-      if (order === 0) {
-        bind.props = bindProps
-        bind.mainCalendarProvider = calendarProvider
-      }
-      
-      setOrder(order)
-    }
-  }
-
-  function setCorrectDataToView () {
-    if (order) dispatcher('setDataToView', dataToView)
-  }
+  calendarProvider.onChange = useForceUpdate()
 
   return (
     <CalendarContext.Provider
       value={{
-        order,
+        emitEvent,
         dataToView,
         calendarProvider,
-        emit,
         dateMouseOver,
-        CalendarProps: {
-          ...bindProps,
-          classNames,
-        }
+        bind,
       }}>
       <div className={classNames?.Container}>
         <Header />

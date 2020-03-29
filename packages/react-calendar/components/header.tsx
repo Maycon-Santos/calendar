@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from "../context"
-import customOnClick from '../utils/onclick-handler'
-import classNameResolve from '../utils/classname-resolve'
 import useProps from '../hooks/use-props'
+import classNameResolve from '../utils/classname-resolve'
+import customOnClick from '../utils/onclick-handler'
 
 interface ButtonProps {
   onClick: () => void
@@ -80,7 +80,7 @@ function HeaderText (props: HeaderTextProps) {
 
 function Month () {
   const {
-    emit,
+    emitEvent,
     calendarProvider
   } = useContext(CalendarContext)
 
@@ -90,25 +90,25 @@ function Month () {
 
   return (
     <>
-      <PrevButton onClick={() => emit('calendar.prevMonth')} />
-      <HeaderText onClick={() => emit('setDataToView', 'months')}>
+      <PrevButton onClick={() => emitEvent('calendar.prevMonth')} />
+      <HeaderText onClick={() => emitEvent('setDataToView', 'months')}>
         {monthsDictionary[calendarProvider.month]} - {calendarProvider.year}
       </HeaderText>
-      <NextButton onClick={() => emit('calendar.nextMonth')} />
+      <NextButton onClick={() => emitEvent('calendar.nextMonth')} />
     </>
   )
 }
 
 function Year () {
   const {
-    emit,
+    emitEvent,
     calendarProvider
   } = useContext(CalendarContext)
   return (
     <>
-      <PrevButton onClick={() => emit('calendar.prevYear')} />
-      <HeaderText onClick={() => emit('setDataToView', 'years')}>{calendarProvider.year}</HeaderText>
-      <NextButton onClick={() => emit('calendar.nextYear')} />
+      <PrevButton onClick={() => emitEvent('calendar.prevYear')} />
+      <HeaderText onClick={() => emitEvent('setDataToView', 'years')}>{calendarProvider.year}</HeaderText>
+      <NextButton onClick={() => emitEvent('calendar.nextYear')} />
     </>
   )
 }
@@ -116,14 +116,14 @@ function Year () {
 function YearsRange () {
   const {
     calendarProvider,
-    emit
+    emitEvent,
   } = useContext(CalendarContext)
   const { years } = calendarProvider
   return (
     <>
-      <PrevButton onClick={() => emit('calendar.prevYears')} />
+      <PrevButton onClick={() => emitEvent('calendar.prevYears')} />
       <HeaderText>{years[0].year} - {years[years.length - 1].year}</HeaderText>
-      <NextButton onClick={() => emit('calendar.nextYears')} />
+      <NextButton onClick={() => emitEvent('calendar.nextYears')} />
     </>
   )
 }

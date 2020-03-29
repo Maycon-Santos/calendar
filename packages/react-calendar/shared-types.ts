@@ -93,6 +93,21 @@ export type ButtonPropsCustomOnClick = {
   [P in keyof ButtonProps]: P extends 'onClick' ? CustomOnClick : ButtonProps[P]
 }
 
+export type BindProp = {
+  owners: Symbol[]
+  props: CalendarProps
+  shared?: {
+    mainCalendarProvider: CalendarProvider
+    dispatchers: EventDispatcher[]
+  }
+}
+
+export type Bind = {
+  order: number
+  props: CalendarProps
+  shared?: BindProp['shared']
+}
+
 export interface CalendarProps {
   pick?: Pick
   pickLimit?: number
@@ -105,11 +120,7 @@ export interface CalendarProps {
     max: number
   }
   filterInvalidDates?: (date: Date) => boolean
-  bind?: {
-    dispatchers: EventDispatcher[]
-    props: CalendarProps
-    mainCalendarProvider?: CalendarProvider
-  }
+  bind?: BindProp
   selectedDate?: Date | Date[] | null
   onChangeSelectedDate?: (
     | ((date: Date | null | Date[]) => any)
@@ -129,10 +140,9 @@ export interface CalendarProps {
 }
 
 export interface CalendarContext {
-  order: number
   dataToView: DataToView
-  CalendarProps: CalendarProps
+  bind: Bind
   calendarProvider: CalendarProvider
-  emit: EventDispatcher
+  emitEvent: EventDispatcher
   dateMouseOver: Date | null
 }
