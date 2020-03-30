@@ -1,0 +1,996 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar Provider should go to next month 1`] = `
+Array [
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-31T03:00:00.000Z,
+    "day": 31,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-01T03:00:00.000Z,
+    "day": 1,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-02T03:00:00.000Z,
+    "day": 2,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-03T03:00:00.000Z,
+    "day": 3,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-04T03:00:00.000Z,
+    "day": 4,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-05T03:00:00.000Z,
+    "day": 5,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-06T03:00:00.000Z,
+    "day": 6,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-07T03:00:00.000Z,
+    "day": 7,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-08T03:00:00.000Z,
+    "day": 8,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-09T03:00:00.000Z,
+    "day": 9,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-10T03:00:00.000Z,
+    "day": 10,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-11T03:00:00.000Z,
+    "day": 11,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-12T03:00:00.000Z,
+    "day": 12,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-13T03:00:00.000Z,
+    "day": 13,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-14T03:00:00.000Z,
+    "day": 14,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-15T03:00:00.000Z,
+    "day": 15,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-16T03:00:00.000Z,
+    "day": 16,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-17T03:00:00.000Z,
+    "day": 17,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-18T03:00:00.000Z,
+    "day": 18,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-19T03:00:00.000Z,
+    "day": 19,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-20T03:00:00.000Z,
+    "day": 20,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-21T03:00:00.000Z,
+    "day": 21,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-22T03:00:00.000Z,
+    "day": 22,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-23T03:00:00.000Z,
+    "day": 23,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-24T03:00:00.000Z,
+    "day": 24,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-25T03:00:00.000Z,
+    "day": 25,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-26T03:00:00.000Z,
+    "day": 26,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-27T03:00:00.000Z,
+    "day": 27,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-28T03:00:00.000Z,
+    "day": 28,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-29T03:00:00.000Z,
+    "day": 29,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-06-30T03:00:00.000Z,
+    "day": 30,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-01T03:00:00.000Z,
+    "day": 1,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-02T03:00:00.000Z,
+    "day": 2,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-03T03:00:00.000Z,
+    "day": 3,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-04T03:00:00.000Z,
+    "day": 4,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-05T03:00:00.000Z,
+    "day": 5,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-06T03:00:00.000Z,
+    "day": 6,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-07T03:00:00.000Z,
+    "day": 7,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-08T03:00:00.000Z,
+    "day": 8,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-09T03:00:00.000Z,
+    "day": 9,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-10T03:00:00.000Z,
+    "day": 10,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-07-11T03:00:00.000Z,
+    "day": 11,
+  },
+]
+`;
+
+exports[`Calendar Provider should go to next year 1`] = `
+Array [
+  Object {
+    "date": 1999-01-01T02:00:00.000Z,
+    "month": 0,
+  },
+  Object {
+    "date": 1999-02-01T02:00:00.000Z,
+    "month": 1,
+  },
+  Object {
+    "date": 1999-03-01T03:00:00.000Z,
+    "month": 2,
+  },
+  Object {
+    "date": 1999-04-01T03:00:00.000Z,
+    "month": 3,
+  },
+  Object {
+    "date": 1999-05-01T03:00:00.000Z,
+    "month": 4,
+  },
+  Object {
+    "date": 1999-06-01T03:00:00.000Z,
+    "month": 5,
+  },
+  Object {
+    "date": 1999-07-01T03:00:00.000Z,
+    "month": 6,
+  },
+  Object {
+    "date": 1999-08-01T03:00:00.000Z,
+    "month": 7,
+  },
+  Object {
+    "date": 1999-09-01T03:00:00.000Z,
+    "month": 8,
+  },
+  Object {
+    "date": 1999-10-01T03:00:00.000Z,
+    "month": 9,
+  },
+  Object {
+    "date": 1999-11-01T02:00:00.000Z,
+    "month": 10,
+  },
+  Object {
+    "date": 1999-12-01T02:00:00.000Z,
+    "month": 11,
+  },
+]
+`;
+
+exports[`Calendar Provider should go to next years range 1`] = `
+Array [
+  Object {
+    "date": 2006-01-01T02:00:00.000Z,
+    "year": 2006,
+  },
+  Object {
+    "date": 2007-01-01T02:00:00.000Z,
+    "year": 2007,
+  },
+  Object {
+    "date": 2008-01-01T02:00:00.000Z,
+    "year": 2008,
+  },
+  Object {
+    "date": 2009-01-01T02:00:00.000Z,
+    "year": 2009,
+  },
+  Object {
+    "date": 2010-01-01T02:00:00.000Z,
+    "year": 2010,
+  },
+  Object {
+    "date": 2011-01-01T02:00:00.000Z,
+    "year": 2011,
+  },
+  Object {
+    "date": 2012-01-01T02:00:00.000Z,
+    "year": 2012,
+  },
+  Object {
+    "date": 2013-01-01T02:00:00.000Z,
+    "year": 2013,
+  },
+  Object {
+    "date": 2014-01-01T02:00:00.000Z,
+    "year": 2014,
+  },
+  Object {
+    "date": 2015-01-01T02:00:00.000Z,
+    "year": 2015,
+  },
+  Object {
+    "date": 2016-01-01T02:00:00.000Z,
+    "year": 2016,
+  },
+  Object {
+    "date": 2017-01-01T02:00:00.000Z,
+    "year": 2017,
+  },
+  Object {
+    "date": 2018-01-01T02:00:00.000Z,
+    "year": 2018,
+  },
+  Object {
+    "date": 2019-01-01T02:00:00.000Z,
+    "year": 2019,
+  },
+  Object {
+    "date": 2020-01-01T02:00:00.000Z,
+    "year": 2020,
+  },
+  Object {
+    "date": 2021-01-01T02:00:00.000Z,
+    "year": 2021,
+  },
+]
+`;
+
+exports[`Calendar Provider should go to previous month 1`] = `
+Array [
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-03-29T03:00:00.000Z,
+    "day": 29,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-03-30T03:00:00.000Z,
+    "day": 30,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-03-31T03:00:00.000Z,
+    "day": 31,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-01T03:00:00.000Z,
+    "day": 1,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-02T03:00:00.000Z,
+    "day": 2,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-03T03:00:00.000Z,
+    "day": 3,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-04T03:00:00.000Z,
+    "day": 4,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-05T03:00:00.000Z,
+    "day": 5,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-06T03:00:00.000Z,
+    "day": 6,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-07T03:00:00.000Z,
+    "day": 7,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-08T03:00:00.000Z,
+    "day": 8,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-09T03:00:00.000Z,
+    "day": 9,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-10T03:00:00.000Z,
+    "day": 10,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-11T03:00:00.000Z,
+    "day": 11,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-12T03:00:00.000Z,
+    "day": 12,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-13T03:00:00.000Z,
+    "day": 13,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-14T03:00:00.000Z,
+    "day": 14,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-15T03:00:00.000Z,
+    "day": 15,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-16T03:00:00.000Z,
+    "day": 16,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-17T03:00:00.000Z,
+    "day": 17,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-18T03:00:00.000Z,
+    "day": 18,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-19T03:00:00.000Z,
+    "day": 19,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-20T03:00:00.000Z,
+    "day": 20,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-21T03:00:00.000Z,
+    "day": 21,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-22T03:00:00.000Z,
+    "day": 22,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-23T03:00:00.000Z,
+    "day": 23,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-24T03:00:00.000Z,
+    "day": 24,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-25T03:00:00.000Z,
+    "day": 25,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-26T03:00:00.000Z,
+    "day": 26,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-27T03:00:00.000Z,
+    "day": 27,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-28T03:00:00.000Z,
+    "day": 28,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-29T03:00:00.000Z,
+    "day": 29,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-04-30T03:00:00.000Z,
+    "day": 30,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-01T03:00:00.000Z,
+    "day": 1,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-02T03:00:00.000Z,
+    "day": 2,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-03T03:00:00.000Z,
+    "day": 3,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-04T03:00:00.000Z,
+    "day": 4,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-05T03:00:00.000Z,
+    "day": 5,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-06T03:00:00.000Z,
+    "day": 6,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-07T03:00:00.000Z,
+    "day": 7,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-08T03:00:00.000Z,
+    "day": 8,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-05-09T03:00:00.000Z,
+    "day": 9,
+  },
+]
+`;
+
+exports[`Calendar Provider should go to previous year 1`] = `
+Array [
+  Object {
+    "date": 1997-01-01T02:00:00.000Z,
+    "month": 0,
+  },
+  Object {
+    "date": 1997-02-01T02:00:00.000Z,
+    "month": 1,
+  },
+  Object {
+    "date": 1997-03-01T03:00:00.000Z,
+    "month": 2,
+  },
+  Object {
+    "date": 1997-04-01T03:00:00.000Z,
+    "month": 3,
+  },
+  Object {
+    "date": 1997-05-01T03:00:00.000Z,
+    "month": 4,
+  },
+  Object {
+    "date": 1997-06-01T03:00:00.000Z,
+    "month": 5,
+  },
+  Object {
+    "date": 1997-07-01T03:00:00.000Z,
+    "month": 6,
+  },
+  Object {
+    "date": 1997-08-01T03:00:00.000Z,
+    "month": 7,
+  },
+  Object {
+    "date": 1997-09-01T03:00:00.000Z,
+    "month": 8,
+  },
+  Object {
+    "date": 1997-10-01T03:00:00.000Z,
+    "month": 9,
+  },
+  Object {
+    "date": 1997-11-01T02:00:00.000Z,
+    "month": 10,
+  },
+  Object {
+    "date": 1997-12-01T02:00:00.000Z,
+    "month": 11,
+  },
+]
+`;
+
+exports[`Calendar Provider should go to previous years range 1`] = `
+Array [
+  Object {
+    "date": 1974-01-01T03:00:00.000Z,
+    "year": 1974,
+  },
+  Object {
+    "date": 1975-01-01T03:00:00.000Z,
+    "year": 1975,
+  },
+  Object {
+    "date": 1976-01-01T03:00:00.000Z,
+    "year": 1976,
+  },
+  Object {
+    "date": 1977-01-01T03:00:00.000Z,
+    "year": 1977,
+  },
+  Object {
+    "date": 1978-01-01T03:00:00.000Z,
+    "year": 1978,
+  },
+  Object {
+    "date": 1979-01-01T03:00:00.000Z,
+    "year": 1979,
+  },
+  Object {
+    "date": 1980-01-01T03:00:00.000Z,
+    "year": 1980,
+  },
+  Object {
+    "date": 1981-01-01T03:00:00.000Z,
+    "year": 1981,
+  },
+  Object {
+    "date": 1982-01-01T03:00:00.000Z,
+    "year": 1982,
+  },
+  Object {
+    "date": 1983-01-01T03:00:00.000Z,
+    "year": 1983,
+  },
+  Object {
+    "date": 1984-01-01T03:00:00.000Z,
+    "year": 1984,
+  },
+  Object {
+    "date": 1985-01-01T03:00:00.000Z,
+    "year": 1985,
+  },
+  Object {
+    "date": 1986-01-01T02:00:00.000Z,
+    "year": 1986,
+  },
+  Object {
+    "date": 1987-01-01T02:00:00.000Z,
+    "year": 1987,
+  },
+  Object {
+    "date": 1988-01-01T02:00:00.000Z,
+    "year": 1988,
+  },
+  Object {
+    "date": 1989-01-01T02:00:00.000Z,
+    "year": 1989,
+  },
+]
+`;
+
+exports[`Calendar Provider should returns all days of the mounth 1`] = `
+Array [
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-04-26T03:00:00.000Z,
+    "day": 26,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-04-27T03:00:00.000Z,
+    "day": 27,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-04-28T03:00:00.000Z,
+    "day": 28,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-04-29T03:00:00.000Z,
+    "day": 29,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-04-30T03:00:00.000Z,
+    "day": 30,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-01T03:00:00.000Z,
+    "day": 1,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-02T03:00:00.000Z,
+    "day": 2,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-03T03:00:00.000Z,
+    "day": 3,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-04T03:00:00.000Z,
+    "day": 4,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-05T03:00:00.000Z,
+    "day": 5,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-06T03:00:00.000Z,
+    "day": 6,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-07T03:00:00.000Z,
+    "day": 7,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-08T03:00:00.000Z,
+    "day": 8,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-09T03:00:00.000Z,
+    "day": 9,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-10T03:00:00.000Z,
+    "day": 10,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-11T03:00:00.000Z,
+    "day": 11,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-12T03:00:00.000Z,
+    "day": 12,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-13T03:00:00.000Z,
+    "day": 13,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-14T03:00:00.000Z,
+    "day": 14,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-15T03:00:00.000Z,
+    "day": 15,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-16T03:00:00.000Z,
+    "day": 16,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-17T03:00:00.000Z,
+    "day": 17,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-18T03:00:00.000Z,
+    "day": 18,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-19T03:00:00.000Z,
+    "day": 19,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-20T03:00:00.000Z,
+    "day": 20,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-21T03:00:00.000Z,
+    "day": 21,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-22T03:00:00.000Z,
+    "day": 22,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-23T03:00:00.000Z,
+    "day": 23,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-24T03:00:00.000Z,
+    "day": 24,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-25T03:00:00.000Z,
+    "day": 25,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-26T03:00:00.000Z,
+    "day": 26,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-27T03:00:00.000Z,
+    "day": 27,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-28T03:00:00.000Z,
+    "day": 28,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-29T03:00:00.000Z,
+    "day": 29,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-30T03:00:00.000Z,
+    "day": 30,
+  },
+  Object {
+    "belongCurrentMonth": true,
+    "date": 1998-05-31T03:00:00.000Z,
+    "day": 31,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-06-01T03:00:00.000Z,
+    "day": 1,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-06-02T03:00:00.000Z,
+    "day": 2,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-06-03T03:00:00.000Z,
+    "day": 3,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-06-04T03:00:00.000Z,
+    "day": 4,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-06-05T03:00:00.000Z,
+    "day": 5,
+  },
+  Object {
+    "belongCurrentMonth": false,
+    "date": 1998-06-06T03:00:00.000Z,
+    "day": 6,
+  },
+]
+`;
+
+exports[`Calendar Provider should returns all months of the year 1`] = `
+Array [
+  Object {
+    "date": 1998-01-01T02:00:00.000Z,
+    "month": 0,
+  },
+  Object {
+    "date": 1998-02-01T02:00:00.000Z,
+    "month": 1,
+  },
+  Object {
+    "date": 1998-03-01T03:00:00.000Z,
+    "month": 2,
+  },
+  Object {
+    "date": 1998-04-01T03:00:00.000Z,
+    "month": 3,
+  },
+  Object {
+    "date": 1998-05-01T03:00:00.000Z,
+    "month": 4,
+  },
+  Object {
+    "date": 1998-06-01T03:00:00.000Z,
+    "month": 5,
+  },
+  Object {
+    "date": 1998-07-01T03:00:00.000Z,
+    "month": 6,
+  },
+  Object {
+    "date": 1998-08-01T03:00:00.000Z,
+    "month": 7,
+  },
+  Object {
+    "date": 1998-09-01T03:00:00.000Z,
+    "month": 8,
+  },
+  Object {
+    "date": 1998-10-01T03:00:00.000Z,
+    "month": 9,
+  },
+  Object {
+    "date": 1998-11-01T02:00:00.000Z,
+    "month": 10,
+  },
+  Object {
+    "date": 1998-12-01T02:00:00.000Z,
+    "month": 11,
+  },
+]
+`;
+
+exports[`Calendar Provider should returns years around 1`] = `
+Array [
+  Object {
+    "date": 1998-01-01T02:00:00.000Z,
+    "month": 0,
+  },
+  Object {
+    "date": 1998-02-01T02:00:00.000Z,
+    "month": 1,
+  },
+  Object {
+    "date": 1998-03-01T03:00:00.000Z,
+    "month": 2,
+  },
+  Object {
+    "date": 1998-04-01T03:00:00.000Z,
+    "month": 3,
+  },
+  Object {
+    "date": 1998-05-01T03:00:00.000Z,
+    "month": 4,
+  },
+  Object {
+    "date": 1998-06-01T03:00:00.000Z,
+    "month": 5,
+  },
+  Object {
+    "date": 1998-07-01T03:00:00.000Z,
+    "month": 6,
+  },
+  Object {
+    "date": 1998-08-01T03:00:00.000Z,
+    "month": 7,
+  },
+  Object {
+    "date": 1998-09-01T03:00:00.000Z,
+    "month": 8,
+  },
+  Object {
+    "date": 1998-10-01T03:00:00.000Z,
+    "month": 9,
+  },
+  Object {
+    "date": 1998-11-01T02:00:00.000Z,
+    "month": 10,
+  },
+  Object {
+    "date": 1998-12-01T02:00:00.000Z,
+    "month": 11,
+  },
+]
+`;

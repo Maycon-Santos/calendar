@@ -1,23 +1,92 @@
 import CalendarProvider from '../calendar-provider'
-import y1998m05 from './static/days/1998-05'
-import y1998 from './static/months/1998'
 
 describe('Calendar Provider', () => {
-  const calendar = new CalendarProvider({
-    date: new Date(1998, 4, 8),
-    backwardYears: 8,
-    forwardYears: 8
-  })
+ 
 
   it('should returns all days of the mounth', () => {
-    expect(calendar.days).toEqual(y1998m05)
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    expect(calendar.days).toMatchSnapshot()
   })
 
   it('should returns all months of the year', () => {
-    expect(calendar.months).toEqual(y1998)
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    expect(calendar.months).toMatchSnapshot()
   })
 
   it('should returns years around', () => {
-    expect(calendar.months).toEqual(y1998)
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    expect(calendar.months).toMatchSnapshot()
+  })
+
+  it('should go to next month', () => {
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    calendar.nextMonth()
+    expect(calendar.days).toMatchSnapshot()
+  })
+
+  it('should go to previous month', () => {
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    calendar.prevMonth()
+    expect(calendar.days).toMatchSnapshot()
+  })
+
+  it('should go to next year', () => {
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    calendar.nextYear()
+    expect(calendar.months).toMatchSnapshot()
+  })
+
+  it('should go to previous year', () => {
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    calendar.prevYear()
+    expect(calendar.months).toMatchSnapshot()
+  })
+
+  it('should go to next years range', () => {
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    calendar.nextYears()
+    expect(calendar.years).toMatchSnapshot()
+  })
+
+  it('should go to previous years range', () => {
+    const calendar = new CalendarProvider({
+      date: new Date(1998, 4, 8),
+      backwardYears: 8,
+      forwardYears: 8
+    })
+    calendar.prevYears()
+    expect(calendar.years).toMatchSnapshot()
   })
 })

@@ -4,7 +4,7 @@ import useProps from '../../hooks/use-props'
 import classNameResolve from '../../utils/classname-resolve'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
-import customOnClick from '../../utils/onclick-handler'
+import customOnClick from '../../utils/custom-onclick'
 import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
 

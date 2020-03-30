@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { CalendarContext } from '../context'
 import useProps from '../hooks/use-props'
 import classNameResolve from '../utils/classname-resolve'
-import customOnClick from '../utils/onclick-handler'
+import customOnClick from '../utils/custom-onclick'
 
 interface ButtonProps {
   onClick: () => void
