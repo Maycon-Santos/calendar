@@ -1,8 +1,6 @@
 import CalendarProvider from '../calendar-provider'
 
 describe('Calendar Provider', () => {
- 
-
   it('should returns all days of the mounth', () => {
     const calendar = new CalendarProvider({
       date: new Date(1998, 4, 8),
