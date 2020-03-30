@@ -294,8 +294,8 @@ describe('<Calendar />', () => {
       'Sunday',
       'Monday',
       'Tuesday',
-      'fourth',
-      'fifth',
+      'Wednesday',
+      'Thursday',
       'Friday',
       'Saturday'
     ]

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="236" height="266" viewBox="0 0 236 266">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.978" y1="0.018" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fdfdfd"/>
+    </linearGradient>
+    <filter id="Retângulo_1" x="0" y="0" width="236" height="266" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#0b4373" flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_1" data-name="Grupo 1" transform="translate(-337 -329)">
+    <g transform="matrix(1, 0, 0, 1, 337, 329)" filter="url(#Retângulo_1)">
+      <g id="Retângulo_1-2" data-name="Retângulo 1" transform="translate(3 2)" stroke="#dbe2e8" stroke-width="1" fill="url(#linear-gradient)">
+        <rect width="230" height="260" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="229" height="259" rx="3.5" fill="none"/>
+      </g>
+    </g>
+    <rect id="Retângulo_2" data-name="Retângulo 2" width="115" height="18" rx="8" transform="translate(352 343)" fill="#e8f4ff"/>
+    <circle id="Elipse_1" data-name="Elipse 1" cx="9" cy="9" r="9" transform="translate(516 343)" fill="#e8f4ff"/>
+    <circle id="Elipse_2" data-name="Elipse 2" cx="9" cy="9" r="9" transform="translate(540 343)" fill="#e8f4ff"/>
+    <text id="S" transform="translate(359 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">S</tspan></text>
+    <circle id="Elipse_3" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(352 412)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-2" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(383 412)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-3" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(414 412)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-4" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(445 412)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-5" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(476 412)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-6" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(507 412)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-7" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(538 412)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-8" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(352 442)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-9" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(383 442)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-10" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(414 442)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-11" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(445 442)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-12" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(476 442)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-13" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(507 442)" fill="#7ac0fe"/>
+    <circle id="Elipse_3-14" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(538 442)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-15" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(352 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-16" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(383 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-17" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(414 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-18" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(445 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-19" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(476 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-20" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(507 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-21" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(538 472)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-22" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(352 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-23" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(383 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-24" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(414 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-25" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(445 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-26" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(476 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-27" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(507 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-28" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(538 502)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-29" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(352 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-30" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(383 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-31" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(414 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-32" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(445 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-33" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(476 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-34" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(507 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-35" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(538 532)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-36" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(352 562)" fill="#e8f4ff"/>
+    <circle id="Elipse_3-37" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(383 562)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-38" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(414 562)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-39" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(445 562)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-40" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(476 562)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-41" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(507 562)" fill="#e8f4ff" opacity="0.35"/>
+    <circle id="Elipse_3-42" data-name="Elipse 3" cx="10" cy="10" r="10" transform="translate(538 562)" fill="#e8f4ff" opacity="0.35"/>
+    <text id="M" transform="translate(388 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">M</tspan></text>
+    <text id="T" transform="translate(421 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">T</tspan></text>
+    <text id="W" transform="translate(450 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">W</tspan></text>
+    <text id="T-2" data-name="T" transform="translate(483 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">T</tspan></text>
+    <text id="F" transform="translate(514 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">F</tspan></text>
+    <text id="S-2" data-name="S" transform="translate(544 389)" fill="#397eb9" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">S</tspan></text>
+  </g>
+</svg>
