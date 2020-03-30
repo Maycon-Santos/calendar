@@ -77,7 +77,8 @@ export default function dispatcherFactory (
 
         if (
           isValid &&
-          rangeDiffAbs >= rangeSize.min && rangeDiffAbs <= rangeSize.max
+          rangeDiffAbs >= rangeSize.min &&
+          rangeDiffAbs <= rangeSize.max
         ) {
           emitSelectedDateEvent(dateSort(...selectedDates, value))
           break
