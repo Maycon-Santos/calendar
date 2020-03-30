@@ -6,7 +6,7 @@ interface BindData {
   props: CalendarProps
 }
 
-export default function useBindConsumer<Shared> (bindData: BindData): Bind {
+export default function useBindConsumer (bindData: BindData): Bind {
   const { props, shared } = bindData
   const { bind } = props
 

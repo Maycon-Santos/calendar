@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import CalendarProvider from '../../calendar-provider/src/calendar-provider'
+import CalendarProvider from 'calendar-provider'
 import Body from './components/body'
 import Header from './components/header'
 import { CalendarContext } from './context'

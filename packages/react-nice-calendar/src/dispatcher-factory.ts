@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import CalendarProvider from '../../calendar-provider/src/calendar-provider'
+import CalendarProvider from 'calendar-provider'
 import { CalendarProps, DataToView, EventDispatcher } from './shared-types'
 import dateDiff from './utils/date-diff'
 import dateSort from './utils/date-sort'

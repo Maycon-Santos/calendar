@@ -4,7 +4,7 @@ import {
   DetailedHTMLProps,
   HTMLAttributes
 } from 'react'
-import CalendarProvider from '../../calendar-provider/src/calendar-provider'
+import CalendarProvider from 'calendar-provider'
 
 export type DataToView = 'days' | 'months' | 'years'
 

@@ -9,8 +9,6 @@ describe('<Calendar />', () => {
   const Component = (props: CalendarProps) => {
     const [selectedDate, setSelectedDate] = useState()
 
-    console.log(selectedDate)
-
     return (
       <Calendar
         {...props}
