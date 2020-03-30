@@ -1,1 +1,1 @@
-export default function dateIncludes(arr: Date[], date: Date): boolean;
+export default function dateIncludes (arr: Date[], date: Date): boolean

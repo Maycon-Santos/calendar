@@ -1,1 +1,1 @@
-export default function useForceUpdate(): () => void;
+export default function useForceUpdate (): () => void

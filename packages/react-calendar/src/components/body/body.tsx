@@ -9,11 +9,9 @@ import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
 
 function Days () {
-  const {
-    calendarProvider,
-    dateMouseOver,
-    emitEvent,
-  } = useContext(CalendarContext)
+  const { calendarProvider, dateMouseOver, emitEvent } = useContext(
+    CalendarContext
+  )
 
   const {
     pick,
@@ -21,7 +19,7 @@ function Days () {
     filterInvalidDates,
     DateProps,
     classNames,
-    rangeSize,
+    rangeSize
   } = useProps()
 
   const { days } = calendarProvider
@@ -32,17 +30,21 @@ function Days () {
       {days.map(({ date, day, belongCurrentMonth }) => {
         const isCurrentDate = compareDates(date, new Date())
         const isSelectedDate = dateIncludes(selectedDates, date)
-        const isInvalidDate = filterInvalidDates ? filterInvalidDates(date) : false
+        const isInvalidDate = filterInvalidDates
+          ? filterInvalidDates(date)
+          : false
         const isPickRange = pick === 'range'
 
-        const pickRangeClassNames = isPickRange ? getPickRangeClassNames({
-          selectedDates,
-          dateMouseOver,
-          date,
-          rangeSize: rangeSize,
-          isInvalidDate,
-          classNames,
-        }) : []
+        const pickRangeClassNames = isPickRange
+          ? getPickRangeClassNames({
+              selectedDates,
+              dateMouseOver,
+              date,
+              rangeSize: rangeSize,
+              isInvalidDate,
+              classNames
+            })
+          : []
 
         const clickHandler = () => {
           if (isSelectedDate) {
@@ -71,15 +73,15 @@ function Days () {
           <button
             {...DateProps}
             key={day + belongCurrentMonth.toString()}
-            type="button"
+            type='button'
             className={classNameResolve(
               DateProps?.className,
               classNames?.Cell,
               classNames?.DayCell,
               isInvalidDate ? classNames?.InvalidDate : classNames?.ValidDate,
               belongCurrentMonth && classNames?.DayBelongCurrentMonth,
-              isCurrentDate      && classNames?.CurrentDate,
-              isSelectedDate     && classNames?.SelectedDate,
+              isCurrentDate && classNames?.CurrentDate,
+              isSelectedDate && classNames?.SelectedDate,
               ...pickRangeClassNames
             )}
             onClick={customOnClick(clickHandler, DateProps?.onClick)}
@@ -98,17 +100,10 @@ function Months () {
   const {
     calendarProvider,
     emitEvent,
-    bind: {
-      order,
-    },
+    bind: { order }
   } = useContext(CalendarContext)
 
-  const {
-    classNames,
-    monthsDictionary,
-    selectedDate,
-    MonthProps,
-  } = useProps()
+  const { classNames, monthsDictionary, selectedDate, MonthProps } = useProps()
 
   const { months } = calendarProvider
   const selectedDates = getSelectedDates(selectedDate)
@@ -137,13 +132,14 @@ function Months () {
           <button
             {...MonthProps}
             key={month}
-            type="button"
+            type='button'
             className={classNameResolve(
               MonthProps?.className,
               classNames?.Cell,
               classNames?.MonthCell,
               dateString === currentDateString && classNames?.CurrentDate,
-              dateIncludes(clonedSelectedDates, date) && classNames?.SelectedDate,
+              dateIncludes(clonedSelectedDates, date) &&
+                classNames?.SelectedDate
             )}
             onClick={customOnClick(clickHandler, MonthProps?.onClick)}
           >
@@ -159,16 +155,10 @@ function Years () {
   const {
     calendarProvider,
     emitEvent,
-    bind: {
-      order,
-    },
+    bind: { order }
   } = useContext(CalendarContext)
 
-  const {
-    classNames,
-    selectedDate,
-    YearProps
-  } = useProps()
+  const { classNames, selectedDate, YearProps } = useProps()
 
   const { years } = calendarProvider
   const selectedDates = getSelectedDates(selectedDate)
@@ -195,13 +185,15 @@ function Years () {
         return (
           <button
             key={year}
-            type="button"
+            type='button'
             className={classNameResolve(
               YearProps?.className,
               classNames?.Cell,
               classNames?.YearCell,
-              date.getFullYear() === currentDate.getFullYear() && classNames?.CurrentDate,
-              dateIncludes(clonedSelectedDates, date) && classNames?.SelectedDate,
+              date.getFullYear() === currentDate.getFullYear() &&
+                classNames?.CurrentDate,
+              dateIncludes(clonedSelectedDates, date) &&
+                classNames?.SelectedDate
             )}
             onClick={customOnClick(clickHandler, YearProps?.onClick)}
           >
@@ -214,9 +206,7 @@ function Years () {
 }
 
 export default function Body () {
-  const {
-    dataToView,
-  } = useContext(CalendarContext)
+  const { dataToView } = useContext(CalendarContext)
 
   const {
     classNames,
@@ -224,7 +214,7 @@ export default function Body () {
     DaysProps,
     DayProps,
     CellsProps,
-    daysDictionary,
+    daysDictionary
   } = useProps()
 
   return (
@@ -235,25 +225,19 @@ export default function Body () {
         classNames?.Body,
         dataToView === 'days' && classNames?.BodyDays,
         dataToView === 'months' && classNames?.BodyMonths,
-        dataToView === 'years' && classNames?.BodyYears,
+        dataToView === 'years' && classNames?.BodyYears
       )}
     >
       {dataToView === 'days' && (
         <div
           {...DaysProps}
-          className={classNameResolve(
-            DaysProps?.className,
-            classNames?.Days
-          )}
+          className={classNameResolve(DaysProps?.className, classNames?.Days)}
         >
           {daysDictionary.map((day, i) => (
             <div
               {...DayProps}
               key={day + i}
-              className={classNameResolve(
-                DayProps?.className,
-                classNames?.Day
-              )}
+              className={classNameResolve(DayProps?.className, classNames?.Day)}
             >
               {day}
             </div>
@@ -262,10 +246,7 @@ export default function Body () {
       )}
       <div
         {...CellsProps}
-        className={classNameResolve(
-          CellsProps?.className,
-          classNames?.Cells,
-        )}
+        className={classNameResolve(CellsProps?.className, classNames?.Cells)}
       >
         {dataToView === 'days' && <Days />}
         {dataToView === 'months' && <Months />}

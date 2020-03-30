@@ -10,14 +10,14 @@ import useWillMount from './hooks/use-will-mount'
 import { CalendarProps, DataToView, EventDispatcher } from './shared-types'
 
 export default (props: CalendarProps) => {
-  const {
-    classNames,
-    startDate,
-  } = props
-  
+  const { classNames, startDate } = props
+
   const [dataToView, setDataToView] = useState<DataToView>('days')
   const [dateMouseOver, setDateMouseOver] = useState<Date | null>(null)
-  const calendarProvider = useMemo(() => new CalendarProvider({ date: startDate }), [])
+  const calendarProvider = useMemo(
+    () => new CalendarProvider({ date: startDate }),
+    []
+  )
   const bind = useBindConsumer({
     props,
     shared: {
@@ -30,7 +30,7 @@ export default (props: CalendarProps) => {
     bind,
     calendarProvider,
     setDateMouseOver,
-    setDataToView,
+    setDataToView
   })
 
   const emitEvent: EventDispatcher = (type, ...params) => {
@@ -49,8 +49,9 @@ export default (props: CalendarProps) => {
         dataToView,
         calendarProvider,
         dateMouseOver,
-        bind,
-      }}>
+        bind
+      }}
+    >
       <div className={classNames?.Container}>
         <Header />
         <Body />

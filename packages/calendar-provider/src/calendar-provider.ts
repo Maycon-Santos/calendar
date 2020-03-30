@@ -2,7 +2,7 @@ type DaysType = {
   date: Date
   day: number
   belongCurrentMonth: boolean
-};
+}
 
 type MonthsType = {
   date: Date
@@ -28,11 +28,8 @@ export default class CalendarProvider {
   public onChange: (...args: any) => any = () => {}
 
   constructor (options?: OptionsInterface) {
-    const {
-      date = new Date(),
-      backwardYears = 8,
-      forwardYears = 8,
-    } = options || {}
+    const { date = new Date(), backwardYears = 8, forwardYears = 8 } =
+      options || {}
 
     this._dateToView = new Date(date)
     this._startDate = new Date(date)
@@ -58,24 +55,28 @@ export default class CalendarProvider {
     this.onChange()
   }
 
-  public prevYear  =(): void  =>{
+  public prevYear = (): void => {
     this._dateToView.setFullYear(this._dateToView.getFullYear() - 1)
     this.onChange()
   }
 
-  public nextYear  =(): void  =>{
+  public nextYear = (): void => {
     this._dateToView.setFullYear(this._dateToView.getFullYear() + 1)
     this.onChange()
   }
 
   public prevYears = (): void => {
-    const year = this._dateToView.getFullYear() - (this._backwardYears + this._forwardYears)
+    const year =
+      this._dateToView.getFullYear() -
+      (this._backwardYears + this._forwardYears)
     this._dateToView.setFullYear(year)
     this.onChange()
   }
 
   public nextYears = (): void => {
-    const year = this._dateToView.getFullYear() + (this._backwardYears + this._forwardYears)
+    const year =
+      this._dateToView.getFullYear() +
+      (this._backwardYears + this._forwardYears)
     this._dateToView.setFullYear(year)
     this.onChange()
   }
@@ -94,9 +95,13 @@ export default class CalendarProvider {
     return this._dateToView
   }
 
-  public get month (): number { return this._dateToView.getMonth() }
+  public get month (): number {
+    return this._dateToView.getMonth()
+  }
 
-  public get year (): number { return this._dateToView.getFullYear() }
+  public get year (): number {
+    return this._dateToView.getFullYear()
+  }
 
   public get days (): DaysType[] {
     const days = Array(42).fill(null)
@@ -115,7 +120,7 @@ export default class CalendarProvider {
       days[i] = {
         date: new Date(date),
         day: date.getDate(),
-        belongCurrentMonth: currentMonth === date.getMonth(),
+        belongCurrentMonth: currentMonth === date.getMonth()
       }
 
       date.setDate(date.getDate() + 1)
@@ -133,7 +138,7 @@ export default class CalendarProvider {
     for (const i in months) {
       months[i] = {
         date: new Date(currentMonth),
-        month: currentMonth.getMonth(),
+        month: currentMonth.getMonth()
       }
 
       currentMonth.setMonth(currentMonth.getMonth() + 1)
@@ -143,7 +148,9 @@ export default class CalendarProvider {
   }
 
   public get years (): YearType[] {
-    const years = Array(Math.abs(this._backwardYears) + this._forwardYears).fill(null)
+    const years = Array(
+      Math.abs(this._backwardYears) + this._forwardYears
+    ).fill(null)
     const currentYear = new Date(this._dateToView)
     currentYear.setDate(1)
     currentYear.setMonth(0)
@@ -152,7 +159,7 @@ export default class CalendarProvider {
     for (const i in years) {
       years[i] = {
         date: new Date(currentYear),
-        year: currentYear.getFullYear(),
+        year: currentYear.getFullYear()
       }
 
       currentYear.setFullYear(currentYear.getFullYear() + 1)

@@ -6,7 +6,7 @@ interface BindData {
   props: CalendarProps
 }
 
-export default function useBindConsumer <Shared>(bindData: BindData): Bind {
+export default function useBindConsumer<Shared> (bindData: BindData): Bind {
   const { props, shared } = bindData
   const { bind } = props
 
@@ -20,7 +20,7 @@ export default function useBindConsumer <Shared>(bindData: BindData): Bind {
 
   // Update shared props
   if (order === 0) Object.assign(bindProps, props)
-  
+
   if (bind && !bind.owners.includes(owner)) {
     bind.owners.push(owner)
     if (order === 0) {
@@ -34,6 +34,6 @@ export default function useBindConsumer <Shared>(bindData: BindData): Bind {
   return {
     order,
     props: bindProps,
-    shared: bind?.shared,
+    shared: bind?.shared
   }
 }

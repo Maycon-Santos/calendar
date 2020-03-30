@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction } from 'react';
-import CalendarProvider from '../../calendar-provider/src/calendar-provider';
-import { CalendarProps, DataToView, EventDispatcher } from './shared-types';
-import dateDiff from './utils/date-diff';
-import dateSort from './utils/date-sort';
-import getDatesRange from './utils/get-dates-range';
-import getSelectedDates from './utils/selected-dates';
-import { defaultProps } from './hooks/use-props';
-import { EventType } from './shared-types';
+import { Dispatch, SetStateAction } from 'react'
+import CalendarProvider from '../../calendar-provider/src/calendar-provider'
+import { CalendarProps, DataToView, EventDispatcher } from './shared-types'
+import dateDiff from './utils/date-diff'
+import dateSort from './utils/date-sort'
+import getDatesRange from './utils/get-dates-range'
+import getSelectedDates from './utils/selected-dates'
+import { defaultProps } from './hooks/use-props'
+import { EventType } from './shared-types'
 
 type Events = {
   [P in EventType]: (...args: any) => any
@@ -20,13 +20,15 @@ export interface DispatcherFactoryData {
     order: number
     props: CalendarProps
     shared?: {
-      mainCalendarProvider: CalendarProvider;
-      dispatchers: EventDispatcher[];
+      mainCalendarProvider: CalendarProvider
+      dispatchers: EventDispatcher[]
     }
   }
 }
 
-export default function dispatcherFactory (data: DispatcherFactoryData): EventDispatcher {
+export default function dispatcherFactory (
+  data: DispatcherFactoryData
+): EventDispatcher {
   const {
     calendarProvider,
     setDateMouseOver,
@@ -35,21 +37,18 @@ export default function dispatcherFactory (data: DispatcherFactoryData): EventDi
       order,
       shared,
       props,
-      props: {
-        onChangeSelectedDate,
-        filterInvalidDates,
-      },
-    },
+      props: { onChangeSelectedDate, filterInvalidDates }
+    }
   } = data
 
   function emitSelectedDateEvent (date: Date[] | Date | null) {
     return onChangeSelectedDate && onChangeSelectedDate(date)
   }
-  
+
   function setSingleDate (value: Date) {
     emitSelectedDateEvent(value)
   }
-  
+
   function setMultipleDate (value: Date) {
     const pickLimit = props?.pickLimit || defaultProps.pickLimit
     const selectedDates = getSelectedDates(props?.selectedDate)
@@ -72,11 +71,14 @@ export default function dispatcherFactory (data: DispatcherFactoryData): EventDi
         const rangeDiff = dateDiff(selectedDates[0], value)
         const rangeDiffAbs = Math.abs(rangeDiff)
         const datesRange = getDatesRange(selectedDates[0], value)
-        const isValid = !filterInvalidDates || (
+        const isValid =
+          !filterInvalidDates ||
           datesRange.filter(date => filterInvalidDates(date)).length === 0
-        )
 
-        if (isValid && (rangeDiffAbs >= rangeSize.min && rangeDiffAbs <= rangeSize.max)) {
+        if (
+          isValid &&
+          rangeDiffAbs >= rangeSize.min && rangeDiffAbs <= rangeSize.max
+        ) {
           emitSelectedDateEvent(dateSort(...selectedDates, value))
           break
         }
@@ -89,7 +91,7 @@ export default function dispatcherFactory (data: DispatcherFactoryData): EventDi
     const methods = {
       single: setSingleDate,
       multiple: setMultipleDate,
-      range: setRangeDate,
+      range: setRangeDate
     }
 
     methods[pick](date)
@@ -105,7 +107,10 @@ export default function dispatcherFactory (data: DispatcherFactoryData): EventDi
       const clonedSelectedDates = [...selectedDates]
       const formattedDates = selectedDates.map(d => d.toLocaleDateString())
 
-      clonedSelectedDates.splice(formattedDates.indexOf(value.toLocaleDateString()), 1)
+      clonedSelectedDates.splice(
+        formattedDates.indexOf(value.toLocaleDateString()),
+        1
+      )
 
       emitSelectedDateEvent(dateSort(...clonedSelectedDates))
     }
@@ -117,17 +122,17 @@ export default function dispatcherFactory (data: DispatcherFactoryData): EventDi
       const { mainCalendarProvider } = shared
       const { backwardYears, forwardYears } = mainCalendarProvider
       const date = new Date(mainCalendarProvider.dateToView)
-  
+
       if (value === 'days') {
         date.setMonth(date.getMonth() + order)
         calendarProvider.goto(date)
       }
-  
+
       if (value === 'months') {
         date.setFullYear(date.getFullYear() + order)
         calendarProvider.goto(date)
       }
-  
+
       if (value === 'years') {
         const years = mainCalendarProvider.years
         date.setFullYear(
@@ -151,8 +156,8 @@ export default function dispatcherFactory (data: DispatcherFactoryData): EventDi
     'calendar.goto': calendarProvider.goto,
     'calendar.addSelectedDate': addSelectedDateHandler,
     'calendar.removeSelectedDate': removeSelectedDate,
-    'setDateMouseOver': setDateMouseOver,
-    'setDataToView': setDataToViewHandler,
+    setDateMouseOver: setDateMouseOver,
+    setDataToView: setDataToViewHandler
   }
 
   return (eventType, ...eventValue) => events[eventType](...eventValue)

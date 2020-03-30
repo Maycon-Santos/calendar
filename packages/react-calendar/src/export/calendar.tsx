@@ -1,7 +1,12 @@
 import React, { useMemo, useEffect } from 'react'
 import animate, { easingFunctions } from 'transition-engine'
 import RawCalendar from '../react-calendar'
-import { CalendarProps, CustomOnClick, CustomOnClickEvent, ButtonPropsCustomOnClick } from '../shared-types'
+import {
+  CalendarProps,
+  CustomOnClick,
+  CustomOnClickEvent,
+  ButtonPropsCustomOnClick
+} from '../shared-types'
 import calendarStyle from './styles/calendar.css'
 
 export default function Calendar (props: CalendarProps) {
@@ -33,11 +38,17 @@ export default function Calendar (props: CalendarProps) {
           to,
           duration: 100,
           iterationCount: 2,
-          timingFunction: [easingFunctions.easeInQuad, easingFunctions.easeOutQuad],
+          timingFunction: [
+            easingFunctions.easeInQuad,
+            easingFunctions.easeOutQuad
+          ],
           transition ({ iteration, value, iterationProgress }) {
             bodyRefs.forEach(bodyRef => {
               if (bodyRef) {
-                bodyRef.style.opacity = (iteration === 1 ? iterationProgress : 1 - iterationProgress).toString()
+                bodyRef.style.opacity = (iteration === 1
+                  ? iterationProgress
+                  : 1 - iterationProgress
+                ).toString()
                 bodyRef.style.transform = `scale(${value})`
               }
             })
@@ -58,11 +69,17 @@ export default function Calendar (props: CalendarProps) {
           to,
           duration: 200,
           iterationCount: 2,
-          timingFunction: [easingFunctions.easeInQuad, easingFunctions.easeOutQuad],
+          timingFunction: [
+            easingFunctions.easeInQuad,
+            easingFunctions.easeOutQuad
+          ],
           transition ({ iteration, value, iterationProgress }) {
             bodyRefs.forEach(bodyRef => {
               if (bodyRef) {
-                bodyRef.style.opacity = (iteration === 1 ? iterationProgress : 1 - iterationProgress).toString()
+                bodyRef.style.opacity = (iteration === 1
+                  ? iterationProgress
+                  : 1 - iterationProgress
+                ).toString()
                 bodyRef.style.transform = `translateX(${value}px)`
               }
             })
@@ -81,13 +98,18 @@ export default function Calendar (props: CalendarProps) {
   const slideToLeftAnimation = slideAnimation([0, 20], [-20, 0])
   const slideToRightAnimation = slideAnimation([0, -20], [20, 0])
 
-  const onClickHandler = (handler: CustomOnClick, componentProps?: ButtonPropsCustomOnClick) => {
+  const onClickHandler = (
+    handler: CustomOnClick,
+    componentProps?: ButtonPropsCustomOnClick
+  ) => {
     return (event: CustomOnClickEvent) => {
       const { originalEvent, originalHandler } = event
       if (componentProps?.onClick) {
         componentProps.onClick({
           originalEvent,
-          originalHandler: originalHandler && (() => handler({ originalEvent, originalHandler }))
+          originalHandler:
+            originalHandler &&
+            (() => handler({ originalEvent, originalHandler }))
         })
       } else {
         handler({ originalEvent, originalHandler })
@@ -100,14 +122,17 @@ export default function Calendar (props: CalendarProps) {
       {...rest}
       classNames={assignedStyle}
       BodyProps={{
-        ref: typeof BodyProps?.ref === 'object' ? BodyProps.ref : ref => {
-          if (ref && !bodyRefs.includes(ref)) {
-            bodyRefs.push(ref)
-          }
-          if (typeof BodyProps?.ref === 'function') {
-            BodyProps.ref(ref)
-          }
-        }
+        ref:
+          typeof BodyProps?.ref === 'object'
+            ? BodyProps.ref
+            : ref => {
+                if (ref && !bodyRefs.includes(ref)) {
+                  bodyRefs.push(ref)
+                }
+                if (typeof BodyProps?.ref === 'function') {
+                  BodyProps.ref(ref)
+                }
+              }
       }}
       HeaderTextProps={{
         onClick: zoomOutAnimation

@@ -1,1 +1,1 @@
-export default function classNameResolve(...classNames: any[]): string;
+export default function classNameResolve (...classNames: any[]): string

@@ -1,4 +1,8 @@
-export default function dateBetweenRange (startDate?: Date | null, endDate?: Date | null, testDate?: Date) {
+export default function dateBetweenRange (
+  startDate?: Date | null,
+  endDate?: Date | null,
+  testDate?: Date
+) {
   if (!startDate || !endDate || !testDate) return false
 
   const startTime = startDate?.getTime()
@@ -9,7 +13,10 @@ export default function dateBetweenRange (startDate?: Date | null, endDate?: Dat
     return true
   }
 
-  if ((testTime > startTime && testTime < endTime) || (testTime < startTime && testTime > endTime)) {
+  if (
+    (testTime > startTime && testTime < endTime) ||
+    (testTime < startTime && testTime > endTime)
+  ) {
     return true
   }
 

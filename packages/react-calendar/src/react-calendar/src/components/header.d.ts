@@ -1,2 +1,2 @@
 /// <reference types="react" />
-export default function Header(): JSX.Element;
+export default function Header (): JSX.Element

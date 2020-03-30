@@ -1,2 +1,2 @@
-declare const _default: () => import("../shared-types").BindProp | undefined;
-export default _default;
+declare const _default: () => import('../shared-types').BindProp | undefined
+export default _default

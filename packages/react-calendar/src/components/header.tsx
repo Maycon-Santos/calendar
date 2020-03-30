@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { CalendarContext } from "../context"
+import { CalendarContext } from '../context'
 import useProps from '../hooks/use-props'
 import classNameResolve from '../utils/classname-resolve'
 import customOnClick from '../utils/onclick-handler'
@@ -16,15 +16,12 @@ interface HeaderTextProps {
 function PrevButton (props: ButtonProps) {
   const { onClick } = props
 
-  const {
-    classNames,
-    PrevButtonProps,
-  } = useProps()
-  
+  const { classNames, PrevButtonProps } = useProps()
+
   return (
     <button
       {...PrevButtonProps}
-      type="button"
+      type='button'
       onClick={customOnClick(onClick, PrevButtonProps?.onClick)}
       className={classNameResolve(
         PrevButtonProps?.className,
@@ -37,15 +34,12 @@ function PrevButton (props: ButtonProps) {
 function NextButton (props: ButtonProps) {
   const { onClick } = props
 
-  const {
-    classNames,
-    NextButtonProps,
-  } = useProps()
+  const { classNames, NextButtonProps } = useProps()
 
   return (
     <button
       {...NextButtonProps}
-      type="button"
+      type='button'
       onClick={customOnClick(onClick, NextButtonProps?.onClick)}
       className={classNameResolve(
         NextButtonProps?.className,
@@ -58,15 +52,12 @@ function NextButton (props: ButtonProps) {
 function HeaderText (props: HeaderTextProps) {
   const { children, onClick } = props
 
-  const {
-    classNames,
-    HeaderTextProps,
-  } = useProps()
+  const { classNames, HeaderTextProps } = useProps()
 
   return (
     <button
       {...HeaderTextProps}
-      type="button"
+      type='button'
       onClick={customOnClick(onClick, HeaderTextProps?.onClick)}
       className={classNameResolve(
         HeaderTextProps?.className,
@@ -79,14 +70,9 @@ function HeaderText (props: HeaderTextProps) {
 }
 
 function Month () {
-  const {
-    emitEvent,
-    calendarProvider
-  } = useContext(CalendarContext)
+  const { emitEvent, calendarProvider } = useContext(CalendarContext)
 
-  const {
-    monthsDictionary,
-  } = useProps()
+  const { monthsDictionary } = useProps()
 
   return (
     <>
@@ -100,43 +86,36 @@ function Month () {
 }
 
 function Year () {
-  const {
-    emitEvent,
-    calendarProvider
-  } = useContext(CalendarContext)
+  const { emitEvent, calendarProvider } = useContext(CalendarContext)
   return (
     <>
       <PrevButton onClick={() => emitEvent('calendar.prevYear')} />
-      <HeaderText onClick={() => emitEvent('setDataToView', 'years')}>{calendarProvider.year}</HeaderText>
+      <HeaderText onClick={() => emitEvent('setDataToView', 'years')}>
+        {calendarProvider.year}
+      </HeaderText>
       <NextButton onClick={() => emitEvent('calendar.nextYear')} />
     </>
   )
 }
 
 function YearsRange () {
-  const {
-    calendarProvider,
-    emitEvent,
-  } = useContext(CalendarContext)
+  const { calendarProvider, emitEvent } = useContext(CalendarContext)
   const { years } = calendarProvider
   return (
     <>
       <PrevButton onClick={() => emitEvent('calendar.prevYears')} />
-      <HeaderText>{years[0].year} - {years[years.length - 1].year}</HeaderText>
+      <HeaderText>
+        {years[0].year} - {years[years.length - 1].year}
+      </HeaderText>
       <NextButton onClick={() => emitEvent('calendar.nextYears')} />
     </>
   )
 }
 
 export default function Header () {
-  const {
-    dataToView,
-  } = useContext(CalendarContext)
+  const { dataToView } = useContext(CalendarContext)
 
-  const {
-    classNames,
-    HeaderProps,
-  } = useProps()
+  const { classNames, HeaderProps } = useProps()
 
   return (
     <header
@@ -145,7 +124,7 @@ export default function Header () {
         classNames?.Header,
         dataToView === 'days' && classNames?.HeaderMonth,
         dataToView === 'months' && classNames?.HeaderYear,
-        dataToView === 'years' && classNames?.HeaderYearsRange,
+        dataToView === 'years' && classNames?.HeaderYearsRange
       )}
       {...HeaderProps}
     >

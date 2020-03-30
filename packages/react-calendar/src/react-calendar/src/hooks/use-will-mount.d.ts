@@ -1,1 +1,1 @@
-export default function useWillMount<T>(callback: () => T): void;
+export default function useWillMount<T> (callback: () => T): void

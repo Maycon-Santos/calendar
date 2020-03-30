@@ -11,21 +11,32 @@ interface Props extends CalendarProps {
 }
 
 export const defaultProps: Props = {
-  monthsDictionary: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+  monthsDictionary: [
+    'janeiro',
+    'fevereiro',
+    'março',
+    'abril',
+    'maio',
+    'junho',
+    'julho',
+    'agosto',
+    'setembro',
+    'outubro',
+    'novembro',
+    'dezembro'
+  ],
   daysDictionary: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
   pick: 'single',
   pickLimit: Infinity,
   rangeSize: {
     min: 0,
-    max: Infinity,
+    max: Infinity
   }
 }
 
 export default function useProps (): Props {
   const {
-    bind: {
-      props
-    },
+    bind: { props }
   } = useContext(CalendarContext)
 
   Object.keys(defaultProps).forEach(key => {

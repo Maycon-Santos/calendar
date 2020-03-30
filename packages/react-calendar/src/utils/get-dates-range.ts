@@ -1,4 +1,4 @@
-import dateDiff from "./date-diff"
+import dateDiff from './date-diff'
 
 export default function getDatesRange (date1: Date, date2: Date) {
   const rangeDiff = dateDiff(date1, date2)
@@ -7,7 +7,7 @@ export default function getDatesRange (date1: Date, date2: Date) {
   const dates: Date[] = [new Date(date)]
 
   for (let i = 0; i < rangeDiffAbs; i++) {
-    date.setDate(date.getDate() + (rangeDiff / rangeDiffAbs))
+    date.setDate(date.getDate() + rangeDiff / rangeDiffAbs)
     dates.push(new Date(date))
   }
 
