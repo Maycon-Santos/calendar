@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, DetailedHTMLProps, HTMLAttributes } from 'react'
-import CalendarProvider from '../calendar-provider/calendar-provider'
+import CalendarProvider from '../../calendar-provider/src/calendar-provider'
 
 export type DataToView = 'days' | 'months' | 'years'
 

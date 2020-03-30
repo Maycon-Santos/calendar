@@ -17,6 +17,9 @@
       "jest --bail --findRelatedTests"
     ]
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.17",

@@ -1,0 +1,1 @@
+{"version":3,"file":"use-force-update.js","sourceRoot":"","sources":["../../../src/hooks/use-force-update.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,WAAW,EAAE,MAAM,OAAO,CAAA;AAE7C,MAAM,CAAC,OAAO,UAAU,cAAc;IAC9B,IAAA,eAA4B,EAAzB,mBAAyB,CAAA;IAClC,OAAO,WAAW,CAAC,cAAM,OAAA,WAAW,CAAC,EAAE,CAAC,EAAf,CAAe,EAAE,EAAE,CAAC,CAAA;AAC/C,CAAC"}

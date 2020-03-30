@@ -1,10 +1,10 @@
 import React, { useMemo, useEffect } from 'react'
 import animate, { easingFunctions } from 'transition-engine'
-import Calendar from '../react-calendar'
+import RawCalendar from '../react-calendar'
 import { CalendarProps, CustomOnClick, CustomOnClickEvent, ButtonPropsCustomOnClick } from '../shared-types'
 import calendarStyle from './styles/calendar.css'
 
-export default (props: CalendarProps) => {
+export default function Calendar (props: CalendarProps) {
   const {
     classNames,
     BodyProps,
@@ -96,7 +96,7 @@ export default (props: CalendarProps) => {
   }
 
   return (
-    <Calendar
+    <RawCalendar
       {...rest}
       classNames={assignedStyle}
       BodyProps={{
