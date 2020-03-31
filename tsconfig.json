@@ -7,7 +7,6 @@
     "allowJs": false,
     "jsx": "react",
     "moduleResolution": "node",
-    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -19,8 +18,11 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "calendar-provider": ["packages/calendar-provider/src"]
+    }
   },
-  "include": ["packages/**/*.ts", "packages/**/*.tsx"],
-  "exclude": ["node_modules", "build", "scripts", "__tests__/**/*.ts", "__tests__/**/*.tsx"]
+  "exclude": ["node_modules", "packages/**/__tests__"]
 }

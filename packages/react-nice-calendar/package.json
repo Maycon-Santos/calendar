@@ -9,10 +9,8 @@
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "react": "^16.13.1"
-  },
   "peerDependencies": {
+    "react": "^16.13.1",
     "calendar-provider": "^0.0.0"
   }
 }
