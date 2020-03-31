@@ -21,7 +21,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "calendar-provider": ["packages/calendar-provider/src"]
+      "calendar-provider": ["packages/calendar-provider/lib"]
     }
   },
   "exclude": ["node_modules", "packages/**/__tests__"]

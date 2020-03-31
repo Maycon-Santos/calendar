@@ -46,11 +46,12 @@ export default class CalendarProvider {
   }
 
   public prevMonth = (): void => {
-    this._dateToView.setMonth(this._dateToView.getMonth() - 1)
+    this._dateToView.setDate(0)
     this.onChange()
   }
 
   public nextMonth = (): void => {
+    this._dateToView.setDate(15)
     this._dateToView.setMonth(this._dateToView.getMonth() + 1)
     this.onChange()
   }

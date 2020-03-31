@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "setup": "yarn install && lerna run build",
     "start": "start-storybook -p 6006",
+    "build": "lerna run build",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "test": "jest"
