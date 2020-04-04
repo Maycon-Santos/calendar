@@ -3,3 +3,4 @@ build
 storybook-static
 lib
 coverage
+typings

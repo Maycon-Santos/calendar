@@ -1,1 +1,2 @@
-export { default } from './calendar-provider'
+import CalendarProvider from './calendar-provider'
+export default CalendarProvider
