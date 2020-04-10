@@ -78,7 +78,7 @@ function Month () {
     <>
       <PrevButton onClick={() => emitEvent('calendar.prevMonth')} />
       <HeaderText onClick={() => emitEvent('setDataToView', 'months')}>
-        {monthsDictionary[calendarProvider.month]} - {calendarProvider.year}
+        {monthsDictionary[calendarProvider.month]} {calendarProvider.year}
       </HeaderText>
       <NextButton onClick={() => emitEvent('calendar.nextMonth')} />
     </>

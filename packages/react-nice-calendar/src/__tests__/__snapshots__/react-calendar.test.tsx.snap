@@ -259,7 +259,7 @@ exports[`<Calendar /> should go to next month 1`] = `
         type="button"
       >
         julho
-         - 
+         
         1998
       </button>
       <button
@@ -833,7 +833,7 @@ exports[`<Calendar /> should go to prev month 1`] = `
         type="button"
       >
         maio
-         - 
+         
         1998
       </button>
       <button

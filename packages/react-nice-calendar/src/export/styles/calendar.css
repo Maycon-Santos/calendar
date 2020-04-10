@@ -11,8 +11,8 @@
 .Container {
   display: flex;
   flex-direction: column;
-  width: 350px;
-  padding: 16px;
+  width: 280px;
+  padding: 8px;
   border: 1px #dbe2e8 solid;
   border-radius: 4px;
   color: var(--text-color);
@@ -20,6 +20,11 @@
   
   & + .Container {
     margin-left: 24px;
+  }
+  
+  @media (min-width: 768px) {
+    width: 350px;
+    padding: 16px;
   }
 }
 
@@ -45,9 +50,12 @@
     padding: 8px 16px;
     border-radius: 4px;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     text-transform: capitalize;
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   & .PrevButton,
@@ -65,10 +73,14 @@
     &::before {
       content: '';
       display: block;
-      width: 8px;
-      height: 8px;
+      width: 5px;
+      height: 5px;
       border-color: var(--text-color);
       border-style: solid;
+      @media (min-width: 768px) {
+        width: 8px;
+        height: 8px;
+      }
     }
   }
 
@@ -86,7 +98,10 @@
     margin-left: 16px;
     &::before {
       border-width: 2px 2px 0 0;
-      transform: rotate(45deg) translate(1px, -1px);
+      transform: rotate(45deg) translate(2px, -2px);
+      @media (min-width: 768px) {
+        transform: rotate(45deg) translate(1px, -1px);
+      }
     }
   }
 }
@@ -95,15 +110,21 @@
   & .Days {
     display: flex;
     margin-top: 8px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 900;
+    @media (min-width: 768px) {
+      font-size: 12px;
+    }
   
     & .Day {
       display: flex;
       justify-content: center;
       align-items: center;
       width: calc(100% / 7);
-      height: 40px;
+      height: 20px;
+      @media (min-width: 768px) {
+        height: 40px;
+      }
     }
   }
 
@@ -151,8 +172,12 @@
     }
   
     & .DayCell {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
+      @media (min-width: 768px) {
+        width: 50px;
+        height: 50px;
+      }
       color: #9a9a9a;
       &::before {
         border-radius: 50%;

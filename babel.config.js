@@ -36,6 +36,7 @@ module.exports = (api) => {
     },
     ignore: ['node_modules'],
     plugins: [
+      ['@babel/plugin-proposal-class-properties'],
       ["@babel/plugin-transform-modules-commonjs", {
         allowTopLevelThis: true
       }],
