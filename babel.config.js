@@ -38,7 +38,19 @@ module.exports = (api) => {
     plugins: [
       ["@babel/plugin-transform-modules-commonjs", {
         allowTopLevelThis: true
-      }]
+      }],
+      [
+        'css-modules-transform',
+        {
+          extractCss: {
+            dir: "./lib/",
+            relativeRoot: "./src/export/",
+            filename: "[path]/[name].css"
+          },
+          generateScopedName: 'react-nice-calendar-[hash:base64:5]',
+          prepend: [require('postcss-cssnext')]
+        }
+      ]
     ]
   }
 }

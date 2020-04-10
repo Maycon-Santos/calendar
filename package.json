@@ -49,6 +49,7 @@
     "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "^25.2.4",
     "babel-loader": "^8.1.0",
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lerna": "^3.20.2",
