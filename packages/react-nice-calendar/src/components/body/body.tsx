@@ -48,12 +48,12 @@ function Days () {
 
         const clickHandler = () => {
           if (isSelectedDate) {
-            emitEvent('calendar.removeSelectedDate', date)
+            emitEvent('removeSelectedDate', date)
             if (isPickRange) {
               emitEvent('setDateMouseOver', date)
             }
           } else if (belongCurrentMonth && !isInvalidDate) {
-            emitEvent('calendar.addSelectedDate', date)
+            emitEvent('addSelectedDate', date)
           }
         }
 

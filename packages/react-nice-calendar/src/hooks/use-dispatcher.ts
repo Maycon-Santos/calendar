@@ -1,15 +1,18 @@
 import { useMemo } from 'react'
-import { EventDispatcher } from '../shared-types'
-import dispatcherFactory, { DispatcherFactoryData } from '../dispatcher-factory'
+import { EventDispatcher, EventFactoryData } from '../shared-types'
+import eventsFactory from '../events'
 
 export default function useDispatcher (
-  args: DispatcherFactoryData
+  data: EventFactoryData
 ): EventDispatcher {
   const {
     bind: { order, shared }
-  } = args
+  } = data
 
-  const dispatcher: EventDispatcher = useMemo(() => dispatcherFactory(args), [])
+  const dispatcher: EventDispatcher = useMemo<EventDispatcher>(
+    eventsFactory(data),
+    [data.bind.props]
+  )
 
   if (shared && !shared.dispatchers[order])
     shared.dispatchers[order] = dispatcher

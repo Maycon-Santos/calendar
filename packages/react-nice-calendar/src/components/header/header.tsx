@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { CalendarContext } from '../context'
-import useProps from '../hooks/use-props'
-import classNameResolve from '../utils/classname-resolve'
-import customOnClick from '../utils/custom-onclick'
+import { CalendarContext } from '../../context'
+import useProps from '../../hooks/use-props'
+import classNameResolve from '../../utils/classname-resolve'
+import customOnClick from '../../utils/custom-onclick'
 
 interface ButtonProps {
   onClick: () => void
@@ -15,7 +15,6 @@ interface HeaderTextProps {
 
 function PrevButton (props: ButtonProps) {
   const { onClick } = props
-
   const { classNames, PrevButtonProps } = useProps()
 
   return (
@@ -33,7 +32,6 @@ function PrevButton (props: ButtonProps) {
 
 function NextButton (props: ButtonProps) {
   const { onClick } = props
-
   const { classNames, NextButtonProps } = useProps()
 
   return (
@@ -51,7 +49,6 @@ function NextButton (props: ButtonProps) {
 
 function HeaderText (props: HeaderTextProps) {
   const { children, onClick } = props
-
   const { classNames, HeaderTextProps } = useProps()
 
   return (
@@ -71,7 +68,6 @@ function HeaderText (props: HeaderTextProps) {
 
 function Month () {
   const { emitEvent, calendarProvider } = useContext(CalendarContext)
-
   const { monthsDictionary } = useProps()
 
   return (

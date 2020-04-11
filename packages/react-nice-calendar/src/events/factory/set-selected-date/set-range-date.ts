@@ -1,0 +1,44 @@
+import { EventFactoryData } from '../../../shared-types'
+import getSelectedDates from '../../../utils/selected-dates'
+import { defaultProps } from '../../../hooks/use-props'
+import dateDiff from '../../../utils/date-diff'
+import getDatesRange from '../../../utils/get-dates-range'
+import dateSort from '../../../utils/date-sort'
+
+export function setRangeDate (data: EventFactoryData) {
+  const {
+    selectedDate,
+    onChangeSelectedDate,
+    rangeSize = defaultProps.rangeSize,
+    filterInvalidDates
+  } = data.bind.props
+
+  return (date: Date) => {
+    if (!onChangeSelectedDate) return
+    const selectedDates = getSelectedDates(selectedDate)
+
+    switch (selectedDates.length) {
+      case 0: {
+        onChangeSelectedDate([date])
+        break
+      }
+      case 1: {
+        const rangeDiff = dateDiff(selectedDates[0], date)
+        const rangeDiffAbs = Math.abs(rangeDiff)
+        const datesRange = getDatesRange(selectedDates[0], date)
+        const isValid =
+          !filterInvalidDates ||
+          !datesRange.find(date => filterInvalidDates(date))
+
+        if (
+          isValid &&
+          rangeDiffAbs >= rangeSize.min &&
+          rangeDiffAbs <= rangeSize.max
+        ) {
+          onChangeSelectedDate(dateSort(...selectedDates, date))
+          break
+        }
+      }
+    }
+  }
+}

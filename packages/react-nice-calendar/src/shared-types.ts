@@ -42,42 +42,38 @@ type ClassNameKeys =
   | 'EndRangeDate'
   | 'MouseOverEndRange'
 
-export type ClassNames =
-  | { [k in ClassNameKeys]?: string }
-  | { [k: string]: string }
+export type ClassNames = { [k in ClassNameKeys]?: string }
 
-type EventTypeUndefined =
+export type EventType =
   | 'calendar.nextMonth'
   | 'calendar.nextYear'
   | 'calendar.nextYears'
   | 'calendar.prevMonth'
   | 'calendar.prevYear'
   | 'calendar.prevYears'
-
-type EventTypeDate =
   | 'calendar.goto'
-  | 'calendar.addSelectedDate'
-  | 'calendar.removeSelectedDate'
-
-type EventTypeDateOrNull = 'setDateMouseOver'
-
-type EventTypeDataToView = 'setDataToView'
-
-export type EventType =
-  | EventTypeUndefined
-  | EventTypeDate
-  | EventTypeDateOrNull
-  | EventTypeDataToView
+  | 'addSelectedDate'
+  | 'removeSelectedDate'
+  | 'setDateMouseOver'
+  | 'setDataToView'
 
 export type EventDispatcher = <T extends EventType>(
-  type: T,
-  ...date: T extends EventTypeDate
+  name: T,
+  ...date: T extends 'calendar.goto' | 'addSelectedDate' | 'removeSelectedDate'
     ? [Date]
-    : T extends EventTypeDateOrNull
+    : T extends 'setDateMouseOver'
     ? [Date] | [null]
-    : T extends EventTypeDataToView
+    : T extends 'setDataToView'
     ? [DataToView]
-    : [undefined?]
+    : T extends
+        | 'calendar.nextMonth'
+        | 'calendar.nextYear'
+        | 'calendar.nextYears'
+        | 'calendar.prevMonth'
+        | 'calendar.prevYear'
+        | 'calendar.prevYears'
+    ? [undefined?]
+    : []
 ) => any
 
 type PickSingle = 'single'
@@ -112,11 +108,29 @@ export type BindProp = {
   }
 }
 
+export interface EventFactoryData {
+  calendarProvider: CalendarProvider
+  setDateMouseOver: Dispatch<SetStateAction<Date | null>>
+  setDataToView: Dispatch<SetStateAction<DataToView>>
+  bind: {
+    order: number
+    props: CalendarProps
+    shared?: {
+      mainCalendarProvider: CalendarProvider
+      dispatchers: EventDispatcher[]
+    }
+  }
+}
+
 export type Bind = {
   order: number
   props: CalendarProps
   shared?: BindProp['shared']
 }
+
+export type OnChangeSelectedDate =
+  | ((date: Date | null | Date[]) => any)
+  | Dispatch<SetStateAction<Date | Date[] | null | undefined>>
 
 export interface CalendarProps {
   pick?: Pick
@@ -132,9 +146,7 @@ export interface CalendarProps {
   filterInvalidDates?: (date: Date) => boolean
   bind?: BindProp
   selectedDate?: Date | Date[] | null
-  onChangeSelectedDate?:
-    | ((date: Date | null | Date[]) => any)
-    | Dispatch<SetStateAction<Date | Date[] | null | undefined>>
+  onChangeSelectedDate?: OnChangeSelectedDate
   HeaderProps?: DivProps
   PrevButtonProps?: ButtonPropsCustomOnClick
   NextButtonProps?: ButtonPropsCustomOnClick
