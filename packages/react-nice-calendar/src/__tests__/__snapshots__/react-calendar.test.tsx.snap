@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Calendar /> shoud go to months 1`] = `
+exports[`<Calendar> shoud go to months 1`] = `
 <div>
   <div
     class="Container"
@@ -34,73 +34,73 @@ exports[`<Calendar /> shoud go to months 1`] = `
           class="Cell MonthCell"
           type="button"
         >
-          janeiro
+          January
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          fevereiro
+          February
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          março
+          March
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          abril
+          April
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          maio
+          May
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          junho
+          June
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          julho
+          July
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          agosto
+          August
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          setembro
+          September
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          outubro
+          October
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          novembro
+          November
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          dezembro
+          December
         </button>
       </div>
     </div>
@@ -108,7 +108,7 @@ exports[`<Calendar /> shoud go to months 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> shoud go to years range 1`] = `
+exports[`<Calendar> shoud go to years range 1`] = `
 <div>
   <div
     class="Container"
@@ -242,7 +242,7 @@ exports[`<Calendar /> shoud go to years range 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> should go to next month 1`] = `
+exports[`<Calendar> should go to next month 1`] = `
 <div>
   <div
     class="Container"
@@ -258,7 +258,7 @@ exports[`<Calendar /> should go to next month 1`] = `
         class="HeaderText"
         type="button"
       >
-        julho
+        July
          
         1998
       </button>
@@ -571,7 +571,7 @@ exports[`<Calendar /> should go to next month 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> should go to next year 1`] = `
+exports[`<Calendar> should go to next year 1`] = `
 <div>
   <div
     class="Container"
@@ -606,73 +606,73 @@ exports[`<Calendar /> should go to next year 1`] = `
           class="Cell MonthCell"
           type="button"
         >
-          janeiro
+          January
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          fevereiro
+          February
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          março
+          March
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          abril
+          April
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          maio
+          May
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          junho
+          June
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          julho
+          July
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          agosto
+          August
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          setembro
+          September
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          outubro
+          October
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          novembro
+          November
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          dezembro
+          December
         </button>
       </div>
     </div>
@@ -680,7 +680,7 @@ exports[`<Calendar /> should go to next year 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> should go to next year range 1`] = `
+exports[`<Calendar> should go to next year range 1`] = `
 <div>
   <div
     class="Container"
@@ -815,7 +815,7 @@ exports[`<Calendar /> should go to next year range 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> should go to prev month 1`] = `
+exports[`<Calendar> should go to prev month 1`] = `
 <div>
   <div
     class="Container"
@@ -832,7 +832,7 @@ exports[`<Calendar /> should go to prev month 1`] = `
         class="HeaderText"
         type="button"
       >
-        maio
+        May
          
         1998
       </button>
@@ -1144,7 +1144,7 @@ exports[`<Calendar /> should go to prev month 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> should go to prev year 1`] = `
+exports[`<Calendar> should go to prev year 1`] = `
 <div>
   <div
     class="Container"
@@ -1179,73 +1179,73 @@ exports[`<Calendar /> should go to prev year 1`] = `
           class="Cell MonthCell"
           type="button"
         >
-          janeiro
+          January
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          fevereiro
+          February
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          março
+          March
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          abril
+          April
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          maio
+          May
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          junho
+          June
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          julho
+          July
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          agosto
+          August
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          setembro
+          September
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          outubro
+          October
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          novembro
+          November
         </button>
         <button
           class="Cell MonthCell"
           type="button"
         >
-          dezembro
+          December
         </button>
       </div>
     </div>
@@ -1253,7 +1253,7 @@ exports[`<Calendar /> should go to prev year 1`] = `
 </div>
 `;
 
-exports[`<Calendar /> should go to prev year range 1`] = `
+exports[`<Calendar> should go to prev year range 1`] = `
 <div>
   <div
     class="Container"

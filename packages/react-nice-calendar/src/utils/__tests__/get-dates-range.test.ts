@@ -12,7 +12,7 @@ describe('getDatesRange', () => {
       new Date(1998, 4, 13),
       new Date(1998, 4, 14),
       new Date(1998, 4, 15),
-      new Date(1998, 4, 16),
+      new Date(1998, 4, 16)
     ])
   })
 })

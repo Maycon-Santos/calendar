@@ -7,7 +7,10 @@ describe('getSelectedDates', () => {
   })
 
   it('should return an array of date when call with an array of dates', () => {
-    const selectedDates = getSelectedDates([new Date(1998, 4, 8), new Date(1998, 4, 9)])
+    const selectedDates = getSelectedDates([
+      new Date(1998, 4, 8),
+      new Date(1998, 4, 9)
+    ])
     expect(selectedDates).toEqual([new Date(1998, 4, 8), new Date(1998, 4, 9)])
   })
 

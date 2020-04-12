@@ -87,7 +87,7 @@ export type CustomOnClickEvent = {
 }
 export type CustomOnClick = (event: CustomOnClickEvent) => void
 
-type DivProps = DetailedHTMLProps<
+export type DivProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >

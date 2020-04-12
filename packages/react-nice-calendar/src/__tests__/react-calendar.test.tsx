@@ -5,7 +5,7 @@ import Calendar from '../react-calendar'
 import { CalendarProps } from '../export'
 import classNames from './classNames'
 
-describe('<Calendar />', () => {
+describe('<Calendar>', () => {
   const Component = (props: CalendarProps) => {
     const [selectedDate, setSelectedDate] = useState()
 

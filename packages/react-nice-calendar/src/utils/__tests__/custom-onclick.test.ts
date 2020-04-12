@@ -10,7 +10,9 @@ describe('customOnClick', () => {
 
     customOnClickFn(eventMock)
 
-    expect(typeof substitute.mock.calls[0][0].originalHandler === 'function').toBe(true)
+    expect(
+      typeof substitute.mock.calls[0][0].originalHandler === 'function'
+    ).toBe(true)
     expect(substitute.mock.calls[0][0].event).toBe(eventMock)
   })
 
@@ -34,7 +36,7 @@ describe('customOnClick', () => {
 
     customOnClickFn(eventMock)
 
-    expect(substitute).toHaveBeenCalledWith({ event: eventMock})
+    expect(substitute).toHaveBeenCalledWith({ event: eventMock })
   })
 
   it('should call original function when the substitute is invalid', () => {

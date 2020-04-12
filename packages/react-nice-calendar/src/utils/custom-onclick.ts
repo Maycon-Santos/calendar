@@ -11,11 +11,11 @@ export default function customOnClick (
         originalHandler: () => original && original(event)
       })
     }
-    
+
     if (substitute) {
       return substitute({ event })
     }
-    
+
     if (original) {
       return original(event)
     }

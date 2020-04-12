@@ -12,18 +12,18 @@ interface Props extends CalendarProps {
 
 export const defaultProps: Props = {
   monthsDictionary: [
-    'janeiro',
-    'fevereiro',
-    'março',
-    'abril',
-    'maio',
-    'junho',
-    'julho',
-    'agosto',
-    'setembro',
-    'outubro',
-    'novembro',
-    'dezembro'
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
   ],
   daysDictionary: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
   pick: 'single',
