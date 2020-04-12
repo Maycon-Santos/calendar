@@ -44,7 +44,7 @@ type ClassNameKeys =
 
 export type ClassNames = { [k in ClassNameKeys]?: string }
 
-export type EventType =
+export type EventName =
   | 'calendar.nextMonth'
   | 'calendar.nextYear'
   | 'calendar.nextYears'
@@ -52,14 +52,14 @@ export type EventType =
   | 'calendar.prevYear'
   | 'calendar.prevYears'
   | 'calendar.goto'
-  | 'addSelectedDate'
+  | 'setSelectedDate'
   | 'removeSelectedDate'
   | 'setDateMouseOver'
   | 'setDataToView'
 
-export type EventDispatcher = <T extends EventType>(
+export type EventDispatcher = <T extends EventName>(
   name: T,
-  ...date: T extends 'calendar.goto' | 'addSelectedDate' | 'removeSelectedDate'
+  ...date: T extends 'calendar.goto' | 'setSelectedDate' | 'removeSelectedDate'
     ? [Date]
     : T extends 'setDateMouseOver'
     ? [Date] | [null]

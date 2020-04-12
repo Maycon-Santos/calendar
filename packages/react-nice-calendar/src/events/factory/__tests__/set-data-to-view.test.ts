@@ -8,10 +8,10 @@ describe('setDataToView', () => {
   const setDataToViewMock = jest.fn()
   const gotoSpy = jest.fn()
   const dataMock = {} as EventFactoryData
-  
+
   beforeEach(() => {
     const calendarProviderMock = new CalendarProvider({ date })
-    
+
     calendarProviderMock.goto = gotoSpy
 
     Object.assign<EventFactoryData, EventFactoryData>(dataMock, {
@@ -24,8 +24,8 @@ describe('setDataToView', () => {
         shared: {
           mainCalendarProvider: calendarProviderMock,
           dispatchers: []
-        },
-      },
+        }
+      }
     })
   })
 
@@ -34,104 +34,122 @@ describe('setDataToView', () => {
     Object.keys(dataMock).forEach(key => delete dataMock[key])
   })
 
-  test.each([0, 1, 2, 3])('should call goto function to correct days for order %i', order => {
-    dataMock.bind.order = order
-    const setDataToView = setDataToViewFactory(dataMock)
-    const dateGoto = new Date(date)
+  test.each([0, 1, 2, 3])(
+    'should call goto function to correct days for order %i',
+    order => {
+      dataMock.bind.order = order
+      const setDataToView = setDataToViewFactory(dataMock)
+      const dateGoto = new Date(date)
 
-    dateGoto.setDate(15)
-    dateGoto.setMonth(dateGoto.getMonth() + order)
-    
-    setDataToView('days')
+      dateGoto.setDate(15)
+      dateGoto.setMonth(dateGoto.getMonth() + order)
 
-    if (order > 0) {
-      expect(gotoSpy).toHaveBeenLastCalledWith(dateGoto)
-    } else {
+      setDataToView('days')
+
+      if (order > 0) {
+        expect(gotoSpy).toHaveBeenLastCalledWith(dateGoto)
+      } else {
+        expect(gotoSpy).not.toHaveBeenCalled()
+      }
+
+      expect(setDataToViewMock).toHaveBeenCalledWith('days')
+    }
+  )
+
+  test.each([0, 1, 2, 3])(
+    'should call goto function to correct months for order %i',
+    order => {
+      dataMock.bind.order = order
+      const setDataToView = setDataToViewFactory(dataMock)
+      const dateGoto = new Date(date)
+
+      dateGoto.setDate(15)
+      dateGoto.setFullYear(dateGoto.getFullYear() + order)
+
+      setDataToView('months')
+
+      if (order > 0) {
+        expect(gotoSpy).toHaveBeenLastCalledWith(dateGoto)
+      } else {
+        expect(gotoSpy).not.toHaveBeenCalled()
+      }
+
+      expect(setDataToViewMock).toHaveBeenCalledWith('months')
+    }
+  )
+
+  test.each([0, 1, 2, 3])(
+    'should call goto function to correct years for order %i',
+    order => {
+      dataMock.bind.order = order
+      const setDataToView = setDataToViewFactory(dataMock)
+      const dateGoto = new Date(date)
+
+      if (!dataMock.bind.shared) {
+        throw Error('Shared property do not exists')
+      }
+
+      const { mainCalendarProvider } = dataMock.bind.shared
+      const { backwardYears, forwardYears } = mainCalendarProvider
+      const years = mainCalendarProvider.years
+
+      dateGoto.setDate(15)
+      dateGoto.setFullYear(
+        years[backwardYears].date.getFullYear() +
+          (backwardYears + forwardYears) * order
+      )
+
+      setDataToView('years')
+
+      if (order > 0) {
+        expect(gotoSpy).toHaveBeenLastCalledWith(dateGoto)
+      } else {
+        expect(gotoSpy).not.toHaveBeenCalled()
+      }
+
+      expect(setDataToViewMock).toHaveBeenCalledWith('years')
+    }
+  )
+
+  test.each([0, 1, 2, 3])(
+    'should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with days',
+    order => {
+      dataMock.bind.order = order
+      delete dataMock.bind.shared
+      const setDataToView = setDataToViewFactory(dataMock)
+
+      setDataToView('days')
+
       expect(gotoSpy).not.toHaveBeenCalled()
+      expect(setDataToViewMock).toHaveBeenCalled()
     }
+  )
 
-    expect(setDataToViewMock).toHaveBeenCalledWith('days')
-  })
+  test.each([0, 1, 2, 3])(
+    'should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with months',
+    order => {
+      dataMock.bind.order = order
+      delete dataMock.bind.shared
+      const setDataToView = setDataToViewFactory(dataMock)
 
-  test.each([0, 1, 2, 3])('should call goto function to correct months for order %i', order => {
-    dataMock.bind.order = order
-    const setDataToView = setDataToViewFactory(dataMock)
-    const dateGoto = new Date(date)
+      setDataToView('months')
 
-    dateGoto.setDate(15)
-    dateGoto.setFullYear(dateGoto.getFullYear() + order)
-    
-    setDataToView('months')
-
-    if (order > 0) {
-      expect(gotoSpy).toHaveBeenLastCalledWith(dateGoto)
-    } else {
       expect(gotoSpy).not.toHaveBeenCalled()
+      expect(setDataToViewMock).toHaveBeenCalled()
     }
+  )
 
-    expect(setDataToViewMock).toHaveBeenCalledWith('months')
-  })
+  test.each([0, 1, 2, 3])(
+    'should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with years',
+    order => {
+      dataMock.bind.order = order
+      delete dataMock.bind.shared
+      const setDataToView = setDataToViewFactory(dataMock)
 
-  test.each([0, 1, 2, 3])('should call goto function to correct years for order %i', order => {
-    dataMock.bind.order = order
-    const setDataToView = setDataToViewFactory(dataMock)
-    const dateGoto = new Date(date)
+      setDataToView('years')
 
-    if (!dataMock.bind.shared) {
-      throw Error('Shared property do not exists')
-    }
-
-    const { mainCalendarProvider } = dataMock.bind.shared
-    const { backwardYears, forwardYears } = mainCalendarProvider
-    const years = mainCalendarProvider.years
-
-    dateGoto.setDate(15)
-    dateGoto.setFullYear(
-      years[backwardYears].date.getFullYear() +
-        (backwardYears + forwardYears) * order
-    )
-    
-    setDataToView('years')
-
-    if (order > 0) {
-      expect(gotoSpy).toHaveBeenLastCalledWith(dateGoto)
-    } else {
       expect(gotoSpy).not.toHaveBeenCalled()
+      expect(setDataToViewMock).toHaveBeenCalled()
     }
-
-    expect(setDataToViewMock).toHaveBeenCalledWith('years')
-  })
-
-  test.each([0, 1, 2, 3])('should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with days', order => {
-    dataMock.bind.order = order
-    delete dataMock.bind.shared
-    const setDataToView = setDataToViewFactory(dataMock)
-
-    setDataToView('days')
-
-    expect(gotoSpy).not.toHaveBeenCalled()
-    expect(setDataToViewMock).toHaveBeenCalled()
-  })
-
-  test.each([0, 1, 2, 3])('should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with months', order => {
-    dataMock.bind.order = order
-    delete dataMock.bind.shared
-    const setDataToView = setDataToViewFactory(dataMock)
-
-    setDataToView('months')
-
-    expect(gotoSpy).not.toHaveBeenCalled()
-    expect(setDataToViewMock).toHaveBeenCalled()
-  })
-
-  test.each([0, 1, 2, 3])('should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with years', order => {
-    dataMock.bind.order = order
-    delete dataMock.bind.shared
-    const setDataToView = setDataToViewFactory(dataMock)
-
-    setDataToView('years')
-
-    expect(gotoSpy).not.toHaveBeenCalled()
-    expect(setDataToViewMock).toHaveBeenCalled()
-  })
+  )
 })

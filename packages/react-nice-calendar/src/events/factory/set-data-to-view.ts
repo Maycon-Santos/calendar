@@ -35,7 +35,6 @@ export function setDataToView (data: EventFactoryData) {
       }
     }
 
-
     setDataToViewOriginal(dataToView)
   }
 }

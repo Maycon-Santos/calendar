@@ -7,13 +7,10 @@ describe('setSingleDate', () => {
   const setDateMouseOverMock = jest.fn()
   const setDataToViewMock = jest.fn()
   const onChangeSelectedDateSpy = jest.fn()
-  const gotoSpy = jest.fn()
   const dataMock = {} as EventFactoryData
-  
+
   beforeEach(() => {
     const calendarProviderMock = new CalendarProvider({ date })
-    
-    calendarProviderMock.goto = gotoSpy
 
     Object.assign<EventFactoryData, EventFactoryData>(dataMock, {
       calendarProvider: calendarProviderMock,
@@ -27,8 +24,8 @@ describe('setSingleDate', () => {
         shared: {
           mainCalendarProvider: calendarProviderMock,
           dispatchers: []
-        },
-      },
+        }
+      }
     })
   })
 

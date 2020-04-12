@@ -6,7 +6,6 @@ import getDatesRange from '../../../utils/get-dates-range'
 import dateSort from '../../../utils/date-sort'
 
 export function setRangeDate (data: EventFactoryData) {
-  
   return (date: Date) => {
     const {
       selectedDate,

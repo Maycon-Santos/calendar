@@ -1,10 +1,10 @@
-import { EventFactoryData, EventType, EventDispatcher } from '../shared-types'
-import { addSelectedDate } from './factory/set-selected-date'
+import { EventFactoryData, EventName, EventDispatcher } from '../shared-types'
+import { setSelectedDate } from './factory/set-selected-date'
 import { removeSelectedDate } from './factory/remove-selected-date'
 import { setDataToView } from './factory/set-data-to-view'
 
 type Events = {
-  [P in EventType]: (...args: any) => any
+  [P in EventName]: (...args: any) => any
 }
 
 export default function eventsFactory (data: EventFactoryData) {
@@ -20,7 +20,7 @@ export default function eventsFactory (data: EventFactoryData) {
       'calendar.nextYears': calendarProvider.nextYears,
       'calendar.goto': calendarProvider.goto,
       setDateMouseOver: setDateMouseOver,
-      addSelectedDate: addSelectedDate(data),
+      setSelectedDate: setSelectedDate(data),
       removeSelectedDate: removeSelectedDate(data),
       setDataToView: setDataToView(data)
     }

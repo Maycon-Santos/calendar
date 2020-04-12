@@ -4,7 +4,7 @@ import { setSingleDate } from './set-single-date'
 import { setMultipleDate } from './set-multiple-date'
 import { setRangeDate } from './set-range-date'
 
-export function addSelectedDate (data: EventFactoryData) {
+export function setSelectedDate (data: EventFactoryData) {
   return (date: Date) => {
     const { pick = defaultProps.pick } = data.bind.props
 
@@ -13,7 +13,7 @@ export function addSelectedDate (data: EventFactoryData) {
       multiple: setMultipleDate(data),
       range: setRangeDate(data)
     }
-    
+
     methods[pick](date)
   }
 }

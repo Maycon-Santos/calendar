@@ -53,7 +53,7 @@ function Days () {
               emitEvent('setDateMouseOver', date)
             }
           } else if (belongCurrentMonth && !isInvalidDate) {
-            emitEvent('addSelectedDate', date)
+            emitEvent('setSelectedDate', date)
           }
         }
 

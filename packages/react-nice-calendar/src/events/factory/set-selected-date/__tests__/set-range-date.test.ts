@@ -7,13 +7,10 @@ describe('setRangeDate', () => {
   const setDateMouseOverMock = jest.fn()
   const setDataToViewMock = jest.fn()
   const onChangeSelectedDateSpy = jest.fn()
-  const gotoSpy = jest.fn()
   const dataMock = {} as EventFactoryData
-  
+
   beforeEach(() => {
     const calendarProviderMock = new CalendarProvider({ date })
-    
-    calendarProviderMock.goto = gotoSpy
 
     Object.assign<EventFactoryData, EventFactoryData>(dataMock, {
       calendarProvider: calendarProviderMock,
@@ -27,8 +24,8 @@ describe('setRangeDate', () => {
         shared: {
           mainCalendarProvider: calendarProviderMock,
           dispatchers: []
-        },
-      },
+        }
+      }
     })
   })
 
@@ -48,13 +45,19 @@ describe('setRangeDate', () => {
     dataMock.bind.props.selectedDate = [new Date(1998, 4, 8)]
 
     setRangeDate(new Date(1999, 4, 8))
-    
-    expect(onChangeSelectedDateSpy).toHaveBeenCalledWith([new Date(1998, 4, 8), new Date(1999, 4, 8)])
+
+    expect(onChangeSelectedDateSpy).toHaveBeenCalledWith([
+      new Date(1998, 4, 8),
+      new Date(1999, 4, 8)
+    ])
   })
 
   it('should not call onChangeSelectedDates when dates count is bigger than 2', () => {
     dataMock.bind.props.pickLimit = 3
-    dataMock.bind.props.selectedDate = [new Date(1998, 4, 8), new Date(1998, 4, 9)]
+    dataMock.bind.props.selectedDate = [
+      new Date(1998, 4, 8),
+      new Date(1998, 4, 9)
+    ]
     const setRangeDate = setRangeDateFactory(dataMock)
 
     setRangeDate(new Date(1998, 4, 10))
