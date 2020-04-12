@@ -5,9 +5,9 @@ export default function dateBetweenRange (
 ) {
   if (!startDate || !endDate || !testDate) return false
 
-  const startTime = startDate?.getTime()
-  const endTime = endDate?.getTime()
-  const testTime = testDate?.getTime()
+  const startTime = startDate.getTime()
+  const endTime = endDate.getTime()
+  const testTime = testDate.getTime()
 
   if (startTime === testTime || endTime === testTime) {
     return true

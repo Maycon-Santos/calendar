@@ -109,7 +109,9 @@ describe('eventsFactory', () => {
 
     dispatcher('calendar.goto', new Date(1998, 4, 8))
 
-    expect(dataMock.calendarProvider.goto).toHaveBeenCalledWith(new Date(1998, 4, 8))
+    expect(dataMock.calendarProvider.goto).toHaveBeenCalledWith(
+      new Date(1998, 4, 8)
+    )
   })
 
   it('should call setDateMouseOver width date', () => {
@@ -135,7 +137,9 @@ describe('eventsFactory', () => {
 
     const setSelectedDateMock = setSelectedDateModule.setSelectedDate as jest.Mock
 
-    expect(setSelectedDateMock.mock.results[0].value).toHaveBeenCalledWith(new Date(1998, 4, 8))
+    expect(setSelectedDateMock.mock.results[0].value).toHaveBeenCalledWith(
+      new Date(1998, 4, 8)
+    )
   })
 
   it('should call removeSelectedDate', () => {
@@ -145,7 +149,9 @@ describe('eventsFactory', () => {
 
     const removeSelectedDateMock = removeSelectedDateModule.removeSelectedDate as jest.Mock
 
-    expect(removeSelectedDateMock.mock.results[0].value).toHaveBeenCalledWith(new Date(1998, 4, 8))
+    expect(removeSelectedDateMock.mock.results[0].value).toHaveBeenCalledWith(
+      new Date(1998, 4, 8)
+    )
   })
 
   it('should call setDataToView with days', () => {
@@ -165,7 +171,9 @@ describe('eventsFactory', () => {
 
     const setDataToViewMock = setDataToViewModule.setDataToView as jest.Mock
 
-    expect(setDataToViewMock.mock.results[0].value).toHaveBeenCalledWith('months')
+    expect(setDataToViewMock.mock.results[0].value).toHaveBeenCalledWith(
+      'months'
+    )
   })
 
   it('should call setDataToView with years', () => {
@@ -175,6 +183,8 @@ describe('eventsFactory', () => {
 
     const setDataToViewMock = setDataToViewModule.setDataToView as jest.Mock
 
-    expect(setDataToViewMock.mock.results[0].value).toHaveBeenCalledWith('years')
+    expect(setDataToViewMock.mock.results[0].value).toHaveBeenCalledWith(
+      'years'
+    )
   })
 })

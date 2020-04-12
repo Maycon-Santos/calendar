@@ -1,6 +1,6 @@
 import { CalendarProps } from '../../shared-types'
 import dateBetweenRange from '../../utils/date-between-range'
-import dateDiff from '../../utils/date-diff'
+import datesDiff from '../../utils/dates-diff'
 import dateSort from '../../utils/date-sort'
 import excludeEqualDates from '../../utils/exclude-equal-dates'
 
@@ -45,14 +45,14 @@ export default function getPickRangeClassNames (
     isInvalidDate && (inBetweenRange || inBetweenSelectedRange)
 
   // Get diff between dates
-  const rangeDiff = selectedDates[0] ? dateDiff(selectedDates[0], date) : 0
+  const rangeDiff = selectedDates[0] ? datesDiff(selectedDates[0], date) : 0
   const rangeDiffAbs = rangeDiff && Math.abs(rangeDiff)
 
   // Check if is between under minRange
   const mouseUnderMinRange =
     selectedDates[0] &&
     dateMouseOver &&
-    Math.abs(dateDiff(selectedDates[0], dateMouseOver)) < rangeSize.min
+    Math.abs(datesDiff(selectedDates[0], dateMouseOver)) < rangeSize.min
   const isUnderMinRange =
     inBetweenRange && mouseUnderMinRange && rangeDiffAbs < rangeSize.min
 

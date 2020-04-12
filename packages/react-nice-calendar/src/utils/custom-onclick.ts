@@ -6,14 +6,20 @@ export default function customOnClick (
 ) {
   return (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (original && substitute) {
-      substitute({
+      return substitute({
         event,
         originalHandler: () => original && original(event)
       })
-    } else if (substitute) {
-      substitute({ originalEvent: event })
-    } else if (original) {
-      original(event)
     }
+    
+    if (substitute) {
+      return substitute({ event })
+    }
+    
+    if (original) {
+      return original(event)
+    }
+
+    return false
   }
 }

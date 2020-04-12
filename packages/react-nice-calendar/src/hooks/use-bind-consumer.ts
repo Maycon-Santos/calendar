@@ -29,8 +29,6 @@ export default function useBindConsumer (bindData: BindData): Bind {
     }
   }
 
-  // delete bindProps['bind']
-
   return {
     order,
     props: bindProps,

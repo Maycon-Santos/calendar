@@ -1,4 +1,4 @@
-export default (date1: Date, date2: Date) => {
+export default function datesDiff (date1: Date, date2: Date) {
   const date1UTC = Date.UTC(
     date1.getFullYear(),
     date1.getMonth(),

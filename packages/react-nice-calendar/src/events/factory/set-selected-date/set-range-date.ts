@@ -1,7 +1,7 @@
 import { EventFactoryData } from '../../../shared-types'
 import getSelectedDates from '../../../utils/selected-dates'
 import { defaultProps } from '../../../hooks/use-props'
-import dateDiff from '../../../utils/date-diff'
+import datesDiff from '../../../utils/dates-diff'
 import getDatesRange from '../../../utils/get-dates-range'
 import dateSort from '../../../utils/date-sort'
 
@@ -23,7 +23,7 @@ export function setRangeDate (data: EventFactoryData) {
         break
       }
       case 1: {
-        const rangeDiff = dateDiff(selectedDates[0], date)
+        const rangeDiff = datesDiff(selectedDates[0], date)
         const rangeDiffAbs = Math.abs(rangeDiff)
         const datesRange = getDatesRange(selectedDates[0], date)
         const isValid =
