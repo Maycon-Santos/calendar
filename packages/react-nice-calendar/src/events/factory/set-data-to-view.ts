@@ -3,7 +3,7 @@ import { DataToView, EventFactoryData } from '../../shared-types'
 export function setDataToView (data: EventFactoryData) {
   const {
     calendarProvider,
-    setDataToView,
+    setDataToView: setDataToViewOriginal,
     bind: { order, shared }
   } = data
 
@@ -12,6 +12,8 @@ export function setDataToView (data: EventFactoryData) {
       const { mainCalendarProvider } = shared
       const { backwardYears, forwardYears } = mainCalendarProvider
       const date = new Date(mainCalendarProvider.dateToView)
+
+      date.setDate(15)
 
       if (dataToView === 'days') {
         date.setMonth(date.getMonth() + order)
@@ -33,6 +35,7 @@ export function setDataToView (data: EventFactoryData) {
       }
     }
 
-    setDataToView(dataToView)
+
+    setDataToViewOriginal(dataToView)
   }
 }

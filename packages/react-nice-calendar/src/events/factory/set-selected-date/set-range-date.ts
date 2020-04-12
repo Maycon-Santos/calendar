@@ -6,14 +6,15 @@ import getDatesRange from '../../../utils/get-dates-range'
 import dateSort from '../../../utils/date-sort'
 
 export function setRangeDate (data: EventFactoryData) {
-  const {
-    selectedDate,
-    onChangeSelectedDate,
-    rangeSize = defaultProps.rangeSize,
-    filterInvalidDates
-  } = data.bind.props
-
+  
   return (date: Date) => {
+    const {
+      selectedDate,
+      onChangeSelectedDate,
+      rangeSize = defaultProps.rangeSize,
+      filterInvalidDates
+    } = data.bind.props
+
     if (!onChangeSelectedDate) return
     const selectedDates = getSelectedDates(selectedDate)
 
