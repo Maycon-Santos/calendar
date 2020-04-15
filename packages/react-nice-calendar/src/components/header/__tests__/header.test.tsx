@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { render, fireEvent } from '@testing-library/react'
+import CalendarProvider from 'calendar-provider'
 import { CalendarContext } from '../../../context'
 import {
   CalendarContext as CalendarContextType,
@@ -9,7 +10,6 @@ import {
   DivProps
 } from '../../../shared-types'
 import Header from '../header'
-import CalendarProvider from 'calendar-provider'
 
 describe('<Header>', () => {
   const date = new Date(1998, 4, 8)
@@ -66,7 +66,7 @@ describe('<Header>', () => {
     expect(getByText('1990 - 2005')).toBeInTheDocument()
   })
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set PrevButtonProps when dataToView is "%s"',
     dataToView => {
       const onClickSpy = jest.fn()
@@ -93,7 +93,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set NextButtonProps when dataToView is "%s"',
     dataToView => {
       const onClickSpy = jest.fn()
@@ -120,7 +120,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set HeaderTextProps when dataToView is "%s"',
     dataToView => {
       const onClickSpy = jest.fn()
@@ -147,7 +147,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each([
+  it.each([
     ['calendar.prevMonth', 'days'],
     ['calendar.prevYear', 'months'],
     ['calendar.prevYears', 'years']
@@ -173,7 +173,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each([
+  it.each([
     ['calendar.nextMonth', 'days'],
     ['calendar.nextYear', 'months'],
     ['calendar.nextYears', 'years']
@@ -199,7 +199,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each([
+  it.each([
     ['months', 'days'],
     ['years', 'months']
   ])(
@@ -224,7 +224,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set className to PrevButton when dataToView is "%s"',
     dataToView => {
       contextValue.dataToView = dataToView as DataToView
@@ -247,7 +247,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set className to NextButton when dataToView is "%s"',
     dataToView => {
       contextValue.dataToView = dataToView as DataToView
@@ -270,7 +270,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set className to HeaderText when dataToView is "%s"',
     dataToView => {
       contextValue.dataToView = dataToView as DataToView
@@ -293,7 +293,7 @@ describe('<Header>', () => {
     }
   )
 
-  test.each(['days', 'months', 'years'])(
+  it.each(['days', 'months', 'years'])(
     'should set className to Header when dataToView is "%s"',
     dataToView => {
       contextValue.dataToView = dataToView as DataToView

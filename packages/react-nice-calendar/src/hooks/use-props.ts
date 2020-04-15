@@ -25,7 +25,7 @@ export const defaultProps: Props = {
     'November',
     'December'
   ],
-  daysDictionary: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+  daysDictionary: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   pick: 'single',
   pickLimit: Infinity,
   rangeSize: {

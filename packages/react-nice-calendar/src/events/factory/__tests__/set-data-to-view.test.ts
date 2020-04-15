@@ -34,7 +34,7 @@ describe('setDataToView', () => {
     Object.keys(dataMock).forEach(key => delete dataMock[key])
   })
 
-  test.each([0, 1, 2, 3])(
+  it.each([0, 1, 2, 3])(
     'should call goto function to correct days for order %i',
     order => {
       dataMock.bind.order = order
@@ -56,7 +56,7 @@ describe('setDataToView', () => {
     }
   )
 
-  test.each([0, 1, 2, 3])(
+  it.each([0, 1, 2, 3])(
     'should call goto function to correct months for order %i',
     order => {
       dataMock.bind.order = order
@@ -78,7 +78,7 @@ describe('setDataToView', () => {
     }
   )
 
-  test.each([0, 1, 2, 3])(
+  it.each([0, 1, 2, 3])(
     'should call goto function to correct years for order %i',
     order => {
       dataMock.bind.order = order
@@ -111,7 +111,7 @@ describe('setDataToView', () => {
     }
   )
 
-  test.each([0, 1, 2, 3])(
+  it.each([0, 1, 2, 3])(
     'should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with days',
     order => {
       dataMock.bind.order = order
@@ -125,7 +125,7 @@ describe('setDataToView', () => {
     }
   )
 
-  test.each([0, 1, 2, 3])(
+  it.each([0, 1, 2, 3])(
     'should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with months',
     order => {
       dataMock.bind.order = order
@@ -139,7 +139,7 @@ describe('setDataToView', () => {
     }
   )
 
-  test.each([0, 1, 2, 3])(
+  it.each([0, 1, 2, 3])(
     'should call only setDataToView original when not exists mainCalendarProvider for order %i when call setDataToView with years',
     order => {
       dataMock.bind.order = order

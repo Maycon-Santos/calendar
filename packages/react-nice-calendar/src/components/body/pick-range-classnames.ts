@@ -41,7 +41,7 @@ export default function getPickRangeClassNames (
   const inBetweenSelectedRange =
     selectedDatesSize === 2 &&
     dateBetweenRange(selectedDates[0], selectedDates[1], date)
-  const isInvalidRangeDate =
+  const isInvalidDateBetweenRange =
     isInvalidDate && (inBetweenRange || inBetweenSelectedRange)
 
   // Get diff between dates
@@ -77,7 +77,7 @@ export default function getPickRangeClassNames (
     inBetweenSelectedRange && classNames?.BetweenSelectedRange,
     isUnderMinRange && classNames?.UnderMinRange,
     isOverMaxRange && classNames?.OverMaxRange,
-    isInvalidRangeDate && classNames?.InvalidRangeDate,
+    isInvalidDateBetweenRange && classNames?.InvalidDateBetweenRange,
     isStartRangeDate && classNames?.StartRangeDate,
     isEndRangeDate && classNames?.EndRangeDate,
     mouseOver && classNames?.MouseOverEndRange

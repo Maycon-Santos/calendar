@@ -233,7 +233,7 @@
           }
           &.OverMaxRange,
           &.UnderMinRange:not(.SelectedDate),
-          &.InvalidRangeDate {
+          &.InvalidDateBetweenRange {
             &::before {
               background-color: var(--invalid-range);
             }

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { CalendarContext } from '../../context'
 import useProps from '../../hooks/use-props'
 import classNameResolve from '../../utils/classname-resolve'
-import customOnClick from '../../utils/custom-onclick'
+import customEvent from '../../utils/custom-event'
 
 interface ButtonProps {
   onClick: () => void
@@ -21,7 +21,7 @@ function PrevButton (props: ButtonProps) {
     <button
       {...PrevButtonProps}
       type='button'
-      onClick={customOnClick(onClick, PrevButtonProps?.onClick)}
+      onClick={customEvent(onClick, PrevButtonProps?.onClick)}
       className={classNameResolve(
         PrevButtonProps?.className,
         classNames?.PrevButton
@@ -38,7 +38,7 @@ function NextButton (props: ButtonProps) {
     <button
       {...NextButtonProps}
       type='button'
-      onClick={customOnClick(onClick, NextButtonProps?.onClick)}
+      onClick={customEvent(onClick, NextButtonProps?.onClick)}
       className={classNameResolve(
         NextButtonProps?.className,
         classNames?.NextButton
@@ -55,7 +55,7 @@ function HeaderText (props: HeaderTextProps) {
     <button
       {...HeaderTextProps}
       type='button'
-      onClick={customOnClick(onClick, HeaderTextProps?.onClick)}
+      onClick={customEvent(onClick, HeaderTextProps?.onClick)}
       className={classNameResolve(
         HeaderTextProps?.className,
         classNames?.HeaderText

@@ -1,5 +1,5 @@
 import React from 'react'
-import customOnClick from '../custom-onclick'
+import customOnClick from '../custom-event'
 
 describe('customOnClick', () => {
   it('should return the custom event', () => {

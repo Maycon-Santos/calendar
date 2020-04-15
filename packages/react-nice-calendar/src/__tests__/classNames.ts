@@ -27,7 +27,7 @@ export default {
   BetweenSelectedRange: 'BetweenSelectedRange',
   UnderMinRange: 'UnderMinRange',
   OverMaxRange: 'OverMaxRange',
-  InvalidRangeDate: 'InvalidRangeDate',
+  InvalidDateBetweenRange: 'InvalidDateBetweenRange',
   StartRangeDate: 'StartRangeDate',
   EndRangeDate: 'EndRangeDate',
   MouseOverEndRange: 'MouseOverEndRange'

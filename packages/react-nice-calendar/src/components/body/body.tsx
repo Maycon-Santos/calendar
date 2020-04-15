@@ -4,7 +4,7 @@ import useProps from '../../hooks/use-props'
 import classNameResolve from '../../utils/classname-resolve'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
-import customOnClick from '../../utils/custom-onclick'
+import customEvent from '../../utils/custom-event'
 import getSelectedDates from '../../utils/selected-dates'
 import getPickRangeClassNames from './pick-range-classnames'
 
@@ -84,9 +84,9 @@ function Days () {
               isSelectedDate && classNames?.SelectedDate,
               ...pickRangeClassNames
             )}
-            onClick={customOnClick(clickHandler, DateProps?.onClick)}
-            onMouseEnter={customOnClick(mouseEnterHandler, DateProps?.onClick)}
-            onMouseLeave={customOnClick(mouseLeaveHandler, DateProps?.onClick)}
+            onClick={customEvent(clickHandler, DateProps?.onClick)}
+            onMouseEnter={customEvent(mouseEnterHandler, DateProps?.onClick)}
+            onMouseLeave={customEvent(mouseLeaveHandler, DateProps?.onClick)}
           >
             {day}
           </button>
@@ -115,8 +115,8 @@ function Months () {
         const dateString = `${date.getMonth()}${date.getFullYear()}`
         const currentDateString = `${currentDate.getMonth()}${currentDate.getFullYear()}`
 
-        const clonedSelectedDates = selectedDates.map(_date => {
-          const clonedDate = new Date(_date)
+        const clonedSelectedDates = selectedDates.map(originalDate => {
+          const clonedDate = new Date(originalDate)
           clonedDate.setDate(1)
           return clonedDate
         })
@@ -141,7 +141,7 @@ function Months () {
               dateIncludes(clonedSelectedDates, date) &&
                 classNames?.SelectedDate
             )}
-            onClick={customOnClick(clickHandler, MonthProps?.onClick)}
+            onClick={customEvent(clickHandler, MonthProps?.onClick)}
           >
             {monthsDictionary[month]}
           </button>
@@ -168,8 +168,8 @@ function Years () {
       {years.map(({ date, year }) => {
         const currentDate = new Date()
 
-        const clonedSelectedDates = selectedDates.map(_date => {
-          const clonedDate = new Date(_date)
+        const clonedSelectedDates = selectedDates.map(originalDate => {
+          const clonedDate = new Date(originalDate)
           clonedDate.setDate(1)
           clonedDate.setMonth(0)
           return clonedDate
@@ -184,6 +184,7 @@ function Years () {
 
         return (
           <button
+            {...YearProps}
             key={year}
             type='button'
             className={classNameResolve(
@@ -195,7 +196,7 @@ function Years () {
               dateIncludes(clonedSelectedDates, date) &&
                 classNames?.SelectedDate
             )}
-            onClick={customOnClick(clickHandler, YearProps?.onClick)}
+            onClick={customEvent(clickHandler, YearProps?.onClick)}
           >
             {year}
           </button>

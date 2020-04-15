@@ -37,7 +37,7 @@ type ClassNameKeys =
   | 'BetweenSelectedRange'
   | 'UnderMinRange'
   | 'OverMaxRange'
-  | 'InvalidRangeDate'
+  | 'InvalidDateBetweenRange'
   | 'StartRangeDate'
   | 'EndRangeDate'
   | 'MouseOverEndRange'

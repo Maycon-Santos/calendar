@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function customOnClick (
+export default function customEvent (
   original?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void,
   substitute?: (...args: any) => void
 ) {

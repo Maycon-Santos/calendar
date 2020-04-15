@@ -277,12 +277,12 @@ exports[`<Calendar> should go to next month 1`] = `
         <div
           class="Day"
         >
-          D
+          S
         </div>
         <div
           class="Day"
         >
-          S
+          M
         </div>
         <div
           class="Day"
@@ -292,17 +292,17 @@ exports[`<Calendar> should go to next month 1`] = `
         <div
           class="Day"
         >
-          Q
+          W
         </div>
         <div
           class="Day"
         >
-          Q
+          T
         </div>
         <div
           class="Day"
         >
-          S
+          F
         </div>
         <div
           class="Day"
@@ -850,12 +850,12 @@ exports[`<Calendar> should go to prev month 1`] = `
         <div
           class="Day"
         >
-          D
+          S
         </div>
         <div
           class="Day"
         >
-          S
+          M
         </div>
         <div
           class="Day"
@@ -865,17 +865,17 @@ exports[`<Calendar> should go to prev month 1`] = `
         <div
           class="Day"
         >
-          Q
+          W
         </div>
         <div
           class="Day"
         >
-          Q
+          T
         </div>
         <div
           class="Day"
         >
-          S
+          F
         </div>
         <div
           class="Day"
