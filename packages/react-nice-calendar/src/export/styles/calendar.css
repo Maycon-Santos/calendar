@@ -154,11 +154,6 @@
         height: 100%;
         display: block;
       }
-      &.CurrentDate {
-        &::before {
-          background-color: var(--current-date);
-        }
-      }
       &.DayBelongCurrentMonth {
         &.SelectedDate {
           &, &.DayBelongCurrentMonth, &:hover {
@@ -203,16 +198,21 @@
             }
           }
         }
-        &.BetweenSelectedRange,
-        &.MouseOverEndRange {
-          &::before {
-            background-color: var(--selected-date);
-          }
-        }
         &.ValidDate {
           color: inherit;
           &:hover {
             cursor: pointer;
+          }
+          &.CurrentDate {
+            &::before {
+              background-color: var(--current-date);
+            }
+          }
+          &.BetweenSelectedRange,
+          &.MouseOverEndRange {
+            &::before {
+              background-color: var(--selected-date);
+            }
           }
           &:not(.SelectedDate):not(.BetweenSelectedRange):not(.BetweenRange):hover {
             &::before {
@@ -250,16 +250,21 @@
     & .MonthCell {
       width: calc(100% / 3);
       height: 70px;
-      &:hover {
-        cursor: pointer;
+      &.CurrentDate {
         &::before {
-          background-color: var(--background-hover);
+          background-color: var(--current-date);
         }
       }
       &.SelectedDate {
         color: white;
         &::before {
           background-color: var(--selected-date);
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        &::before {
+          background-color: var(--background-hover);
         }
       }
     }
@@ -267,16 +272,21 @@
     & .YearCell {
       width: calc(100% / 4);
       height: 70px;
-      &:hover {
-        cursor: pointer;
+      &.CurrentDate {
         &::before {
-          background-color: var(--background-hover);
+          background-color: var(--current-date);
         }
       }
       &.SelectedDate {
         color: white;
         &::before {
           background-color: var(--selected-date);
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        &::before {
+          background-color: var(--background-hover);
         }
       }
     }
