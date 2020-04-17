@@ -7,24 +7,24 @@ type Events = {
   [P in EventName]: (...args: any) => any
 }
 
-export default function eventsFactory (data: EventFactoryData) {
-  return (): EventDispatcher => {
-    const { calendarProvider, setDateMouseOver } = data
+export default function eventsFactory (
+  data: EventFactoryData
+): EventDispatcher {
+  const { calendarProvider, setDateMouseOver } = data
 
-    const events: Events = {
-      'calendar.prevMonth': calendarProvider.prevMonth,
-      'calendar.nextMonth': calendarProvider.nextMonth,
-      'calendar.prevYear': calendarProvider.prevYear,
-      'calendar.nextYear': calendarProvider.nextYear,
-      'calendar.prevYears': calendarProvider.prevYears,
-      'calendar.nextYears': calendarProvider.nextYears,
-      'calendar.goto': calendarProvider.goto,
-      setDateMouseOver: setDateMouseOver,
-      setSelectedDate: setSelectedDate(data),
-      removeSelectedDate: removeSelectedDate(data),
-      setDataToView: setDataToView(data)
-    }
-
-    return (eventName, ...eventValue) => events[eventName](...eventValue)
+  const events: Events = {
+    'calendar.prevMonth': calendarProvider.prevMonth,
+    'calendar.nextMonth': calendarProvider.nextMonth,
+    'calendar.prevYear': calendarProvider.prevYear,
+    'calendar.nextYear': calendarProvider.nextYear,
+    'calendar.prevYears': calendarProvider.prevYears,
+    'calendar.nextYears': calendarProvider.nextYears,
+    'calendar.goto': calendarProvider.goto,
+    setDateMouseOver: setDateMouseOver,
+    setSelectedDate: setSelectedDate(data),
+    removeSelectedDate: removeSelectedDate(data),
+    setDataToView: setDataToView(data)
   }
+
+  return (eventName, ...eventValue) => events[eventName](...eventValue)
 }

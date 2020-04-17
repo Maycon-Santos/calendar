@@ -10,7 +10,7 @@ export default function useDispatcher (
   } = data
 
   const dispatcher: EventDispatcher = useMemo<EventDispatcher>(
-    eventsFactory(data),
+    () => eventsFactory(data),
     [data.bind.props]
   )
 

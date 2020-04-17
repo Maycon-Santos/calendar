@@ -57,7 +57,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.prevMonth', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.prevMonth')
 
@@ -65,7 +65,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.nextMonth', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.nextMonth')
 
@@ -73,7 +73,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.prevYear', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.prevYear')
 
@@ -81,7 +81,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.nextYear', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.nextYear')
 
@@ -89,7 +89,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.prevYears', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.prevYears')
 
@@ -97,7 +97,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.nextYears', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.nextYears')
 
@@ -105,7 +105,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call calendar.goto', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('calendar.goto', new Date(1998, 4, 8))
 
@@ -115,7 +115,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call setDateMouseOver width date', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('setDateMouseOver', new Date(1998, 4, 8))
 
@@ -123,7 +123,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call setDateMouseOver width null', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('setDateMouseOver', null)
 
@@ -131,7 +131,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call setSelectedDate', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('setSelectedDate', new Date(1998, 4, 8))
 
@@ -143,7 +143,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call removeSelectedDate', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('removeSelectedDate', new Date(1998, 4, 8))
 
@@ -155,7 +155,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call setDataToView with days', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('setDataToView', 'days')
 
@@ -165,7 +165,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call setDataToView with months', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('setDataToView', 'months')
 
@@ -177,7 +177,7 @@ describe('eventsFactory', () => {
   })
 
   it('should call setDataToView with years', () => {
-    const dispatcher = eventsFactory(dataMock)()
+    const dispatcher = eventsFactory(dataMock)
 
     dispatcher('setDataToView', 'years')
 
