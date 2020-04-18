@@ -10,6 +10,7 @@ export type DataToView = 'days' | 'months' | 'years'
 
 type ClassNameKeys =
   | 'Container'
+  | 'CalendarBinded'
   | 'Header'
   | 'HeaderMonth'
   | 'HeaderYear'
@@ -42,7 +43,7 @@ type ClassNameKeys =
   | 'EndRangeDate'
   | 'MouseOverEndRange'
 
-export type ClassNames = { [k in ClassNameKeys]?: string }
+export type ClassNames = { [k in ClassNameKeys]?: string } | { [key: string]: string }
 
 export type EventName =
   | 'calendar.nextMonth'

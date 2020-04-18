@@ -1,3 +1,3 @@
-export default function classNameResolve (...classNames: any[]) {
+export default function resolveClassName (...classNames: any[]) {
   return classNames.filter(Boolean).join(' ')
 }

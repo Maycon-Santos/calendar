@@ -8,6 +8,7 @@ import useDispatcher from './hooks/use-dispatcher'
 import useForceUpdate from './hooks/use-force-update'
 import useWillMount from './hooks/use-will-mount'
 import { CalendarProps, DataToView, EventDispatcher } from './shared-types'
+import resolveClassName from './utils/classname-resolve'
 
 export default (props: CalendarProps) => {
   const { classNames, startDate } = props
@@ -52,7 +53,14 @@ export default (props: CalendarProps) => {
         bind
       }}
     >
-      <div className={classNames?.Container}>
+      <div
+        className={
+          resolveClassName(
+            classNames?.Container,
+            classNames?.[`Calendar${bind.order + 1}`],
+            Boolean(props.bind) && classNames?.CalendarBinded
+          )
+        }>
         <Header />
         <Body />
       </div>

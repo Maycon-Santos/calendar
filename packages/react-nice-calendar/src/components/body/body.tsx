@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from '../../context'
 import useProps from '../../hooks/use-props'
-import classNameResolve from '../../utils/classname-resolve'
+import resolveClassName from '../../utils/classname-resolve'
 import compareDates from '../../utils/compare-dates'
 import dateIncludes from '../../utils/date-includes'
 import customEvent from '../../utils/custom-event'
@@ -74,7 +74,7 @@ function Days () {
             {...DateProps}
             key={day + belongCurrentMonth.toString()}
             type='button'
-            className={classNameResolve(
+            className={resolveClassName(
               DateProps?.className,
               classNames?.Cell,
               classNames?.DayCell,
@@ -133,7 +133,7 @@ function Months () {
             {...MonthProps}
             key={month}
             type='button'
-            className={classNameResolve(
+            className={resolveClassName(
               MonthProps?.className,
               classNames?.Cell,
               classNames?.MonthCell,
@@ -187,7 +187,7 @@ function Years () {
             {...YearProps}
             key={year}
             type='button'
-            className={classNameResolve(
+            className={resolveClassName(
               YearProps?.className,
               classNames?.Cell,
               classNames?.YearCell,
@@ -221,7 +221,7 @@ export default function Body () {
   return (
     <div
       {...BodyProps}
-      className={classNameResolve(
+      className={resolveClassName(
         BodyProps?.className,
         classNames?.Body,
         dataToView === 'days' && classNames?.BodyDays,
@@ -232,13 +232,13 @@ export default function Body () {
       {dataToView === 'days' && (
         <div
           {...DaysProps}
-          className={classNameResolve(DaysProps?.className, classNames?.Days)}
+          className={resolveClassName(DaysProps?.className, classNames?.Days)}
         >
           {daysDictionary.map((day, i) => (
             <div
               {...DayProps}
               key={day + i}
-              className={classNameResolve(DayProps?.className, classNames?.Day)}
+              className={resolveClassName(DayProps?.className, classNames?.Day)}
             >
               {day}
             </div>
@@ -247,7 +247,7 @@ export default function Body () {
       )}
       <div
         {...CellsProps}
-        className={classNameResolve(CellsProps?.className, classNames?.Cells)}
+        className={resolveClassName(CellsProps?.className, classNames?.Cells)}
       >
         {dataToView === 'days' && <Days />}
         {dataToView === 'months' && <Months />}

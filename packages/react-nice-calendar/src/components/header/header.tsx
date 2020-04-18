@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { CalendarContext } from '../../context'
 import useProps from '../../hooks/use-props'
-import classNameResolve from '../../utils/classname-resolve'
+import resolveClassName from '../../utils/classname-resolve'
 import customEvent from '../../utils/custom-event'
 
 interface ButtonProps {
@@ -22,7 +22,7 @@ function PrevButton (props: ButtonProps) {
       {...PrevButtonProps}
       type='button'
       onClick={customEvent(onClick, PrevButtonProps?.onClick)}
-      className={classNameResolve(
+      className={resolveClassName(
         PrevButtonProps?.className,
         classNames?.PrevButton
       )}
@@ -39,7 +39,7 @@ function NextButton (props: ButtonProps) {
       {...NextButtonProps}
       type='button'
       onClick={customEvent(onClick, NextButtonProps?.onClick)}
-      className={classNameResolve(
+      className={resolveClassName(
         NextButtonProps?.className,
         classNames?.NextButton
       )}
@@ -56,7 +56,7 @@ function HeaderText (props: HeaderTextProps) {
       {...HeaderTextProps}
       type='button'
       onClick={customEvent(onClick, HeaderTextProps?.onClick)}
-      className={classNameResolve(
+      className={resolveClassName(
         HeaderTextProps?.className,
         classNames?.HeaderText
       )}
@@ -115,7 +115,7 @@ export default function Header () {
 
   return (
     <header
-      className={classNameResolve(
+      className={resolveClassName(
         HeaderProps?.className,
         classNames?.Header,
         dataToView === 'days' && classNames?.HeaderMonth,
