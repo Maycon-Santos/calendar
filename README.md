@@ -12,9 +12,6 @@
   <a href="https://snyk.io/test/github/Maycon-Santos/calendar">
     <img src="https://snyk.io/test/github/Maycon-Santos/calendar/badge.svg">
   </a>
-  <a href="https://coveralls.io/github/Maycon-Santos/calendar?branch=master">
-    <img src="https://coveralls.io/repos/github/Maycon-Santos/calendar/badge.svg?branch=master" />
-  </a>
 </h2>
 
 <p align="center">
