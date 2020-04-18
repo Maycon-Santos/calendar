@@ -54,13 +54,12 @@ export default (props: CalendarProps) => {
       }}
     >
       <div
-        className={
-          resolveClassName(
-            classNames?.Container,
-            classNames?.[`Calendar${bind.order + 1}`],
-            Boolean(props.bind) && classNames?.CalendarBinded
-          )
-        }>
+        className={resolveClassName(
+          classNames?.Container,
+          classNames?.[`Calendar${bind.order + 1}`],
+          Boolean(props.bind) && classNames?.CalendarBinded
+        )}
+      >
         <Header />
         <Body />
       </div>

@@ -43,7 +43,9 @@ type ClassNameKeys =
   | 'EndRangeDate'
   | 'MouseOverEndRange'
 
-export type ClassNames = { [k in ClassNameKeys]?: string } | { [key: string]: string }
+export type ClassNames =
+  | { [k in ClassNameKeys]?: string }
+  | { [key: string]: string }
 
 export type EventName =
   | 'calendar.nextMonth'
