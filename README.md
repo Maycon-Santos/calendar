@@ -33,6 +33,8 @@ It is a calendar that aims to be simple and efficient for anyone using. Using [`
 
 Everything you will see here refers to all calendars in the repository, if there is a question about the calendar for a specific framework / library click on one of the buttons above (Available to).
 
+[**Live demo**](http://maycon-santos.github.io/calendar)
+
 ## Getting Started
 
 **Install for React:**
