@@ -138,18 +138,18 @@ export type OnChangeSelectedDate =
 export interface CalendarProps {
   pick?: Pick
   pickLimit?: number
-  monthsDictionary?: string[]
-  daysDictionary?: string[]
-  classNames?: ClassNames
-  startDate?: Date
   rangeSize?: {
     min: number
     max: number
   }
+  onChangeSelectedDate?: OnChangeSelectedDate
+  selectedDate?: Date | Date[] | null
+  monthsDictionary?: string[]
+  daysDictionary?: string[]
+  classNames?: ClassNames
+  startDate?: Date
   filterInvalidDates?: (date: Date) => boolean
   bind?: BindProp
-  selectedDate?: Date | Date[] | null
-  onChangeSelectedDate?: OnChangeSelectedDate
   HeaderProps?: DivProps
   PrevButtonProps?: ButtonPropsCustomOnClick
   NextButtonProps?: ButtonPropsCustomOnClick

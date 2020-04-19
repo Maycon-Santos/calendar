@@ -34,7 +34,7 @@ export const pick_single_with_bind = () => {
         }}
         bind={bind}
       />
-      <Calendar bind={bind} PrevButtonProps={{ style: { display: 'none' } }} />
+      <Calendar bind={bind} />
     </div>
   )
 }

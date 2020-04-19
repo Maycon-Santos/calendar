@@ -29,7 +29,7 @@ export const defaultProps: Props = {
   pick: 'single',
   pickLimit: Infinity,
   rangeSize: {
-    min: 0,
+    min: 1,
     max: Infinity
   }
 }
