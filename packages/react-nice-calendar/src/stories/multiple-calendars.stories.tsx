@@ -21,20 +21,24 @@ export const pick_single_with_bind = () => {
 
   return (
     <div className={styles.Container}>
-      <Calendar
-        pick='single'
-        selectedDate={selectedDate}
-        onChangeSelectedDate={(date: Date | null) => {
-          setSelectedDate(date)
-          if (date) {
-            actionSelectedDate(...datesToLocaleString([date]))
-          } else {
-            actionSelectedDate(date)
-          }
-        }}
-        bind={bind}
-      />
-      <Calendar bind={bind} />
+      <div className={styles.Calendar}>
+        <Calendar
+          pick='single'
+          selectedDate={selectedDate}
+          onChangeSelectedDate={(date: Date | null) => {
+            setSelectedDate(date)
+            if (date) {
+              actionSelectedDate(...datesToLocaleString([date]))
+            } else {
+              actionSelectedDate(date)
+            }
+          }}
+          bind={bind}
+        />
+      </div>
+      <div className={styles.Calendar}>
+        <Calendar bind={bind} />
+      </div>
     </div>
   )
 }
@@ -45,17 +49,21 @@ export const pick_multiple_with_bind = () => {
 
   return (
     <div className={styles.Container}>
-      <Calendar
-        pick='multiple'
-        pickLimit={5}
-        selectedDate={selectedDate}
-        onChangeSelectedDate={(dates: Date[]) => {
-          setSelectedDate(dates)
-          actionSelectedDates(...datesToLocaleString(dates))
-        }}
-        bind={bind}
-      />
-      <Calendar bind={bind} />
+      <div className={styles.Calendar}>
+        <Calendar
+          pick='multiple'
+          pickLimit={5}
+          selectedDate={selectedDate}
+          onChangeSelectedDate={(dates: Date[]) => {
+            setSelectedDate(dates)
+            actionSelectedDates(...datesToLocaleString(dates))
+          }}
+          bind={bind}
+        />
+      </div>
+      <div className={styles.Calendar}>
+        <Calendar bind={bind} />
+      </div>
     </div>
   )
 }
@@ -66,20 +74,24 @@ export const pick_range_with_bind = () => {
 
   return (
     <div className={styles.Container}>
-      <Calendar
-        pick='range'
-        rangeSize={{
-          min: 4,
-          max: 10
-        }}
-        selectedDate={selectedDate}
-        onChangeSelectedDate={(dates: Date[]) => {
-          setSelectedDate(dates)
-          actionSelectedDates(...datesToLocaleString(dates))
-        }}
-        bind={bind}
-      />
-      <Calendar bind={bind} />
+      <div className={styles.Calendar}>
+        <Calendar
+          pick='range'
+          rangeSize={{
+            min: 4,
+            max: 10
+          }}
+          selectedDate={selectedDate}
+          onChangeSelectedDate={(dates: Date[]) => {
+            setSelectedDate(dates)
+            actionSelectedDates(...datesToLocaleString(dates))
+          }}
+          bind={bind}
+        />
+      </div>
+      <div className={styles.Calendar}>
+        <Calendar bind={bind} />
+      </div>
     </div>
   )
 }
