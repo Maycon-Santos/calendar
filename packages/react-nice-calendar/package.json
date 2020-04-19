@@ -11,7 +11,8 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "calendar-provider": "^0.1.0"
+    "calendar-provider": "^0.1.0",
+    "transition-engine": "^0.2.2"
   },
   "keywords": [
     "calendar",
