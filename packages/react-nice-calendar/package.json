@@ -3,13 +3,28 @@
   "version": "0.0.2-alpha.0",
   "main": "lib/index.js",
   "types": "typings/index.d.ts",
-  "author": "Maycon Santos <mayconsantos.dev@gmail.com>",
+  "author": {
+    "name": "Maycon Santos",
+    "email": "mayconsantos.dev@gmail.com",
+    "url": "https://github.com/Maycon-Santos"
+  },
   "license": "MIT",
   "private": false,
   "dependencies": {
     "calendar-provider": "^0.0.2-alpha.0"
   },
+  "keywords": [
+    "calendar",
+    "date",
+    "date-picker",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maycon-Santos/calendar.git"
+  },
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": ">=16.13.1",
+    "react-dom": ">=16.3"
   }
 }
