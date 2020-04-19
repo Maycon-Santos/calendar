@@ -150,16 +150,6 @@
         height: 100%;
         display: block;
       }
-      &.DayBelongCurrentMonth {
-        &.SelectedDate {
-          &, &.DayBelongCurrentMonth, &:hover {
-            color: white;
-          }
-          &::before {
-            background-color: var(--selected-date);
-          }
-        }
-      }
     }
   
     & .DayCell {
@@ -182,6 +172,14 @@
           &.CurrentDate {
             &::before {
               background-color: var(--current-date);
+            }
+          }
+          &.SelectedDate {
+            &, &.DayBelongCurrentMonth, &:hover {
+              color: white;
+            }
+            &::before {
+              background-color: var(--selected-date);
             }
           }
           &.BetweenRange,

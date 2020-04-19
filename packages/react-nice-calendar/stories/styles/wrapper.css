@@ -6,3 +6,7 @@
   display: flex;
   font-family: Montserrat, sans-serif;
 }
+
+.react-nice-calendar-179Xn + .react-nice-calendar-179Xn {
+  margin-left: 24px;
+}
