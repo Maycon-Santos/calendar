@@ -12,6 +12,7 @@
   "private": false,
   "dependencies": {
     "calendar-provider": "^0.1.0",
+    "core-js": "^3.6.5",
     "transition-engine": "^0.2.2"
   },
   "keywords": [
