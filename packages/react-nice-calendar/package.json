@@ -1,6 +1,6 @@
 {
   "name": "react-nice-calendar",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "lib/index.js",
   "types": "typings/index.d.ts",
   "author": {
