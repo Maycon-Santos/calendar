@@ -4,7 +4,7 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook": "storybook-to-ghpages && git clean -f -d",
     "test": "jest",
     "prepublishOnly": "yarn build",
     "prerelease": "yarn build",
