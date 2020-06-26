@@ -79,10 +79,7 @@ export type EventDispatcher = <T extends EventName>(
     : []
 ) => any
 
-type PickSingle = 'single'
-type PickMultiple = 'multiple'
-type PickRange = 'range'
-export type Pick = PickSingle | PickMultiple | PickRange
+export type Pick = 'single' | 'multiple' | 'range'
 
 export type CustomOnClickEvent = {
   originalEvent: React.MouseEvent<HTMLButtonElement, MouseEvent>
