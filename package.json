@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "css-loader": "^3.4.2",
-    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react": "^7.20.1",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.1.3"
